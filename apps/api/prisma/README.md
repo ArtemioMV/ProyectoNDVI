@@ -1,4 +1,4 @@
-﻿# Prisma schema canonico - Agro Geospatial SaaS
+# Prisma schema canonico - Agro Geospatial SaaS
 
 Esquema de base de datos destino para v0.4: multiempresa, PostGIS, RBAC `recurso.accion`, auditoria y motor de evaluaciones legacy adaptado.
 
@@ -6,6 +6,8 @@ Esquema de base de datos destino para v0.4: multiempresa, PostGIS, RBAC `recurso
 
 - `schema.prisma`: esquema principal canonico.
 - `manual/postgis_indexes_rls.sql`: indices GIST/GIN y plantilla RLS que Prisma no gestiona sobre columnas PostGIS `Unsupported`.
+- `seed.ts`: seed idempotente de permisos, roles plantilla y catalogos base.
+- `SEED-README.md`: instrucciones operativas del seed.
 
 ## Decisiones asumidas
 
