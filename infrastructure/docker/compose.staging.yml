@@ -1,0 +1,2 @@
+# Placeholder para staging. No exponer PostgreSQL, Redis ni MinIO publicamente.
+services: {}

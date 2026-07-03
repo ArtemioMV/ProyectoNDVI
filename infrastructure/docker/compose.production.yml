@@ -1,0 +1,2 @@
+# Placeholder para produccion. Nginx debe ser la unica puerta publica.
+services: {}

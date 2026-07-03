@@ -1,0 +1,8 @@
+[project]
+name = "agro-spatial-geo-worker"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "Private geospatial worker for AgroSpatial Intelligence Platform"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
