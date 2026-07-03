@@ -1,4 +1,4 @@
-﻿# Modelo espacial
+# Modelo espacial
 
 - Tipo recomendado: MultiPolygon.
 - SRID recomendado: 4326.

@@ -1,4 +1,4 @@
-﻿# Limites entre frontend, backend y worker
+# Limites entre frontend, backend y worker
 
 ## Frontend: `apps/web`
 

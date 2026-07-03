@@ -1,4 +1,4 @@
-﻿---
+---
 name: security-review
 description: Revision de seguridad transversal contra el modelo de amenazas: acceso cruzado entre organizaciones, escalada de privilegios, secretos expuestos, endpoints internos sin firma y auditoria omitida. Usa esta skill cuando se pida una revision de seguridad, threat review, auditoria de seguridad de un cambio, o cuando digan 'revisa seguridad', 'security review', 'es seguro esto', 'riesgos de seguridad'. Para tenancy en profundidad usa tenancy-review.
 ---

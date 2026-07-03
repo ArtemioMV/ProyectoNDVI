@@ -1,4 +1,4 @@
-﻿---
+---
 name: e2e-tests
 description: Escribe pruebas end-to-end de flujos criticos completos validando permisos visibles y la respuesta real de la API, con datos aislados por organizacion. Usa esta skill cuando se pida probar un flujo completo de usuario, e2e, un recorrido critico (login -> organizacion -> parcela -> procesar NDVI), o cuando digan 'pruebas e2e', 'end to end', 'flujo completo', 'test del recorrido'. Para casos de API aislados usa integration-tests.
 ---

@@ -1,4 +1,4 @@
-﻿# ADR-003: Usar PostgreSQL y PostGIS
+# ADR-003: Usar PostgreSQL y PostGIS
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

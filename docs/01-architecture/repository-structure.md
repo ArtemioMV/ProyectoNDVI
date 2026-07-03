@@ -1,4 +1,4 @@
-﻿# Estructura del repositorio
+# Estructura del repositorio
 
 ## Regla principal
 

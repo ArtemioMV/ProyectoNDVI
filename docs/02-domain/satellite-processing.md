@@ -1,4 +1,4 @@
-﻿# Procesamiento satelital
+# Procesamiento satelital
 
 ## Flujo
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-module
 description: Crea un modulo NestJS nuevo en apps/api/src/modules con tenant, permisos, alcances y auditoria desde el inicio. Usa esta skill SIEMPRE que se pida crear un modulo, recurso o dominio nuevo en el backend/API (por ejemplo modulos de farms, parcels, satellite, alerts, campaigns), o cuando alguien diga 'nuevo modulo', 'nuevo recurso', 'nuevo dominio backend', 'create module' o 'add resource'. No la uses para agregar solo un endpoint a un modulo existente (usa create-endpoint) ni para logica de negocio pura (usa create-use-case).
 ---

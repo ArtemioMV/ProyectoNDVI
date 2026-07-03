@@ -1,4 +1,4 @@
-﻿# Definicion de terminado
+# Definicion de terminado
 
 Una tarea esta terminada cuando:
 

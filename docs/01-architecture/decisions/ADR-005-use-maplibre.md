@@ -1,4 +1,4 @@
-﻿# ADR-005: Evaluar MapLibre para mapas
+# ADR-005: Evaluar MapLibre para mapas
 
 - Estado: Propuesto
 - Fecha: 2026-07-03

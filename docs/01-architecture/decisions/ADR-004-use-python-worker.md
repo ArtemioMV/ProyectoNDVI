@@ -1,4 +1,4 @@
-﻿# ADR-004: Usar worker Python geoespacial
+# ADR-004: Usar worker Python geoespacial
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

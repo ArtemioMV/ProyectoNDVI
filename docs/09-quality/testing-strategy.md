@@ -1,4 +1,4 @@
-﻿# Estrategia de pruebas
+# Estrategia de pruebas
 
 ## Minimo
 

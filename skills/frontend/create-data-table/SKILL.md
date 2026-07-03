@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-data-table
 description: Crea una tabla de datos en apps/web con paginacion, orden estable y estados de carga/vacio/error, reflejando permisos por fila sin asumir seguridad final. Usa esta skill cuando se pida crear una tabla, listado, grilla, data table o vista tabular en el frontend, o cuando digan 'nueva tabla', 'data table', 'listado paginado', 'grilla de datos'. Se apoya en la paginacion del backend.
 ---

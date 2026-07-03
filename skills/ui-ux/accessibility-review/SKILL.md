@@ -1,4 +1,4 @@
-﻿---
+---
 name: accessibility-review
 description: Revision de accesibilidad: navegacion por teclado, contraste, etiquetas accesibles, foco visible y estados que no dependen solo del color. Usa esta skill cuando se pida revisar accesibilidad, verificar a11y, chequear navegacion por teclado o contraste, o cuando digan 'revisa accesibilidad', 'accessibility review', 'a11y', 'es accesible', 'contraste y teclado'.
 ---

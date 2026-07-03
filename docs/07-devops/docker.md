@@ -1,4 +1,4 @@
-﻿# Docker
+# Docker
 
 Cada componente tiene Dockerfile propio:
 

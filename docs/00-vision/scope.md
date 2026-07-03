@@ -1,4 +1,4 @@
-﻿# Alcance inicial
+# Alcance inicial
 
 ## MVP delgado incluido
 

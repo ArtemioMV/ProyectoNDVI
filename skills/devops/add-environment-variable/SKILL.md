@@ -1,4 +1,4 @@
-﻿---
+---
 name: add-environment-variable
 description: Agrega una variable de entorno nueva con valor dummy en .env.example, documentando uso, obligatoriedad y ambiente, y validando su presencia al arranque si es critica. Usa esta skill cuando se introduzca una env var, secreto de configuracion o clave nueva, o cuando digan 'nueva variable de entorno', 'add env var', 'configurar secreto', 'nueva config'. Nunca commitea secretos reales.
 ---

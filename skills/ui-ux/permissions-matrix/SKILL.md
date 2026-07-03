@@ -1,4 +1,4 @@
-﻿---
+---
 name: permissions-matrix
 description: Disena una matriz de permisos que permite buscar y filtrar, distingue heredado/directo/denegado y muestra el impacto antes de guardar, sin confundir jerarquia visual con autorizacion real. Usa esta skill cuando se pida construir la UI de roles y permisos, una matriz o tabla de permisos, la pantalla de asignacion de accesos, o cuando digan 'matriz de permisos', 'permissions matrix', 'gestion de roles', 'asignar permisos', 'pantalla de accesos'.
 ---

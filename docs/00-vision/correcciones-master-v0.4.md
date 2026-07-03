@@ -1,4 +1,4 @@
-﻿# Correcciones y observaciones â€” AGRO_GEOSPATIAL_SAAS_MASTER v0.4
+# Correcciones y observaciones â€” AGRO_GEOSPATIAL_SAAS_MASTER v0.4
 
 **Estado:** revisiÃ³n completa del documento maestro (90 secciones) + Ã¡rbol `docs/`, scaffold (`apps/`, `services/`, `packages/`, `infrastructure/`) y skills.
 **PropÃ³sito:** lista accionable de lo que debe corregirse **antes de escribir cÃ³digo de dominio**. Cada punto indica el problema, dÃ³nde estÃ¡ y la acciÃ³n requerida.

@@ -1,4 +1,4 @@
-﻿# ADR-002: Usar NestJS para la API
+# ADR-002: Usar NestJS para la API
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

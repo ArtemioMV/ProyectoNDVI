@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-use-case
 description: Crea un caso de uso (regla de negocio) en apps/api desacoplado de HTTP, que recibe contexto autenticado y valida permiso y alcance antes de modificar datos. Usa esta skill cuando se pida implementar logica de negocio, una regla de dominio, un servicio de aplicacion o un 'use case'/'caso de uso' en el backend, o al separar logica que hoy vive en un controller. Para exponerlo por HTTP usa create-endpoint.
 ---

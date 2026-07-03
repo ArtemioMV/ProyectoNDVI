@@ -1,4 +1,4 @@
-﻿# Documentacion
+# Documentacion
 
 Esta carpeta contiene la documentacion viva del proyecto. El documento maestro se conserva en `00-vision/AGRO_GEOSPATIAL_SAAS_MASTER_v0.4.md`.
 

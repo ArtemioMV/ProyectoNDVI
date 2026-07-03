@@ -1,4 +1,4 @@
-﻿# Ambientes
+# Ambientes
 
 - Local: Docker Compose.
 - Staging: datos controlados y despliegue similar a produccion.

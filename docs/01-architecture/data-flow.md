@@ -1,4 +1,4 @@
-﻿# Flujo de datos
+# Flujo de datos
 
 ## Procesamiento NDVI
 

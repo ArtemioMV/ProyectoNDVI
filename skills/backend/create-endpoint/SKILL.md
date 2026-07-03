@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-endpoint
 description: Agrega un endpoint REST multiempresa a un modulo NestJS existente aplicando el orden autenticacion -> membresia -> permiso -> alcance -> auditoria. Usa esta skill SIEMPRE que se pida crear, agregar o exponer un endpoint, ruta de API, operacion REST o accion de backend (GET/POST/PATCH/DELETE), o cuando digan 'nuevo endpoint', 'add endpoint', 'nueva ruta de API', 'expose action'. Para un modulo entero nuevo usa create-module; para logica de negocio aislada usa create-use-case.
 ---

@@ -1,4 +1,4 @@
-﻿# Despliegue
+# Despliegue
 
 ## Local
 

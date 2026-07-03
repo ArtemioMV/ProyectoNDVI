@@ -1,4 +1,4 @@
-﻿# ADR-001: Usar Next.js para la web
+# ADR-001: Usar Next.js para la web
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-frontend
 description: Revisa cambios de frontend (apps/web) buscando acciones visibles sin permiso, roturas en mobile, estados faltantes, acceso directo a servicios internos y duplicacion de componentes. Usa esta skill cuando se pida revisar, auditar o dar feedback de codigo del frontend/web, revisar un PR de apps/web, o cuando digan 'revisa el frontend', 'review web', 'code review UI'. Para accesibilidad puntual usa accessibility-review.
 ---

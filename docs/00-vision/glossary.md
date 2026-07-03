@@ -1,4 +1,4 @@
-﻿# Glosario
+# Glosario
 
 - Usuario: cuenta global identificada por correo.
 - Organizacion: empresa cliente o tenant.

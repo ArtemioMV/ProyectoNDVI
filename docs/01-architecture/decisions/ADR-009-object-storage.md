@@ -1,4 +1,4 @@
-﻿# ADR-009: Usar almacenamiento de objetos
+# ADR-009: Usar almacenamiento de objetos
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

@@ -1,4 +1,4 @@
-﻿# Roadmap
+# Roadmap
 
 ## Fase 0
 

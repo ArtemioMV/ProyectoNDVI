@@ -1,4 +1,4 @@
-﻿---
+---
 name: architecture-review
 description: Revision de arquitectura: archivos fuera de su contexto, paquetes compartidos sin necesidad real, procesos pesados dentro del request HTTP y cambios de decision sin ADR. Usa esta skill cuando se pida revisar la arquitectura, la estructura del monorepo, los limites entre web/api/worker, o cuando digan 'revisa arquitectura', 'architecture review', 'estructura del repo', 'esto necesita ADR'.
 ---

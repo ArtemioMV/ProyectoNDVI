@@ -1,4 +1,4 @@
-﻿# Modelo tenant
+# Modelo tenant
 
 El tenant funcional es la organizacion. Un usuario global puede pertenecer a varias organizaciones mediante membresias.
 

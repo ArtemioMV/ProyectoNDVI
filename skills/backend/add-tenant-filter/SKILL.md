@@ -1,4 +1,4 @@
-﻿---
+---
 name: add-tenant-filter
 description: Aplica o corrige el filtro multiempresa (organization_id) en un metodo de acceso a datos, validando los IDs recibidos contra la organizacion activa y respetando el alcance. Usa esta skill SIEMPRE que una consulta, repositorio, query o listado pueda estar leyendo o escribiendo sin filtro de tenant, o cuando digan 'falta el tenant', 'filtrar por organizacion', 'tenant filter', 'aislamiento multiempresa' o 'cross-tenant'. Critica para prevenir acceso cruzado entre organizaciones.
 ---

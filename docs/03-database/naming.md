@@ -1,4 +1,4 @@
-﻿# Convenciones de nombres
+# Convenciones de nombres
 
 - Tablas en plural y snake_case.
 - Columnas en snake_case.

@@ -1,4 +1,4 @@
-﻿# BD legacy guia - BD_ESTRUCTURA_FINAL_LIMPIA
+# BD legacy guia - BD_ESTRUCTURA_FINAL_LIMPIA
 
 **Estado:** guia documental legacy. No ejecutar como migracion del sistema nuevo.
 

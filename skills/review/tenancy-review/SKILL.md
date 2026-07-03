@@ -1,4 +1,4 @@
-﻿---
+---
 name: tenancy-review
 description: Revision profunda de aislamiento multiempresa: organization_id recibido del cliente como autoridad, consultas sin filtro de tenant, IDs no validados, exportaciones sin scope y jobs que pierden contexto de organizacion. Usa esta skill cuando se pida verificar el aislamiento entre organizaciones, revisar multi-tenancy, chequear fugas cross-tenant, o cuando digan 'revisa tenancy', 'aislamiento multiempresa', 'cross-tenant', 'fuga entre organizaciones'.
 ---

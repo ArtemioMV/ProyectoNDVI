@@ -1,4 +1,4 @@
-﻿# Tenancy
+# Tenancy
 
 Toda entidad de cliente debe incluir `organization_id`. Toda consulta debe filtrar por organizacion activa y alcance efectivo.
 

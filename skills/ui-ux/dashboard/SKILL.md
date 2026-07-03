@@ -1,4 +1,4 @@
-﻿---
+---
 name: dashboard
 description: Disena un dashboard operativo agricola que prioriza informacion accionable y comparacion, muestra calidad/fecha/alcance de datos y evita composicion de marketing y tarjetas anidadas. Usa esta skill cuando se pida crear o mejorar un dashboard, panel de control, vista de metricas o tablero operativo, o cuando digan 'dashboard', 'panel', 'tablero', 'vista de metricas', 'KPIs'. Se apoya en el design system del proyecto.
 ---

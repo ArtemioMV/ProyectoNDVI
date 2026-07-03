@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-map-layer
 description: Crea una capa de mapa MapLibre en apps/web separando visualizacion de persistencia, manejando estados de mapa (sin geometria, cargando, error) y sin guardar geometria sin validacion de API. Usa esta skill cuando se pida agregar una capa raster o vectorial, dibujar/editar/importar geometria, mostrar poligonos de parcelas o resultados NDVI en el mapa, o cuando digan 'capa de mapa', 'map layer', 'mapa', 'poligonos', 'raster overlay', 'MapLibre'. La persistencia final de geometria la valida la API y PostGIS.
 ---

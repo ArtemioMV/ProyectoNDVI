@@ -1,4 +1,4 @@
-﻿# ADR-012: Estrategia de aislamiento tenant
+# ADR-012: Estrategia de aislamiento tenant
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

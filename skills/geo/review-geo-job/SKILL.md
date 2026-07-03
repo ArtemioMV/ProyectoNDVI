@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-geo-job
 description: Revisa un job geoespacial buscando falta de idempotencia, archivos grandes en base de datos, errores no recuperables, falta de trazabilidad y acoplamiento a un solo proveedor. Usa esta skill cuando se pida revisar el worker geoespacial, auditar un job de procesamiento satelital, revisar un PR de services/geo-worker, o cuando digan 'revisa el job geo', 'review geo worker', 'auditar procesamiento satelital'. Complementa a process-index.
 ---

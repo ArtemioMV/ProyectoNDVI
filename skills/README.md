@@ -1,4 +1,4 @@
-﻿# Skills del proyecto
+# Skills del proyecto
 
 Instrucciones reutilizables para agentes de desarrollo (Claude Code). No reemplazan la documentacion: la referencian. La documentacion en `docs/` es la fuente de verdad.
 

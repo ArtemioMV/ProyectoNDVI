@@ -1,4 +1,4 @@
-﻿---
+---
 name: clip-raster
 description: Recorta un raster satelital a la geometria de una parcela validando la geometria antes del recorte y preservando metadatos de fuente, fecha, resolucion y calidad. Usa esta skill cuando se pida recortar un raster, hacer clip/mask por geometria, extraer el area de una parcela de una escena, o cuando digan 'recortar raster', 'clip raster', 'mask por poligono', 'cortar escena'. Es un paso previo tipico de process-index y zonal-statistics.
 ---

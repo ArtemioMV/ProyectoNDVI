@@ -1,4 +1,4 @@
-﻿# ADR-010: Ubicacion de Tailwind
+# ADR-010: Ubicacion de Tailwind
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

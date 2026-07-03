@@ -1,4 +1,4 @@
-﻿# Modelo de amenazas
+# Modelo de amenazas
 
 Amenazas iniciales:
 

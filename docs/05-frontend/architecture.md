@@ -1,4 +1,4 @@
-﻿# Arquitectura frontend
+# Arquitectura frontend
 
 Next.js organiza rutas, layouts y carga de datos. Las features viven en `src/features` y los componentes reutilizables en `src/components`.
 

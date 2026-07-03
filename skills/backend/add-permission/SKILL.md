@@ -1,4 +1,4 @@
-﻿---
+---
 name: add-permission
 description: Define un permiso nuevo con formato recurso.accion, clave estable e independiente del texto de UI, y su alcance aplicable. Usa esta skill SIEMPRE que se agregue una capacidad, accion protegida o permiso RBAC nuevo (por ejemplo satellite.ndvi.process, parcels.geometry.update, users.invite), o cuando digan 'nuevo permiso', 'add permission', 'proteger accion', 'nueva capacidad' o 'RBAC'. Complementa a create-endpoint (que consume el permiso).
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: validate-geometry
 description: Valida geometria antes de guardarla o procesarla: SRID 4326, cierre, area mayor que cero, auto-intersecciones y superposiciones relevantes, registrando historial de cambios. Usa esta skill cuando se pida validar geometria, chequear un poligono, detectar superposiciones o geometrias invalidas, o cuando digan 'validar geometria', 'validate geometry', 'geometria invalida', 'overlap de parcelas', 'poligono valido'. Aplica tanto en geo-worker como antes de persistir en API/PostGIS.
 ---

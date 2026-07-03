@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-feature
 description: Crea una feature de dominio en apps/web/src/features separando componentes, cliente de API tipado, tipos y helpers locales, sin duplicar componentes de src/components. Usa esta skill cuando se pida agrupar la logica de un dominio del frontend (farms, parcels, satellite, alerts, users), crear un modulo de UI por dominio, o cuando digan 'nueva feature', 'feature frontend', 'modulo de UI', 'agrupar dominio en web'. Para una vista suelta usa create-page.
 ---

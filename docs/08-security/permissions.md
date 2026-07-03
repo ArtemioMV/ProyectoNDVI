@@ -1,4 +1,4 @@
-﻿# Permisos
+# Permisos
 
 Formato: `recurso.accion`.
 

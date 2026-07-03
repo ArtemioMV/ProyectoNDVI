@@ -1,4 +1,4 @@
-﻿# Migraciones
+# Migraciones
 
 Las migraciones deben ser revisables, reversibles cuando sea razonable y probadas con datos representativos.
 

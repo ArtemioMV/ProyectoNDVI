@@ -1,4 +1,4 @@
-﻿# Componentes
+# Componentes
 
 ## API
 

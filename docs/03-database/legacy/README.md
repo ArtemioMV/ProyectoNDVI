@@ -1,4 +1,4 @@
-﻿# Legacy database guide
+# Legacy database guide
 
 Esta carpeta conserva la BD legacy como documentacion, no como migracion ejecutable.
 

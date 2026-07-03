@@ -1,4 +1,4 @@
-﻿# ADR-006: SaaS multiempresa desde el diseno
+# ADR-006: SaaS multiempresa desde el diseno
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

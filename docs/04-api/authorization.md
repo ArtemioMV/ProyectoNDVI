@@ -1,4 +1,4 @@
-﻿# Autorizacion
+# Autorizacion
 
 Orden recomendado:
 

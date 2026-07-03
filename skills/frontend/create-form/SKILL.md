@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-form
 description: Crea un formulario en apps/web con validacion en cliente para experiencia y mapeo de errores de API por campo, cubriendo estados de envio, error y exito. Usa esta skill cuando se pida crear o mejorar un formulario, form, pantalla de captura, alta/edicion de datos o validacion de inputs en el frontend, o cuando digan 'nuevo formulario', 'create form', 'formulario de', 'validar campos'. La seguridad real la valida la API, no el formulario.
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 name: create-page
 description: Crea una pagina Next.js en apps/web dentro del grupo de ruta correcto ((auth), (platform), (tenant) o api) cubriendo estados de carga, vacio, error y sin permiso. Usa esta skill cuando se pida crear una pagina, vista, pantalla o ruta del frontend/web, o cuando digan 'nueva pagina', 'new page', 'nueva vista', 'nueva pantalla', 'add route'. Para logica agrupada de un dominio usa create-feature; para tablas o formularios usa las skills especificas.
 ---

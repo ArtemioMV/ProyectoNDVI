@@ -1,4 +1,4 @@
-﻿---
+---
 name: add-nginx-route
 description: Agrega o modifica una ruta en Nginx, la unica puerta publica, enrutando solo a web y API y sin exponer PostgreSQL, Redis ni MinIO. Usa esta skill cuando se pida publicar un servicio, agregar un location/proxy_pass, configurar el reverse proxy o exponer un endpoint hacia afuera, o cuando digan 'ruta nginx', 'nginx route', 'reverse proxy', 'publicar servicio', 'proxy'. Complementa a add-docker-service.
 ---

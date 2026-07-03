@@ -1,4 +1,4 @@
-﻿---
+---
 name: add-docker-service
 description: Agrega un servicio nuevo al Docker Compose del ambiente correcto sin exponer PostgreSQL, Redis ni MinIO publicamente, manteniendo un Dockerfile por componente. Usa esta skill cuando se pida agregar un contenedor, servicio o dependencia a docker-compose, definir un Dockerfile nuevo, o cuando digan 'nuevo servicio docker', 'add service to compose', 'contenerizar', 'add container'. Para publicarlo por red usa add-nginx-route; para su config usa add-environment-variable.
 ---

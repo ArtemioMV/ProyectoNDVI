@@ -1,4 +1,4 @@
-﻿# Vision del producto
+# Vision del producto
 
 Construir una plataforma web SaaS multiempresa para administrar informacion agricola a nivel de parcela canonica (`parcel`), representar areas mediante poligonos geograficos, consultar imagenes satelitales, procesar indices de vegetacion y centralizar datos agronomicos, productivos y operativos.
 

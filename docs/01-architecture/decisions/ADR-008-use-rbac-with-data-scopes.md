@@ -1,4 +1,4 @@
-﻿# ADR-008: RBAC con alcances de datos
+# ADR-008: RBAC con alcances de datos
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

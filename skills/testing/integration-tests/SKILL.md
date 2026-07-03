@@ -1,4 +1,4 @@
-﻿---
+---
 name: integration-tests
 description: Escribe pruebas de integracion que cubren tenant, permisos, alcances y acceso cruzado entre organizaciones con fixtures minimos, evitando datos reales. Usa esta skill cuando se pida probar endpoints de API, verificar autorizacion/aislamiento multiempresa, cubrir el flujo permiso+scope+datos, o cuando digan 'pruebas de integracion', 'integration tests', 'testear el endpoint', 'probar permisos y tenant'. Aqui viven los casos obligatorios de seguridad multiempresa.
 ---

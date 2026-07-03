@@ -1,4 +1,4 @@
-﻿---
+---
 name: process-index
 description: Implementa el calculo de un indice satelital (NDVI, NDRE, NDMI, SAVI, EVI...) en services/geo-worker de forma asincrona, guardando raster/previews en MinIO y reportando metadatos y estadisticas a la API por endpoint interno firmado. Usa esta skill SIEMPRE que se pida procesar un indice espectral, calcular NDVI u otro indice, implementar un job de procesamiento satelital, o cuando digan 'procesar indice', 'calcular NDVI', 'process index', 'satellite job', 'indice espectral'. No la uses dentro del request HTTP de la API.
 ---

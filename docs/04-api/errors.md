@@ -1,4 +1,4 @@
-﻿# Errores
+# Errores
 
 No exponer errores internos, SQL, secretos ni trazas completas al cliente.
 

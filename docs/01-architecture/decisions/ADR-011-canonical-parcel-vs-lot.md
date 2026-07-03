@@ -1,4 +1,4 @@
-﻿# ADR-011: Nombre canonico de unidad fisica agricola
+# ADR-011: Nombre canonico de unidad fisica agricola
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

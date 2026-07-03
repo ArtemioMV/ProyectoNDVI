@@ -1,4 +1,4 @@
-﻿# Fundos, parcelas y areas cultivables
+# Fundos, parcelas y areas cultivables
 
 ## Modelo objetivo
 

@@ -1,4 +1,4 @@
-﻿---
+---
 name: unit-tests
 description: Escribe pruebas unitarias para reglas puras y casos borde sin dependencias externas, con fixtures pequenos, cubriendo errores esperados. Usa esta skill cuando se pida agregar o mejorar tests unitarios, probar una funcion/regla de negocio aislada, o cuando digan 'pruebas unitarias', 'unit tests', 'testear esta funcion', 'cubrir casos borde'. Para API/permisos/tenancy usa integration-tests.
 ---

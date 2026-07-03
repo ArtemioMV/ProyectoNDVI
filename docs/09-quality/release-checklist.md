@@ -1,4 +1,4 @@
-﻿# Checklist de release
+# Checklist de release
 
 - Migraciones revisadas.
 - Backups verificados.

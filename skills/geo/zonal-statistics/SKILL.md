@@ -1,4 +1,4 @@
-﻿---
+---
 name: zonal-statistics
 description: Calcula estadisticas zonales de un raster de indice sobre la geometria de una parcela (promedio, min, max, desviacion, percentiles, distribucion por rangos) registrando calidad de escena y cobertura. Usa esta skill cuando se pida calcular estadisticas por zona/parcela, resumir un raster por poligono, obtener promedio/percentiles de un indice, o cuando digan 'estadisticas zonales', 'zonal stats', 'resumen por parcela', 'histograma del indice'. Suele ejecutarse despues de process-index.
 ---

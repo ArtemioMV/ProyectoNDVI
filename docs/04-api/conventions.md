@@ -1,4 +1,4 @@
-﻿# Convenciones de API
+# Convenciones de API
 
 - REST para operaciones principales.
 - JSON como formato base.

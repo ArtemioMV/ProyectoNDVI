@@ -1,4 +1,4 @@
-﻿# Mapas
+# Mapas
 
 La experiencia de mapas debe soportar visualizacion, dibujo, edicion, importacion, validacion y capas raster/vectoriales.
 

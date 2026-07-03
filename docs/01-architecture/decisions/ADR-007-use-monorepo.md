@@ -1,4 +1,4 @@
-﻿# ADR-007: Usar monorepo
+# ADR-007: Usar monorepo
 
 - Estado: Aprobado inicial
 - Fecha: 2026-07-03

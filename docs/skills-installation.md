@@ -1,4 +1,4 @@
-﻿# Instalacion y gestion de skills
+# Instalacion y gestion de skills
 
 La carpeta `skills/` contiene skills locales del proyecto. Tambien se pueden descargar skills externas desde Git cuando aporten mejores practicas especificas.
 

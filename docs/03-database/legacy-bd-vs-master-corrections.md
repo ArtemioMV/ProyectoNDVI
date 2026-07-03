@@ -1,4 +1,4 @@
-﻿# Correcciones â€” BD guÃ­a (`BD_ESTRUCTURA_FINAL_LIMPIA.sql`) vs Master v0.4
+# Correcciones â€” BD guÃ­a (`BD_ESTRUCTURA_FINAL_LIMPIA.sql`) vs Master v0.4
 
 **Contexto:** se propone usar esta BD "para que guÃ­e" el proyecto.
 **RevisiÃ³n:** 23 tablas, FKs, Ã­ndices y el hÃ­brido JSONB de `registro`, contrastadas contra las decisiones aprobadas del documento maestro v0.4.

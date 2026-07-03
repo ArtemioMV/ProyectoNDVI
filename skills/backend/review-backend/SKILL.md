@@ -1,4 +1,4 @@
-﻿---
+---
 name: review-backend
 description: Revisa cambios de backend (NestJS/apps/api) buscando consultas sin tenant, permisos incompletos, logica pesada en controllers, errores internos expuestos y auditoria faltante. Usa esta skill cuando se pida revisar, auditar o dar feedback de codigo del backend/API, revisar un PR de apps/api, o cuando digan 'revisa el backend', 'review API', 'code review backend'. Para revision transversal de seguridad usa security-review; para tenancy profunda usa tenancy-review.
 ---

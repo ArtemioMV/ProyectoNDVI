@@ -1,4 +1,4 @@
-﻿# Diagrama de contenedores
+# Diagrama de contenedores
 
 ## Contenedores principales
 

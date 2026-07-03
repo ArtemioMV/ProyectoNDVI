@@ -1,4 +1,4 @@
-﻿# Revision de PR
+# Revision de PR
 
 Priorizar:
 

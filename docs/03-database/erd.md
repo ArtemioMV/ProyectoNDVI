@@ -1,4 +1,4 @@
-﻿# ERD canonico
+# ERD canonico
 
 El ERD construible vive por ahora en `apps/api/prisma/schema.prisma`.
 
