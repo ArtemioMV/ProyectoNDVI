@@ -1,4 +1,4 @@
-# Modelo de amenazas
+﻿# Modelo de amenazas
 
 Amenazas iniciales:
 
@@ -8,3 +8,5 @@ Amenazas iniciales:
 - Manipulacion de jobs internos.
 - Exposicion de secretos.
 - Auditoria incompleta.
+
+

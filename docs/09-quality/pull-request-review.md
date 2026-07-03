@@ -1,4 +1,4 @@
-# Revision de PR
+﻿# Revision de PR
 
 Priorizar:
 
@@ -7,3 +7,5 @@ Priorizar:
 - Regresiones de tenant.
 - Falta de pruebas.
 - Cambios de arquitectura sin ADR.
+
+

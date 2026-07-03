@@ -1,4 +1,4 @@
-# Diagrama de contenedores
+﻿# Diagrama de contenedores
 
 ## Contenedores principales
 
@@ -9,3 +9,5 @@
 - Redis: cola y estados transitorios.
 - MinIO/S3: archivos raster, previews y objetos grandes.
 - Nginx: unica entrada publica.
+
+

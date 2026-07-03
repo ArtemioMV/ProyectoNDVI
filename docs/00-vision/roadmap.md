@@ -1,21 +1,23 @@
-# Roadmap
+﻿# Roadmap
+
+## Fase 0
+
+Repositorio, monorepo, Docker local, documentacion activa, ADR bloqueantes, PostgreSQL/PostGIS, Redis, MinIO, Nginx y CI base.
 
 ## Fase 1
 
-Repositorio, monorepo, Docker local, documentacion, ADR, PostgreSQL/PostGIS, Redis, MinIO, Nginx y CI base.
+Identidad, organizaciones, membresias, roles, permisos, alcances, RLS preparado y auditoria.
 
 ## Fase 2
 
-Identidad, organizaciones, membresias, roles, permisos, alcances y auditoria.
+Estructura agricola MVP: fundos, parcelas canonicas (`parcel`), areas cultivables, campanas, cultivos, variedades y geometria.
 
 ## Fase 3
 
-Estructura agricola: fundos, parcelas/lotes, areas cultivables, campanas, cultivos, variedades y geometria.
+Mapa, proveedores satelitales, cola de trabajos, worker Python, NDVI y visualizacion historica por parcela.
 
-## Fase 4
+## Post-MVP
 
-Mapa, proveedores satelitales, cola de trabajos, worker Python, NDVI y visualizacion historica.
+Evaluaciones configurables completas, proyecciones semanales, poda, clima, sanidad, zonificacion y escenarios economicos.
 
-## Fase 5
 
-Modelo productivo simplificado, proyecciones semanales, poda e integracion agronomica.

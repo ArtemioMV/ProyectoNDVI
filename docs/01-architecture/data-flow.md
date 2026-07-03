@@ -1,4 +1,4 @@
-# Flujo de datos
+﻿# Flujo de datos
 
 ## Procesamiento NDVI
 
@@ -9,3 +9,5 @@
 5. Worker guarda objetos en MinIO/S3.
 6. Worker reporta resultado a la API mediante endpoint interno firmado.
 7. API registra metadatos, estadisticas y auditoria.
+
+

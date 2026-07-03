@@ -1,4 +1,4 @@
-# Autorizacion
+﻿# Autorizacion
 
 Orden recomendado:
 
@@ -9,3 +9,5 @@ Orden recomendado:
 5. Auditoria si aplica.
 
 Ocultar botones en frontend no reemplaza la validacion de API.
+
+

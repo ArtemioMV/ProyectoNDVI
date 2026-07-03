@@ -38,3 +38,5 @@ Tailwind pertenece a `apps/web`:
 
 Solo se creara `packages/tailwind-config` si un ADR justifica compartir preset entre varias apps web.
 
+
+

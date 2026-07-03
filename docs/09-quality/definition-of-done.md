@@ -1,4 +1,4 @@
-# Definicion de terminado
+﻿# Definicion de terminado
 
 Una tarea esta terminada cuando:
 
@@ -8,3 +8,5 @@ Una tarea esta terminada cuando:
 - Actualiza docs/ADR si cambia una decision.
 - No introduce configuraciones fuera de contexto.
 - Registra auditoria si toca acciones sensibles.
+
+

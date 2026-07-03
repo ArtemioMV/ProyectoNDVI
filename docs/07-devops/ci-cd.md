@@ -1,4 +1,4 @@
-# CI/CD
+﻿# CI/CD
 
 Pipeline minimo:
 
@@ -8,3 +8,5 @@ Pipeline minimo:
 - Build.
 - Validacion de migraciones cuando existan.
 - Revision de seguridad basica.
+
+

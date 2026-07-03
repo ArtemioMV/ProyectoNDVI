@@ -1,4 +1,4 @@
-# Estrategia de pruebas
+﻿# Estrategia de pruebas
 
 ## Minimo
 
@@ -13,3 +13,5 @@
 - Permiso sin alcance no devuelve datos fuera de scope.
 - Geometria invalida no se guarda.
 - Job geoespacial falla de forma recuperable.
+
+

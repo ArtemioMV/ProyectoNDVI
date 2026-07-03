@@ -1,4 +1,4 @@
-# Componentes
+﻿# Componentes
 
 ## API
 
@@ -10,7 +10,7 @@
 - `modules/users`
 - `modules/roles`
 - `modules/farms`
-- `modules/lots`
+- `modules/parcels`
 - `modules/satellite`
 - `modules/jobs`
 
@@ -22,3 +22,6 @@
 - `storage`
 - `clients`
 - `observability`
+
+
+

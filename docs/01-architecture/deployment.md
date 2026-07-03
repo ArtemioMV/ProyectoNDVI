@@ -1,4 +1,4 @@
-# Despliegue
+﻿# Despliegue
 
 ## Local
 
@@ -10,3 +10,5 @@ Usar `infrastructure/docker/compose.local.yml` para PostgreSQL/PostGIS, Redis y 
 - PostgreSQL, Redis y MinIO no deben exponerse directamente.
 - Las credenciales deben manejarse como secretos por ambiente.
 - El worker debe comunicarse con la API mediante canal interno y firma.
+
+

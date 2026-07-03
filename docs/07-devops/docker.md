@@ -1,4 +1,4 @@
-# Docker
+﻿# Docker
 
 Cada componente tiene Dockerfile propio:
 
@@ -7,3 +7,5 @@ Cada componente tiene Dockerfile propio:
 - `services/geo-worker/Dockerfile`
 
 No usar un Dockerfile gigante para todo.
+
+

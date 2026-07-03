@@ -1,4 +1,4 @@
-# Routing
+﻿# Routing
 
 Rutas base:
 
@@ -6,3 +6,5 @@ Rutas base:
 - `(platform)`: administracion interna de plataforma.
 - `(tenant)`: experiencia de organizacion activa.
 - `api`: endpoints internos de Next.js solo cuando sean necesarios.
+
+

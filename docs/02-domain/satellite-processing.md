@@ -1,4 +1,4 @@
-# Procesamiento satelital
+﻿# Procesamiento satelital
 
 ## Flujo
 
@@ -10,3 +10,5 @@
 6. Guardar metadatos y estadisticas en PostgreSQL.
 
 La arquitectura debe permitir NDVI, NDRE, NDMI, SAVI, EVI y otros indices.
+
+

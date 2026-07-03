@@ -1,4 +1,4 @@
-# Checklist de release
+﻿# Checklist de release
 
 - Migraciones revisadas.
 - Backups verificados.
@@ -6,3 +6,5 @@
 - Tests verdes.
 - Logs y metricas disponibles.
 - Rollback definido.
+
+

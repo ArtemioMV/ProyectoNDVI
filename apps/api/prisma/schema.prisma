@@ -1,2 +1,811 @@
-// Esquema inicial pendiente de ADR de modelo de datos.
-// Debe incluir PostgreSQL + PostGIS, multiempresa, auditoria y migraciones controladas.
+// ═══════════════════════════════════════════════════════════════════════════════
+// AGRO GEOSPATIAL SAAS — schema.prisma (canónico, v0.4)
+// ═══════════════════════════════════════════════════════════════════════════════
+// DECISIONES ASUMIDAS (editar según tus ADR):
+//  - Decisión A: el master v0.4 es el DESTINO; la BD legacy es origen a migrar.
+//  - Unidad física canónica = `parcel`. Se RETIRAN subparcela / lote / sublote
+//    (§89.1). Si el inventario del §78.4 concluye que `lote` es una subdivisión
+//    real y no equivale a `parcel`, reintroducir un nivel opcional `sublot`.
+//  - Multiempresa: `organization_id` en toda entidad de cliente.
+//  - RBAC fino `recurso.accion` con alcances (reemplaza permiso_rol_modulo).
+//  - Se CONSERVA el motor de evaluaciones del legacy (§40), adaptado a multiempresa.
+//  - IDs UUID opaco (no secuenciales). Baja lógica con `deleted_at`.
+//  - Geometría vía PostGIS (columnas `Unsupported`). Los índices GIST/GIN y
+//    (opcional) las políticas RLS se aplican en migración SQL aparte
+//    (ver postgis_indexes_rls.sql).
+// ═══════════════════════════════════════════════════════════════════════════════
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [postgis, pgcrypto]
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ENUMS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+enum MembershipStatus {
+  ACTIVE
+  SUSPENDED
+  INVITED
+}
+
+enum PermissionEffect {
+  ALLOW
+  DENY
+}
+
+enum ScopeType {
+  ORGANIZATION
+  FARM
+  PARCEL
+  CROP
+}
+
+enum InvitationStatus {
+  PENDING
+  ACCEPTED
+  EXPIRED
+  REVOKED
+}
+
+enum JobStatus {
+  QUEUED
+  RUNNING
+  SUCCEEDED
+  FAILED
+  CANCELLED
+}
+
+enum FieldDataType {
+  TEXT
+  NUMBER
+  INTEGER
+  BOOLEAN
+  DATE
+  SELECT
+  MULTISELECT
+}
+
+enum GeometrySource {
+  MANUAL
+  IMPORT
+  CORRECTION
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// IDENTIDAD Y MULTIEMPRESA
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Organization {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String    @db.VarChar(150)
+  slug       String    @unique @db.VarChar(80)
+  is_active  Boolean   @default(true)
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at DateTime? @db.Timestamptz(6)
+
+  memberships        OrganizationMembership[]
+  roles              Role[]
+  invitations        Invitation[]
+  farms              Farm[]
+  parcels            Parcel[]
+  campaigns          Campaign[]
+  cultivable_areas   CultivableArea[]
+  evaluation_types   EvaluationType[]
+  evaluations        Evaluation[]
+  evaluation_records EvaluationRecord[]
+  processing_jobs    ProcessingJob[]
+  stored_objects     StoredObject[]
+  integrations       Integration[]
+  audit_logs         AuditLog[]
+  sessions           Session[]
+
+  @@map("organizations")
+}
+
+// Usuario GLOBAL (email único a nivel plataforma). El rol NO es global:
+// se asigna por organización vía OrganizationMembership -> MembershipRole.
+model User {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email         String    @unique @db.VarChar(150)
+  password_hash String    @db.Text
+  full_name     String    @db.VarChar(150)
+  is_active     Boolean   @default(true)
+  created_at    DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at    DateTime? @db.Timestamptz(6)
+
+  memberships          OrganizationMembership[]
+  sessions             Session[]
+  evaluation_records   EvaluationRecord[]
+  audit_logs           AuditLog[]
+  requested_jobs       ProcessingJob[]        @relation("JobRequestedBy")
+  geometry_changes     ParcelGeometry[]       @relation("GeometryChangedBy")
+
+  @@map("users")
+}
+
+model OrganizationMembership {
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String           @db.Uuid
+  user_id         String           @db.Uuid
+  status          MembershipStatus @default(INVITED)
+  created_at      DateTime         @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime         @updatedAt @db.Timestamptz(6)
+  deleted_at      DateTime?        @db.Timestamptz(6)
+
+  organization         Organization                   @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  user                 User                           @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  membership_roles     MembershipRole[]
+  permission_overrides MembershipPermissionOverride[]
+  access_scopes        AccessScope[]
+
+  @@unique([organization_id, user_id])
+  @@index([organization_id])
+  @@index([user_id])
+  @@map("organization_memberships")
+}
+
+model Session {
+  id                     String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  user_id                String    @db.Uuid
+  active_organization_id String?   @db.Uuid
+  token_hash             String    @unique @db.Text
+  ip_address             String?   @db.VarChar(64)
+  user_agent             String?   @db.Text
+  created_at             DateTime  @default(now()) @db.Timestamptz(6)
+  expires_at             DateTime  @db.Timestamptz(6)
+  revoked_at             DateTime? @db.Timestamptz(6)
+
+  user                User          @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  active_organization Organization? @relation(fields: [active_organization_id], references: [id], onDelete: SetNull)
+
+  @@index([user_id])
+  @@map("sessions")
+}
+
+model Invitation {
+  id              String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String           @db.Uuid
+  email           String           @db.VarChar(150)
+  role_id         String?          @db.Uuid
+  token_hash      String           @unique @db.Text
+  status          InvitationStatus @default(PENDING)
+  created_at      DateTime         @default(now()) @db.Timestamptz(6)
+  expires_at      DateTime         @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  role         Role?        @relation(fields: [role_id], references: [id], onDelete: SetNull)
+
+  @@index([organization_id])
+  @@map("invitations")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// RBAC — recurso.accion + alcances (reemplaza permiso_rol_modulo)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Catálogo GLOBAL de permisos. Clave estable, no derivada de la UI.
+model Permission {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  key         String   @unique @db.VarChar(120) // ej. "parcels.geometry.update"
+  resource    String   @db.VarChar(80)          // ej. "parcels"
+  action      String   @db.VarChar(80)          // ej. "geometry.update"
+  description String?  @db.Text
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+
+  role_permissions     RolePermission[]
+  permission_overrides MembershipPermissionOverride[]
+
+  @@index([resource])
+  @@map("permissions")
+}
+
+// Rol POR organización. organization_id NULL = plantilla de sistema (copiable).
+model Role {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String?   @db.Uuid
+  name            String    @db.VarChar(100)
+  description     String?   @db.Text
+  is_system       Boolean   @default(false)
+  created_at      DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at      DateTime? @db.Timestamptz(6)
+
+  organization     Organization?    @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  role_permissions RolePermission[]
+  membership_roles MembershipRole[]
+  invitations      Invitation[]
+
+  @@unique([organization_id, name])
+  @@index([organization_id])
+  @@map("roles")
+}
+
+model RolePermission {
+  role_id       String @db.Uuid
+  permission_id String @db.Uuid
+
+  role       Role       @relation(fields: [role_id], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permission_id], references: [id], onDelete: Cascade)
+
+  @@id([role_id, permission_id])
+  @@index([permission_id])
+  @@map("role_permissions")
+}
+
+model MembershipRole {
+  membership_id String @db.Uuid
+  role_id       String @db.Uuid
+
+  membership OrganizationMembership @relation(fields: [membership_id], references: [id], onDelete: Cascade)
+  role       Role                   @relation(fields: [role_id], references: [id], onDelete: Cascade)
+
+  @@id([membership_id, role_id])
+  @@index([role_id])
+  @@map("membership_roles")
+}
+
+// Override puntual por usuario dentro de una organización (ALLOW/DENY).
+model MembershipPermissionOverride {
+  id            String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  membership_id String           @db.Uuid
+  permission_id String           @db.Uuid
+  effect        PermissionEffect
+
+  membership OrganizationMembership @relation(fields: [membership_id], references: [id], onDelete: Cascade)
+  permission Permission             @relation(fields: [permission_id], references: [id], onDelete: Cascade)
+
+  @@unique([membership_id, permission_id])
+  @@map("membership_permission_overrides")
+}
+
+// Alcance de datos efectivo de una membresía (se aplica DESPUÉS del permiso).
+model AccessScope {
+  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  membership_id String    @db.Uuid
+  scope_type    ScopeType
+  farm_id       String?   @db.Uuid
+  parcel_id     String?   @db.Uuid
+  crop_id       Int?      @db.SmallInt
+  created_at    DateTime  @default(now()) @db.Timestamptz(6)
+
+  membership OrganizationMembership @relation(fields: [membership_id], references: [id], onDelete: Cascade)
+  farm       Farm?                  @relation(fields: [farm_id], references: [id], onDelete: Cascade)
+  parcel     Parcel?                @relation(fields: [parcel_id], references: [id], onDelete: Cascade)
+  crop       Crop?                  @relation(fields: [crop_id], references: [id], onDelete: Cascade)
+
+  @@index([membership_id])
+  @@map("access_scopes")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// CATÁLOGOS GLOBALES (sin organization_id)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Country {
+  id              Int      @id @default(autoincrement()) @db.SmallInt
+  name            String   @unique @db.VarChar(100)
+  iso2            String?  @db.Char(2)
+  iso3            String?  @db.Char(3)
+  numeric_code    Int?     @db.SmallInt
+  is_active       Boolean  @default(true)
+
+  farms Farm[]
+
+  @@map("countries")
+}
+
+model Crop {
+  id          Int      @id @default(autoincrement()) @db.SmallInt
+  name        String   @unique @db.VarChar(100)
+  code        String?  @unique @db.VarChar(20)
+  description String?  @db.Text
+  is_active   Boolean  @default(true)
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+  updated_at  DateTime @updatedAt @db.Timestamptz(6)
+
+  varieties        Variety[]
+  campaigns        Campaign[]
+  evaluation_crops EvaluationCrop[]
+  access_scopes    AccessScope[]
+
+  @@map("crops")
+}
+
+model Variety {
+  id          Int      @id @default(autoincrement())
+  crop_id     Int      @db.SmallInt
+  name        String   @db.VarChar(100)
+  code        String?  @db.VarChar(20)
+  description String?  @db.Text
+  is_active   Boolean  @default(true)
+
+  crop             Crop            @relation(fields: [crop_id], references: [id], onDelete: Cascade)
+  cultivable_areas CultivableArea[]
+
+  @@unique([crop_id, name])
+  @@index([crop_id])
+  @@map("varieties")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// JERARQUÍA AGRÍCOLA CANÓNICA: Organization -> Farm -> Parcel -> CultivableArea
+// (subparcela / lote / sublote retirados — §89.1)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Farm {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String    @db.Uuid
+  country_id      Int       @db.SmallInt
+  name            String    @db.VarChar(150)
+  description     String?   @db.Text
+  total_hectares  Decimal?  @db.Decimal(12, 4)
+  // Geometría opcional del fundo (PostGIS). GIST index en migración aparte.
+  geom            Unsupported("geometry(MultiPolygon, 4326)")?
+  is_active       Boolean   @default(true)
+  created_at      DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at      DateTime? @db.Timestamptz(6)
+
+  organization  Organization  @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  country       Country       @relation(fields: [country_id], references: [id], onDelete: Restrict)
+  parcels       Parcel[]
+  access_scopes AccessScope[]
+
+  @@unique([organization_id, name])
+  @@index([organization_id])
+  @@map("farms")
+}
+
+// Unidad física canónica (etiqueta visible configurable por organización:
+// "Lote", "Parcela", "Cuartel", ...). Nombre INTERNO estable = parcel.
+model Parcel {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String    @db.Uuid
+  farm_id         String    @db.Uuid
+  name            String    @db.VarChar(150)
+  description     String?   @db.Text
+  area_hectares   Decimal?  @db.Decimal(10, 4)
+  // Geometría vigente. El historial vive en parcel_geometries.
+  geom            Unsupported("geometry(MultiPolygon, 4326)")?
+  is_active       Boolean   @default(true)
+  created_at      DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at      DateTime? @db.Timestamptz(6)
+
+  organization      Organization         @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  farm              Farm                 @relation(fields: [farm_id], references: [id], onDelete: Restrict)
+  geometry_history  ParcelGeometry[]
+  cultivable_areas  CultivableArea[]
+  processing_jobs   ProcessingJob[]
+  index_results     ParcelIndexResult[]
+  access_scopes     AccessScope[]
+
+  @@unique([farm_id, name])
+  @@index([organization_id])
+  @@index([farm_id])
+  @@map("parcels")
+}
+
+// Historial de geometría (no se sobrescribe: se versiona).
+model ParcelGeometry {
+  id              String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String         @db.Uuid
+  parcel_id       String         @db.Uuid
+  geom            Unsupported("geometry(MultiPolygon, 4326)")
+  area_hectares   Decimal?       @db.Decimal(10, 4)
+  version         Int
+  source          GeometrySource @default(MANUAL)
+  changed_by      String?        @db.Uuid
+  valid_from      DateTime       @default(now()) @db.Timestamptz(6)
+  valid_to        DateTime?      @db.Timestamptz(6)
+
+  parcel     Parcel @relation(fields: [parcel_id], references: [id], onDelete: Cascade)
+  changed_by_user User? @relation("GeometryChangedBy", fields: [changed_by], references: [id], onDelete: SetNull)
+
+  @@unique([parcel_id, version])
+  @@index([parcel_id])
+  @@map("parcel_geometries")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// NEGOCIO: Campaign + CultivableArea (unifica CLC×variedad del legacy)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model Campaign {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id    String    @db.Uuid
+  crop_id            Int       @db.SmallInt
+  name               String    @db.VarChar(150) // no derivar por año (§65.4)
+  start_date         DateTime  @db.Date
+  estimated_end_date DateTime? @db.Date
+  real_end_date      DateTime? @db.Date
+  is_active          Boolean   @default(true)
+  created_at         DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at         DateTime? @db.Timestamptz(6)
+
+  organization     Organization     @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  crop             Crop             @relation(fields: [crop_id], references: [id], onDelete: Restrict)
+  cultivable_areas CultivableArea[]
+
+  @@unique([organization_id, crop_id, name])
+  @@index([organization_id])
+  @@map("campaigns")
+}
+
+// Unidad productiva canónica = parcela + campaña + variedad (§64).
+// Reemplaza cultivo_lote_campania + area_cultivable del legacy.
+model CultivableArea {
+  id              String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String    @db.Uuid
+  parcel_id       String    @db.Uuid
+  campaign_id     String    @db.Uuid
+  variety_id      Int
+  area_hectares   Decimal   @db.Decimal(10, 4)
+  plant_density   Decimal?  @db.Decimal(8, 2)
+  planned_plants  Int?
+  sowing_date     DateTime? @db.Date
+  est_harvest_date DateTime? @db.Date
+  real_harvest_date DateTime? @db.Date
+  is_active       Boolean   @default(true)
+  created_at      DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at      DateTime? @db.Timestamptz(6)
+
+  organization       Organization       @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  parcel             Parcel             @relation(fields: [parcel_id], references: [id], onDelete: Restrict)
+  campaign           Campaign           @relation(fields: [campaign_id], references: [id], onDelete: Restrict)
+  variety            Variety            @relation(fields: [variety_id], references: [id], onDelete: Restrict)
+  evaluation_records EvaluationRecord[]
+
+  @@unique([parcel_id, campaign_id, variety_id])
+  @@index([organization_id])
+  @@index([campaign_id])
+  @@map("cultivable_areas")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// MOTOR DE EVALUACIONES (rescatado del legacy §40) — adaptado a multiempresa
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model EvaluationType {
+  id              Int      @id @default(autoincrement()) @db.SmallInt
+  organization_id String   @db.Uuid
+  name            String   @db.VarChar(100)
+  description     String?  @db.Text
+  is_active       Boolean  @default(true)
+  created_at      DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  evaluations  Evaluation[]
+
+  @@unique([organization_id, name])
+  @@index([organization_id])
+  @@map("evaluation_types")
+}
+
+model Evaluation {
+  id                 Int      @id @default(autoincrement())
+  organization_id    String   @db.Uuid
+  evaluation_type_id Int      @db.SmallInt
+  name               String   @db.VarChar(150)
+  description        String?  @db.Text
+  is_active          Boolean  @default(true)
+  created_at         DateTime @default(now()) @db.Timestamptz(6)
+
+  organization     Organization     @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  evaluation_type  EvaluationType   @relation(fields: [evaluation_type_id], references: [id], onDelete: Cascade)
+  evaluation_crops EvaluationCrop[]
+
+  @@unique([evaluation_type_id, name])
+  @@index([organization_id])
+  @@map("evaluations")
+}
+
+model EvaluationCrop {
+  id            Int      @id @default(autoincrement())
+  evaluation_id Int
+  crop_id       Int      @db.SmallInt
+  is_active     Boolean  @default(true)
+  created_at    DateTime @default(now()) @db.Timestamptz(6)
+
+  evaluation         Evaluation         @relation(fields: [evaluation_id], references: [id], onDelete: Cascade)
+  crop               Crop               @relation(fields: [crop_id], references: [id], onDelete: Cascade)
+  fields             EvaluationField[]
+  evaluation_records EvaluationRecord[]
+
+  @@unique([evaluation_id, crop_id])
+  @@index([crop_id])
+  @@map("evaluation_crops")
+}
+
+// Campos dinámicos por evaluación+cultivo (base del híbrido JSONB).
+model EvaluationField {
+  id                 Int           @id @default(autoincrement())
+  evaluation_crop_id Int
+  key                String        @db.VarChar(100)
+  name               String        @db.VarChar(150)
+  description        String?       @db.Text
+  data_type          FieldDataType
+  min_value          Decimal?      @db.Decimal
+  max_value          Decimal?      @db.Decimal
+  required           Boolean       @default(false)
+  display_order      Int           @default(0) @db.SmallInt
+  placeholder        String?       @db.VarChar(200)
+  default_value      String?       @db.VarChar(500)
+  select_options     Json?         @db.JsonB
+  validation_regex   String?       @db.VarChar(500)
+  help_text          String?       @db.Text
+  is_active          Boolean       @default(true)
+  created_at         DateTime      @default(now()) @db.Timestamptz(6)
+
+  evaluation_crop EvaluationCrop @relation(fields: [evaluation_crop_id], references: [id], onDelete: Cascade)
+
+  @@unique([evaluation_crop_id, key])
+  @@index([evaluation_crop_id])
+  @@map("evaluation_fields")
+}
+
+model RecordStatus {
+  id          Int      @id @default(autoincrement()) @db.SmallInt
+  name        String   @unique @db.VarChar(50) // borrador, enviado, validado, rechazado
+  description String?  @db.Text
+  is_terminal Boolean  @default(false)
+  created_at  DateTime @default(now()) @db.Timestamptz(6)
+
+  evaluation_records EvaluationRecord[]
+
+  @@map("record_statuses")
+}
+
+// Registro híbrido: metadata relacional + data JSONB. organization_id
+// denormalizado para filtro de tenant / RLS eficiente.
+model EvaluationRecord {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id    String    @db.Uuid
+  cultivable_area_id String    @db.Uuid
+  evaluation_crop_id Int
+  user_id            String    @db.Uuid
+  record_status_id   Int       @db.SmallInt
+  data               Json      @default("{}") @db.JsonB
+  observation        String?   @db.Text
+  created_at         DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime  @updatedAt @db.Timestamptz(6)
+  deleted_at         DateTime? @db.Timestamptz(6)
+
+  organization    Organization          @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  cultivable_area CultivableArea        @relation(fields: [cultivable_area_id], references: [id], onDelete: Cascade)
+  evaluation_crop EvaluationCrop        @relation(fields: [evaluation_crop_id], references: [id], onDelete: Restrict)
+  user            User                  @relation(fields: [user_id], references: [id], onDelete: Restrict)
+  status          RecordStatus          @relation(fields: [record_status_id], references: [id], onDelete: Restrict)
+  audit           EvaluationRecordAudit[]
+
+  @@index([organization_id])
+  @@index([cultivable_area_id])
+  @@map("evaluation_records")
+}
+
+model EvaluationRecordAudit {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  record_id  String   @db.Uuid
+  user_id    String?  @db.Uuid
+  action     String   @db.VarChar(50)
+  data_before Json?   @db.JsonB
+  data_after  Json?   @db.JsonB
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+
+  record EvaluationRecord @relation(fields: [record_id], references: [id], onDelete: Cascade)
+
+  @@index([record_id])
+  @@map("evaluation_record_audits")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SATÉLITE / GEOPROCESAMIENTO (núcleo MVP: solicitar índice + resultado)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+model SatelliteSource {
+  id          Int      @id @default(autoincrement()) @db.SmallInt
+  name        String   @unique @db.VarChar(100)
+  provider    String   @db.VarChar(100)
+  description String?  @db.Text
+  is_active   Boolean  @default(true)
+
+  scenes SatelliteScene[]
+
+  @@map("satellite_sources")
+}
+
+model VegetationIndex {
+  id          Int      @id @default(autoincrement()) @db.SmallInt
+  key         String   @unique @db.VarChar(20) // NDVI, NDRE, NDMI, SAVI, EVI
+  name        String   @db.VarChar(100)
+  description String?  @db.Text
+  is_active   Boolean  @default(true)
+
+  processing_jobs ProcessingJob[]
+  index_results   ParcelIndexResult[]
+
+  @@map("vegetation_indices")
+}
+
+model SatelliteScene {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  satellite_source_id Int     @db.SmallInt
+  external_id        String   @db.VarChar(150)
+  scene_date         DateTime @db.Date
+  cloud_cover        Decimal? @db.Decimal(5, 2)
+  metadata           Json?    @db.JsonB
+  created_at         DateTime @default(now()) @db.Timestamptz(6)
+
+  satellite_source SatelliteSource @relation(fields: [satellite_source_id], references: [id], onDelete: Restrict)
+  processing_jobs  ProcessingJob[]
+  index_results    ParcelIndexResult[]
+
+  @@unique([satellite_source_id, external_id])
+  @@map("satellite_scenes")
+}
+
+// Trabajo asíncrono. idempotency_key único evita duplicar reprocesos.
+model ProcessingJob {
+  id                  String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id     String    @db.Uuid
+  parcel_id           String    @db.Uuid
+  vegetation_index_id Int       @db.SmallInt
+  satellite_scene_id  String?   @db.Uuid
+  status              JobStatus @default(QUEUED)
+  idempotency_key     String    @unique @db.VarChar(200)
+  requested_by        String?   @db.Uuid
+  params              Json?     @db.JsonB
+  created_at          DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime  @updatedAt @db.Timestamptz(6)
+
+  organization     Organization        @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  parcel           Parcel              @relation(fields: [parcel_id], references: [id], onDelete: Cascade)
+  vegetation_index VegetationIndex     @relation(fields: [vegetation_index_id], references: [id], onDelete: Restrict)
+  scene            SatelliteScene?     @relation(fields: [satellite_scene_id], references: [id], onDelete: SetNull)
+  requested_by_user User?              @relation("JobRequestedBy", fields: [requested_by], references: [id], onDelete: SetNull)
+  events           ProcessingJobEvent[]
+  index_results    ParcelIndexResult[]
+
+  @@index([organization_id])
+  @@index([parcel_id])
+  @@index([status])
+  @@map("processing_jobs")
+}
+
+model ProcessingJobEvent {
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  job_id     String    @db.Uuid
+  status     JobStatus
+  message    String?   @db.Text
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+
+  job ProcessingJob @relation(fields: [job_id], references: [id], onDelete: Cascade)
+
+  @@index([job_id])
+  @@map("processing_job_events")
+}
+
+// Referencia a objetos grandes en MinIO/S3 (rasters, previews). No en la fila.
+model StoredObject {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String   @db.Uuid
+  bucket          String   @db.VarChar(100)
+  object_key      String   @db.VarChar(500)
+  kind            String   @db.VarChar(50) // raster | preview | export
+  content_type    String?  @db.VarChar(100)
+  size_bytes      BigInt?
+  checksum        String?  @db.VarChar(128)
+  metadata        Json?    @db.JsonB
+  created_at      DateTime @default(now()) @db.Timestamptz(6)
+
+  organization    Organization        @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+  raster_results  ParcelIndexResult[] @relation("ResultRaster")
+  preview_results ParcelIndexResult[] @relation("ResultPreview")
+
+  @@unique([bucket, object_key])
+  @@index([organization_id])
+  @@map("stored_objects")
+}
+
+model ParcelIndexResult {
+  id                  String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id     String   @db.Uuid
+  job_id              String   @db.Uuid
+  parcel_id           String   @db.Uuid
+  vegetation_index_id Int      @db.SmallInt
+  satellite_scene_id  String?  @db.Uuid
+  scene_date          DateTime @db.Date
+  raster_object_id    String?  @db.Uuid
+  preview_object_id   String?  @db.Uuid
+  coverage_ratio      Decimal? @db.Decimal(5, 4)
+  cloud_cover         Decimal? @db.Decimal(5, 2)
+  created_at          DateTime @default(now()) @db.Timestamptz(6)
+
+  job              ProcessingJob         @relation(fields: [job_id], references: [id], onDelete: Cascade)
+  parcel           Parcel                @relation(fields: [parcel_id], references: [id], onDelete: Cascade)
+  vegetation_index VegetationIndex       @relation(fields: [vegetation_index_id], references: [id], onDelete: Restrict)
+  scene            SatelliteScene?       @relation(fields: [satellite_scene_id], references: [id], onDelete: SetNull)
+  raster_object    StoredObject?         @relation("ResultRaster", fields: [raster_object_id], references: [id], onDelete: SetNull)
+  preview_object   StoredObject?         @relation("ResultPreview", fields: [preview_object_id], references: [id], onDelete: SetNull)
+  statistic        ParcelIndexStatistic?
+
+  @@index([organization_id])
+  @@index([parcel_id])
+  @@map("parcel_index_results")
+}
+
+model ParcelIndexStatistic {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  result_id    String   @unique @db.Uuid
+  mean_value   Decimal? @db.Decimal(10, 6)
+  min_value    Decimal? @db.Decimal(10, 6)
+  max_value    Decimal? @db.Decimal(10, 6)
+  stddev_value Decimal? @db.Decimal(10, 6)
+  p10          Decimal? @db.Decimal(10, 6)
+  p50          Decimal? @db.Decimal(10, 6)
+  p90          Decimal? @db.Decimal(10, 6)
+  valid_pixels Int?
+  total_pixels Int?
+  histogram    Json?    @db.JsonB
+  created_at   DateTime @default(now()) @db.Timestamptz(6)
+
+  result ParcelIndexResult @relation(fields: [result_id], references: [id], onDelete: Cascade)
+
+  @@map("parcel_index_statistics")
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// TRANSVERSAL
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Auditoría GLOBAL de acciones sensibles (además del audit del registro).
+model AuditLog {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String?  @db.Uuid
+  user_id         String?  @db.Uuid
+  action          String   @db.VarChar(120) // recurso.accion
+  resource        String   @db.VarChar(80)
+  resource_id     String?  @db.VarChar(80)
+  data_before     Json?    @db.JsonB
+  data_after      Json?    @db.JsonB
+  ip_address      String?  @db.VarChar(64)
+  created_at      DateTime @default(now()) @db.Timestamptz(6)
+
+  organization Organization? @relation(fields: [organization_id], references: [id], onDelete: SetNull)
+  user         User?         @relation(fields: [user_id], references: [id], onDelete: SetNull)
+
+  @@index([organization_id])
+  @@index([resource, resource_id])
+  @@map("audit_logs")
+}
+
+// Integraciones externas. NO guardar secretos en claro: credentials_ref
+// apunta al gestor de secretos / objeto cifrado.
+model Integration {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organization_id String   @db.Uuid
+  name            String   @db.VarChar(100)
+  type            String?  @db.VarChar(50)
+  endpoint_url    String?  @db.VarChar(500)
+  credentials_ref String?  @db.VarChar(200)
+  is_active       Boolean  @default(true)
+  created_at      DateTime @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime @updatedAt @db.Timestamptz(6)
+
+  organization Organization @relation(fields: [organization_id], references: [id], onDelete: Cascade)
+
+  @@unique([organization_id, name])
+  @@map("integrations")
+}

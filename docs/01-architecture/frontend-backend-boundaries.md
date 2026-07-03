@@ -50,4 +50,6 @@ No debe:
 
 - Ser publico.
 - Saltarse la API para modificar estado de negocio sin contrato interno.
-- Perder contexto de organizacion, lote, job y auditoria.
+- Perder contexto de organizacion, parcela, job y auditoria.
+
+
