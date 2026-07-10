@@ -1,8 +1,9 @@
 ﻿import { BadRequestException, ConflictException, Injectable, NotFoundException } from "@nestjs/common";
-import { CustomerServiceStatus, CustomerStatus, PlanType, Prisma } from "@prisma/client";
+import { CustomerServiceStatus, CustomerStatus, MonthlyFeeStatus, PlanType, Prisma } from "@prisma/client";
 import { PrismaService } from "../../infrastructure/prisma/prisma.service";
 import { CreateCustomerDto, CreateCustomerServiceDto } from "./dto/create-customer.dto";
 import { UpdateCustomerDto } from "./dto/update-customer.dto";
+import { currentBillingCycle, cycleDays, cyclePeriodKey, daysUsedInCycle } from "../../shared/billing-cycle";
 
 @Injectable()
 export class CustomersService {
@@ -155,22 +156,44 @@ export class CustomersService {
     const existing = await this.prisma.customer.findUnique({ where: { id } });
     if (!existing) throw new NotFoundException("Cliente no encontrado");
 
+    const now = new Date();
     const customer = await this.prisma.$transaction(async (tx) => {
       if (status === CustomerStatus.SUSPENDED) {
+        const affected = await tx.customerService.findMany({
+          where: { customerId: id, status: CustomerServiceStatus.ACTIVE },
+          include: { plan: true }
+        });
+        for (const service of affected) {
+          await this.prorateCurrentCycleFee(tx, service, now);
+        }
         await tx.customerService.updateMany({
           where: { customerId: id, status: CustomerServiceStatus.ACTIVE },
           data: { status: CustomerServiceStatus.SUSPENDED }
         });
       } else if (status === CustomerStatus.CANCELLED) {
+        const affected = await tx.customerService.findMany({
+          where: { customerId: id, status: { not: CustomerServiceStatus.CANCELLED } },
+          include: { plan: true }
+        });
+        for (const service of affected) {
+          await this.prorateCurrentCycleFee(tx, service, now);
+        }
         await tx.customerService.updateMany({
           where: { customerId: id, status: { not: CustomerServiceStatus.CANCELLED } },
           data: { status: CustomerServiceStatus.CANCELLED }
         });
       } else if (status === CustomerStatus.ACTIVE) {
+        const reactivated = await tx.customerService.findMany({
+          where: { customerId: id, status: CustomerServiceStatus.SUSPENDED },
+          include: { plan: true }
+        });
         await tx.customerService.updateMany({
           where: { customerId: id, status: CustomerServiceStatus.SUSPENDED },
           data: { status: CustomerServiceStatus.ACTIVE }
         });
+        for (const service of reactivated) {
+          await this.ensureCurrentCycleFee(tx, service, now);
+        }
       }
 
       return tx.customer.update({
@@ -184,15 +207,24 @@ export class CustomersService {
   }
 
   async changeServiceStatus(customerId: string, serviceId: string, status: CustomerServiceStatus) {
-    const service = await this.prisma.customerService.findFirst({ where: { id: serviceId, customerId } });
+    const service = await this.prisma.customerService.findFirst({ where: { id: serviceId, customerId }, include: { plan: true } });
     if (!service) throw new NotFoundException("Servicio del cliente no encontrado");
 
-    await this.prisma.customerService.update({
-      where: { id: serviceId },
-      data: {
-        status,
-        // El ciclo de facturacion se ancla a la activacion (docs/business-rules/monthly-billing.md).
-        installedAt: status === CustomerServiceStatus.ACTIVE && !service.installedAt ? new Date() : service.installedAt
+    const now = new Date();
+    await this.prisma.$transaction(async (tx) => {
+      if (
+        service.status === CustomerServiceStatus.ACTIVE &&
+        (status === CustomerServiceStatus.SUSPENDED || status === CustomerServiceStatus.CANCELLED)
+      ) {
+        await this.prorateCurrentCycleFee(tx, service, now);
+      }
+
+      // El ciclo de facturacion se ancla a la activacion (docs/business-rules/monthly-billing.md).
+      const installedAt = status === CustomerServiceStatus.ACTIVE && !service.installedAt ? now : service.installedAt;
+      await tx.customerService.update({ where: { id: serviceId }, data: { status, installedAt } });
+
+      if (status === CustomerServiceStatus.ACTIVE) {
+        await this.ensureCurrentCycleFee(tx, { ...service, installedAt }, now);
       }
     });
 
@@ -229,15 +261,19 @@ export class CustomersService {
       );
     }
 
-    await this.prisma.customerService.create({
-      data: {
-        customerId,
-        planId: plan.id,
-        screenCount: plan.type === PlanType.TV ? dto.screenCount ?? plan.maxScreens ?? 1 : null,
-        notes: dto.notes?.trim() || null,
-        status: CustomerServiceStatus.ACTIVE,
-        installedAt: new Date()
-      }
+    const now = new Date();
+    await this.prisma.$transaction(async (tx) => {
+      const created = await tx.customerService.create({
+        data: {
+          customerId,
+          planId: plan.id,
+          screenCount: plan.type === PlanType.TV ? dto.screenCount ?? plan.maxScreens ?? 1 : null,
+          notes: dto.notes?.trim() || null,
+          status: CustomerServiceStatus.ACTIVE,
+          installedAt: now
+        }
+      });
+      await this.ensureCurrentCycleFee(tx, { ...created, plan }, now);
     });
 
     const updated = await this.prisma.customer.findUnique({
@@ -245,6 +281,70 @@ export class CustomersService {
       include: { services: { include: { plan: true } } }
     });
     return { success: true, data: this.toResponse(updated!), message: "Servicio agregado" };
+  }
+
+  /**
+   * Prorratea la mensualidad del ciclo en curso al cortar (suspender/cancelar):
+   * monto = precioMensual * diasUsados / diasDelCiclo (monthly-billing.md).
+   * No baja el monto por debajo de lo ya pagado ni toca cuotas PAGADAS/ANULADAS.
+   */
+  private async prorateCurrentCycleFee(
+    tx: Prisma.TransactionClient,
+    service: { id: string; installedAt: Date | null; createdAt: Date; plan: { monthlyPrice: Prisma.Decimal } },
+    cutDate: Date
+  ) {
+    const installedAt = service.installedAt ?? service.createdAt;
+    const cycle = currentBillingCycle(installedAt, cutDate);
+    const period = cyclePeriodKey(cycle.start);
+    const fee = await tx.monthlyFee.findUnique({ where: { serviceId_period: { serviceId: service.id, period } } });
+    if (!fee || fee.status === MonthlyFeeStatus.VOID || fee.status === MonthlyFeeStatus.PAID) return;
+
+    const totalDays = cycleDays(cycle);
+    const usedDays = daysUsedInCycle(cycle, cutDate);
+    if (usedDays >= totalDays) return;
+
+    let amount = new Prisma.Decimal(service.plan.monthlyPrice).mul(usedDays).div(totalDays).toDecimalPlaces(2);
+    if (amount.lt(fee.paidAmount)) amount = fee.paidAmount;
+    const balance = amount.sub(fee.paidAmount);
+    const status = balance.lte(0)
+      ? MonthlyFeeStatus.PAID
+      : fee.paidAmount.gt(0)
+        ? MonthlyFeeStatus.PARTIAL
+        : MonthlyFeeStatus.PENDING;
+
+    await tx.monthlyFee.update({
+      where: { id: fee.id },
+      data: {
+        amount,
+        balance,
+        status,
+        notes: `${fee.notes ? `${fee.notes} · ` : ""}Prorrateado: ${usedDays}/${totalDays} dias`
+      }
+    });
+  }
+
+  /** Al activar un servicio crea (si falta) la mensualidad del ciclo vigente. */
+  private async ensureCurrentCycleFee(
+    tx: Prisma.TransactionClient,
+    service: { id: string; installedAt: Date | null; plan: { monthlyPrice: Prisma.Decimal } },
+    now: Date
+  ) {
+    const installedAt = service.installedAt ?? now;
+    const cycle = currentBillingCycle(installedAt, now);
+    const period = cyclePeriodKey(cycle.start);
+    await tx.monthlyFee.upsert({
+      where: { serviceId_period: { serviceId: service.id, period } },
+      update: {},
+      create: {
+        serviceId: service.id,
+        period,
+        dueDate: cycle.end,
+        amount: service.plan.monthlyPrice,
+        paidAmount: new Prisma.Decimal(0),
+        balance: service.plan.monthlyPrice,
+        notes: `Ciclo ${period} a ${cycle.end.toISOString().slice(0, 10)}`
+      }
+    });
   }
 
   private toResponse(

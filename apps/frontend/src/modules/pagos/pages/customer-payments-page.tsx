@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { CalendarPlus, FileText, ReceiptText, RotateCcw, Wallet } from "lucide-react";
+import { FileText, ReceiptText, RotateCcw, Wallet } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import { useParams } from "react-router";
 import { AppModal } from "@/components/ui/AppModal";
@@ -8,8 +8,8 @@ import { BackButton } from "@/components/ui/BackButton";
 import { Button } from "@/components/ui/Button";
 import { emptyPayments, paidTotal, paymentEvidences, PaymentSplit, type PaymentsState, primaryMethod } from "@/components/pos/PaymentSplit";
 import { DataTable, type DataTableColumn } from "@/components/ui/DataTable";
-import { SelectField, TextareaField, TextField } from "@/components/ui/FormControls";
-import { fetchCustomerContract, fetchCustomerPaymentHistory, fetchPaymentTicket, generateMonthlyFees, registerPayment, voidPayment } from "../api/payments.api";
+import { SelectField, TextareaField } from "@/components/ui/FormControls";
+import { fetchCustomerContract, fetchCustomerPaymentHistory, fetchPaymentTicket, registerPayment, voidPayment } from "../api/payments.api";
 import type { CustomerContract, MonthlyFee, Payment, PaymentTicket } from "../types/payments.types";
 import { money } from "@/lib/format";
 
@@ -26,11 +26,6 @@ const statusLabels: Record<MonthlyFee["status"], string> = {
 
 function dateTime(value: string) {
   return new Intl.DateTimeFormat("es-PE", { dateStyle: "short", timeStyle: "short" }).format(new Date(value));
-}
-
-function currentPeriod() {
-  const now = new Date();
-  return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
 }
 
 function statusBadge(status: MonthlyFee["status"]) {
@@ -76,8 +71,6 @@ function TicketPreview({ ticket }: { ticket: PaymentTicket }) {
 export function CustomerPaymentsPage() {
   const { customerId } = useParams<{ customerId: string }>();
   const queryClient = useQueryClient();
-  const [period, setPeriod] = useState(currentPeriod());
-  const [generateOpen, setGenerateOpen] = useState(false);
   const [contractOpen, setContractOpen] = useState(false);
   const [payModal, setPayModal] = useState<PayModalState>(null);
   const [voidModal, setVoidModal] = useState<VoidModalState>(null);
@@ -96,14 +89,6 @@ export function CustomerPaymentsPage() {
     queryKey: ["customer-contract", customerId],
     queryFn: () => fetchCustomerContract(customerId!),
     enabled: Boolean(customerId) && contractOpen
-  });
-
-  const generateMutation = useMutation({
-    mutationFn: () => generateMonthlyFees(customerId!, { period }),
-    onSuccess: () => {
-      setGenerateOpen(false);
-      void queryClient.invalidateQueries({ queryKey: ["customer-payment-history", customerId] });
-    }
   });
 
   const paymentMutation = useMutation({
@@ -160,11 +145,6 @@ export function CustomerPaymentsPage() {
     }
   ], []);
 
-  function submitGenerate(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    generateMutation.mutate();
-  }
-
   function submitPayment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!payModal || paidTotal(payments) <= 0) return;
@@ -188,7 +168,6 @@ export function CustomerPaymentsPage() {
           <p className="text-sm text-slate-500">Mensualidades mes a mes, abonos, tickets, contrato y anulaciones.</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button variant="secondary" icon={<CalendarPlus className="h-4 w-4" />} onClick={() => setGenerateOpen(true)}>Generar mes</Button>
           <Button variant="secondary" icon={<FileText className="h-4 w-4" />} onClick={() => setContractOpen(true)}>Contrato</Button>
         </div>
       </div>
@@ -245,13 +224,6 @@ export function CustomerPaymentsPage() {
           </div>
         )}
       />
-
-      <AppModal open={generateOpen} title="Generar mensualidad" description="Crea el periodo para todos los servicios activos sin duplicar." onClose={() => setGenerateOpen(false)}>
-        <form className="flex flex-col gap-3 sm:flex-row sm:items-end" onSubmit={submitGenerate}>
-          <TextField label="Periodo" value={period} onChange={(event) => setPeriod(event.target.value)} placeholder="2026-07" required />
-          <Button disabled={generateMutation.isPending} type="submit">Generar</Button>
-        </form>
-      </AppModal>
 
       <AppModal open={Boolean(payModal)} title="Abonar mensualidad" description={payModal ? `${payModal.fee.period} - saldo ${money(payModal.fee.balance)}` : undefined} onClose={() => setPayModal(null)} size="lg">
         {payModal ? (

@@ -5,6 +5,7 @@ import { GenerateMonthlyFeesDto } from "./dto/generate-monthly-fees.dto";
 import { RegisterPaymentDto } from "./dto/register-payment.dto";
 import { VoidPaymentDto } from "./dto/void-payment.dto";
 import { formatPaymentReceiptCode } from "../../shared/receipt-code";
+import { currentBillingCycle } from "../../shared/billing-cycle";
 import type { AuthenticatedUser } from "../../common/auth/types";
 
 @Injectable()
@@ -107,7 +108,7 @@ export class PaymentsService {
       const installedAt = service.installedAt ?? service.createdAt;
       if (installedAt > now) continue;
 
-      const cycle = this.currentBillingCycle(installedAt, now);
+      const cycle = currentBillingCycle(installedAt, now);
       const period = cycle.start.toISOString().slice(0, 10);
       const fee = await this.prisma.monthlyFee.upsert({
         where: { serviceId_period: { serviceId: service.id, period } },
@@ -334,15 +335,6 @@ export class PaymentsService {
   }
 
 
-  private currentBillingCycle(installedAt: Date, now: Date) {
-    let start = new Date(now.getFullYear(), now.getMonth(), installedAt.getDate());
-    if (start > now) {
-      start = new Date(now.getFullYear(), now.getMonth() - 1, installedAt.getDate());
-    }
-    const end = new Date(start);
-    end.setMonth(end.getMonth() + 1);
-    return { start, end };
-  }
   private async getPaymentTicketData(paymentId: string) {
     const payment = await this.prisma.payment.findUnique({
       where: { id: paymentId },

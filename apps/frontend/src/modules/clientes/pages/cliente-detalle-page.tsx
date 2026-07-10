@@ -338,7 +338,7 @@ export function ClienteDetallePage() {
             {paymentSummary.visibleFees.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="min-w-full text-sm">
-                  <thead className="bg-muted/60 text-left text-xs uppercase text-slate-500">
+                  <thead className="bg-table-head text-left text-xs uppercase text-slate-600">
                     <tr><th className="px-4 py-3">Periodo</th><th className="px-4 py-3">Monto</th><th className="px-4 py-3">Pagado</th><th className="px-4 py-3">Saldo</th><th className="px-4 py-3">Estado</th></tr>
                   </thead>
                   <tbody className="divide-y">

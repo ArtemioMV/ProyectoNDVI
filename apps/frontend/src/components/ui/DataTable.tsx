@@ -274,14 +274,14 @@ export function DataTable<T>({
       {!isLoading && data.length > 0 ? (
         <div className="scrollbar-thin overflow-x-auto">
           <table className="w-full border-collapse text-sm" style={{ minWidth }}>
-            <thead className="bg-muted text-left text-xs uppercase tracking-wide text-slate-500">
+            <thead className="bg-table-head text-left text-xs uppercase tracking-wide text-slate-600">
               <tr>
                 {visibleColumns.map((column) => {
                   const pinned = preferences.pinnedId === column.id;
                   return (
                     <th
                       key={column.id}
-                      className={cn("px-4 py-3 font-semibold", pinned && "sticky left-0 z-20 bg-muted shadow-[8px_0_12px_-12px_rgba(15,23,42,0.45)]", column.headerClassName)}
+                      className={cn("px-4 py-3 font-semibold", pinned && "sticky left-0 z-20 bg-table-head shadow-[8px_0_12px_-12px_rgba(15,23,42,0.45)]", column.headerClassName)}
                       style={column.minWidth ? { minWidth: column.minWidth } : undefined}
                     >
                       {column.header}

@@ -35,8 +35,8 @@ Flujo: Cliente -> Servicios -> Mensualidades (auto por fecha de alta) -> Pagos -
 - [x] Pagina de detalle del cliente `/clientes/:id` ("Ver todo"): servicios/planes, ubicacion,
       contrato imprimible e `CustomerFinancePanel` (deuda/pagos/historial). Acordeon de la tabla con
       botones Ver todo / Deuda-Pagar / Contrato.
-- [ ] Pago: adjuntar **evidencia (max 3)** por pago (el metodo ya es radio). Falta en backend:
-      `registerPayment` no acepta evidencias; agregar subida + `evidences: string[]` (max 3).
+- [x] Pago: evidencia por pago — ya implementado end-to-end (DTO `evidences`, tabla
+      `PaymentEvidence`, UI en modal de cobro e historial).
 - [x] Mapa interactivo con **MapLibre GL** (open-source, sin token) sobre tiles OSM
       (`components/map/LocationMap.tsx`): modo editable con **clic/arrastrar para fijar** el pin,
       boton "Usar mi ubicacion" (geolocalizacion) y link a Google Maps. En el alta ya fija
@@ -48,12 +48,15 @@ Flujo: Cliente -> Servicios -> Mensualidades (auto por fecha de alta) -> Pagos -
 - [x] Caja: apertura, movimientos manuales, cierre con esperado vs contado e historial.
 - [x] Ligar Cobros/Pagos a Caja: el pago exige caja abierta y crea movimiento `PAYMENT`.
 - [ ] Ligar Caja/Pagos al usuario cobrador real cuando JWT/guards del backend esten activos.
-- [ ] **Facturacion por fecha de activacion (no mes calendario)** — ver `docs/business-rules/monthly-billing.md`:
-      ciclo anclado a `CustomerService.installedAt` (dia de activacion a mismo dia del mes siguiente),
-      **generacion automatica** de mensualidades para servicios `ACTIVE` (sin boton manual),
-      y **prorrateo** al suspender/cancelar antes de fin de ciclo. Requiere: setear `installedAt`
-      al activar, motor programado (cron/job), y calculo de prorrateo. El boton "Generar mensualidad"
-      del panel es temporal hasta que esto exista.
+- [x] **Facturacion por fecha de activacion** (Bloque 4, 2026-07-10) — `monthly-billing.md`:
+      `BillingSchedulerService` (payments) corre al arrancar y cada 6h llamando
+      `generateAutomaticMonthlyFees` (idempotente por upsert servicio+periodo). Helper compartido
+      `src/shared/billing-cycle.ts`. **Prorrateo** al suspender/cancelar servicio o cliente
+      (monto = precio * diasUsados/diasCiclo, nunca menor a lo pagado) y **mensualidad inmediata**
+      al activar/reactivar/agregar servicio. Boton temporal "Generar mes" eliminado de la UI
+      (el endpoint manual sigue disponible por API).
+- [x] Evidencia de pago: verificado end-to-end (el backlog estaba desactualizado) — el modal la
+      captura, `registerPayment` la persiste en `PaymentEvidence` y el historial la muestra.
 - [x] Contrato A4 completo (`ContractDocument`): partes, datos del cliente, tabla de servicios,
       9 clausulas, firmas y pie; `@page A4` en `globals.css`. Pagina `/clientes/:id/contrato` con
       Imprimir/PDF, "Enviar por correo" (mailto redactado) y "Enviar por WhatsApp" (wa.me con link).
