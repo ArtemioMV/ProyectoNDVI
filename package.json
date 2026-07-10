@@ -1,0 +1,21 @@
+{
+  "name": "iptv-internet-platform",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Sistema web para gestion de clientes, IPTV, internet, pagos, caja e inventario.",
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "globals": "^17.7.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.63.0"
+  }
+}

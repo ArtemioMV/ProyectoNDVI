@@ -1,0 +1,9 @@
+ALTER TABLE "Customer" ADD COLUMN "documentType" TEXT DEFAULT 'DNI';
+ALTER TABLE "Customer" ADD COLUMN "birthDate" TIMESTAMP(3);
+ALTER TABLE "Customer" ADD COLUMN "signupDate" TIMESTAMP(3);
+ALTER TABLE "Customer" ADD COLUMN "country" TEXT DEFAULT 'PE';
+ALTER TABLE "Customer" ADD COLUMN "department" TEXT;
+ALTER TABLE "Customer" ADD COLUMN "province" TEXT;
+ALTER TABLE "Customer" ADD COLUMN "latitude" DOUBLE PRECISION;
+ALTER TABLE "Customer" ADD COLUMN "longitude" DOUBLE PRECISION;
+ALTER TABLE "Customer" ADD COLUMN "identityNotes" TEXT;

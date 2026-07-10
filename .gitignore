@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+.env
+.env.*
+!.env.example
+.turbo
+.pnpm-store
+coverage
+*.log

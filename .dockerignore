@@ -1,0 +1,21 @@
+# Nunca copiar dependencias/artefactos del host al contexto de build.
+# El host es Windows; los binarios nativos (esbuild/vite) romperian en Alpine.
+**/node_modules
+**/dist
+**/.next
+**/build
+**/coverage
+
+# VCS y tooling
+.git
+.gitignore
+**/.turbo
+**/*.log
+
+# Entorno local
+.env
+.env.*
+!.env.example
+
+# Docs y varios que no afectan el build
+**/.DS_Store

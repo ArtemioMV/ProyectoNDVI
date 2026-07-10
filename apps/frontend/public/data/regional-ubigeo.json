@@ -1,0 +1,9370 @@
+{
+  "AO": [
+    {
+      "name": "Luanda",
+      "provinces": [
+        {
+          "name": "Luanda",
+          "districts": [
+            "Ingombota",
+            "Maianga",
+            "Talatona"
+          ]
+        },
+        {
+          "name": "Belas",
+          "districts": [
+            "Benfica",
+            "Kilamba",
+            "Mussulo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Benguela",
+      "provinces": [
+        {
+          "name": "Benguela",
+          "districts": [
+            "Benguela",
+            "Baia Farta",
+            "Catumbela"
+          ]
+        },
+        {
+          "name": "Lobito",
+          "districts": [
+            "Lobito",
+            "Canata",
+            "Restinga"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Huila",
+      "provinces": [
+        {
+          "name": "Lubango",
+          "districts": [
+            "Lubango",
+            "Arimba",
+            "Hoque"
+          ]
+        },
+        {
+          "name": "Humpata",
+          "districts": [
+            "Humpata",
+            "Palanca",
+            "Neves"
+          ]
+        }
+      ]
+    }
+  ],
+  "AR": [
+    {
+      "name": "Buenos Aires",
+      "provinces": [
+        {
+          "name": "La Plata",
+          "districts": [
+            "La Plata",
+            "Tolosa",
+            "City Bell"
+          ]
+        },
+        {
+          "name": "Mar del Plata",
+          "districts": [
+            "Centro",
+            "Puerto",
+            "Constitucion"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cordoba",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Nueva Cordoba",
+            "Alberdi"
+          ]
+        },
+        {
+          "name": "Villa Carlos Paz",
+          "districts": [
+            "Centro",
+            "Costa Azul",
+            "La Quinta"
+          ]
+        }
+      ]
+    }
+  ],
+  "BO": [
+    {
+      "name": "La Paz",
+      "provinces": [
+        {
+          "name": "Murillo",
+          "districts": [
+            "La Paz",
+            "El Alto",
+            "Achocalla"
+          ]
+        },
+        {
+          "name": "Omasuyos",
+          "districts": [
+            "Achacachi",
+            "Huarina",
+            "Ancoraimes"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Santa Cruz",
+      "provinces": [
+        {
+          "name": "Andres Ibanez",
+          "districts": [
+            "Santa Cruz de la Sierra",
+            "Cotoca",
+            "La Guardia"
+          ]
+        },
+        {
+          "name": "Warnes",
+          "districts": [
+            "Warnes",
+            "Okinawa",
+            "Montero Hoyos"
+          ]
+        }
+      ]
+    }
+  ],
+  "BR": [
+    {
+      "name": "Sao Paulo",
+      "provinces": [
+        {
+          "name": "Sao Paulo",
+          "districts": [
+            "Centro",
+            "Pinheiros",
+            "Mooca"
+          ]
+        },
+        {
+          "name": "Campinas",
+          "districts": [
+            "Cambuí",
+            "Taquaral",
+            "Barão Geraldo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rio de Janeiro",
+      "provinces": [
+        {
+          "name": "Rio de Janeiro",
+          "districts": [
+            "Centro",
+            "Copacabana",
+            "Tijuca"
+          ]
+        },
+        {
+          "name": "Niteroi",
+          "districts": [
+            "Icarai",
+            "Centro",
+            "Sao Francisco"
+          ]
+        }
+      ]
+    }
+  ],
+  "CL": [
+    {
+      "name": "Metropolitana de Santiago",
+      "provinces": [
+        {
+          "name": "Santiago",
+          "districts": [
+            "Santiago",
+            "Providencia",
+            "Las Condes"
+          ]
+        },
+        {
+          "name": "Cordillera",
+          "districts": [
+            "Puente Alto",
+            "Pirque",
+            "San Jose de Maipo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Valparaiso",
+      "provinces": [
+        {
+          "name": "Valparaiso",
+          "districts": [
+            "Valparaiso",
+            "Vina del Mar",
+            "Concon"
+          ]
+        },
+        {
+          "name": "Marga Marga",
+          "districts": [
+            "Quilpue",
+            "Villa Alemana",
+            "Limache"
+          ]
+        }
+      ]
+    }
+  ],
+  "CO": [
+    {
+      "name": "Cundinamarca",
+      "provinces": [
+        {
+          "name": "Bogota D.C.",
+          "districts": [
+            "Chapinero",
+            "Suba",
+            "Kennedy"
+          ]
+        },
+        {
+          "name": "Sabana Centro",
+          "districts": [
+            "Chia",
+            "Cajica",
+            "Zipaquira"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Antioquia",
+      "provinces": [
+        {
+          "name": "Medellin",
+          "districts": [
+            "El Poblado",
+            "Laureles",
+            "Belen"
+          ]
+        },
+        {
+          "name": "Valle de Aburra",
+          "districts": [
+            "Envigado",
+            "Itagui",
+            "Sabaneta"
+          ]
+        }
+      ]
+    }
+  ],
+  "EC": [
+    {
+      "name": "Pichincha",
+      "provinces": [
+        {
+          "name": "Quito",
+          "districts": [
+            "Centro Historico",
+            "La Mariscal",
+            "Cumbaya"
+          ]
+        },
+        {
+          "name": "Ruminahui",
+          "districts": [
+            "Sangolqui",
+            "San Rafael",
+            "Cotogchoa"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guayas",
+      "provinces": [
+        {
+          "name": "Guayaquil",
+          "districts": [
+            "Tarqui",
+            "Ximena",
+            "Febres Cordero"
+          ]
+        },
+        {
+          "name": "Duran",
+          "districts": [
+            "Eloy Alfaro",
+            "El Recreo",
+            "Primavera"
+          ]
+        }
+      ]
+    }
+  ],
+  "MX": [
+    {
+      "name": "Ciudad de Mexico",
+      "provinces": [
+        {
+          "name": "CDMX",
+          "districts": [
+            "Cuauhtemoc",
+            "Benito Juarez",
+            "Miguel Hidalgo"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jalisco",
+      "provinces": [
+        {
+          "name": "Guadalajara",
+          "districts": [
+            "Centro",
+            "Zapopan",
+            "Tlaquepaque"
+          ]
+        }
+      ]
+    }
+  ],
+  "US": [
+    {
+      "name": "Florida",
+      "provinces": [
+        {
+          "name": "Miami-Dade",
+          "districts": [
+            "Miami",
+            "Doral",
+            "Hialeah"
+          ]
+        },
+        {
+          "name": "Broward",
+          "districts": [
+            "Fort Lauderdale",
+            "Hollywood",
+            "Miramar"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "California",
+      "provinces": [
+        {
+          "name": "Los Angeles",
+          "districts": [
+            "Los Angeles",
+            "Santa Monica",
+            "Pasadena"
+          ]
+        },
+        {
+          "name": "San Diego",
+          "districts": [
+            "San Diego",
+            "Chula Vista",
+            "La Mesa"
+          ]
+        }
+      ]
+    }
+  ],
+  "AF": [
+    {
+      "name": "Afganistán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Afganistán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Afganistán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AL": [
+    {
+      "name": "Albania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Albania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Albania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "DE": [
+    {
+      "name": "Alemania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alemania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alemania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AD": [
+    {
+      "name": "Andorra Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Andorra Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Andorra Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AG": [
+    {
+      "name": "Antigua y Barbuda Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Antigua y Barbuda Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Antigua y Barbuda Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SA": [
+    {
+      "name": "Arabia Saudita Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arabia Saudita Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arabia Saudita Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "DZ": [
+    {
+      "name": "Argelia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Argelia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Argelia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AM": [
+    {
+      "name": "Armenia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Armenia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Armenia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AU": [
+    {
+      "name": "Australia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Australia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Australia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AT": [
+    {
+      "name": "Austria Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Austria Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Austria Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AZ": [
+    {
+      "name": "Azerbaiyán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Azerbaiyán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Azerbaiyán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BS": [
+    {
+      "name": "Bahamas Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bahamas Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bahamas Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BD": [
+    {
+      "name": "Bangladés Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bangladés Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bangladés Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BB": [
+    {
+      "name": "Barbados Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Barbados Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Barbados Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BH": [
+    {
+      "name": "Baréin Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Baréin Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Baréin Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BE": [
+    {
+      "name": "Bélgica Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bélgica Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bélgica Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BZ": [
+    {
+      "name": "Belice Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Belice Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Belice Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BJ": [
+    {
+      "name": "Benín Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Benín Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Benín Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BY": [
+    {
+      "name": "Bielorrusia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bielorrusia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bielorrusia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MM": [
+    {
+      "name": "Birmania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Birmania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Birmania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BA": [
+    {
+      "name": "Bosnia y Herzegovina Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bosnia y Herzegovina Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bosnia y Herzegovina Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BW": [
+    {
+      "name": "Botsuana Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Botsuana Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Botsuana Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BN": [
+    {
+      "name": "Brunéi Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brunéi Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brunéi Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BG": [
+    {
+      "name": "Bulgaria Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bulgaria Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bulgaria Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BF": [
+    {
+      "name": "Burkina Faso Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burkina Faso Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burkina Faso Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BI": [
+    {
+      "name": "Burundi Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burundi Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burundi Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "BT": [
+    {
+      "name": "Bután Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bután Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bután Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CV": [
+    {
+      "name": "Cabo Verde Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cabo Verde Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cabo Verde Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KH": [
+    {
+      "name": "Camboya Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Camboya Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Camboya Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CM": [
+    {
+      "name": "Camerún Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Camerún Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Camerún Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CA": [
+    {
+      "name": "Canadá Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Canadá Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Canadá Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "QA": [
+    {
+      "name": "Catar Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Catar Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Catar Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TD": [
+    {
+      "name": "Chad Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chad Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chad Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CN": [
+    {
+      "name": "China Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "China Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "China Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CY": [
+    {
+      "name": "Chipre Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chipre Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chipre Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KM": [
+    {
+      "name": "Comoras Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Comoras Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Comoras Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KP": [
+    {
+      "name": "Corea del Norte Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Corea del Norte Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Corea del Norte Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KR": [
+    {
+      "name": "Corea del Sur Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Corea del Sur Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Corea del Sur Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CI": [
+    {
+      "name": "Costa de Marfil Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Costa de Marfil Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Costa de Marfil Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CR": [
+    {
+      "name": "Costa Rica Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Costa Rica Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Costa Rica Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "HR": [
+    {
+      "name": "Croacia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Croacia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Croacia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CU": [
+    {
+      "name": "Cuba Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cuba Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cuba Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "DK": [
+    {
+      "name": "Dinamarca Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dinamarca Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dinamarca Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "DM": [
+    {
+      "name": "Dominica Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dominica Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dominica Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "EG": [
+    {
+      "name": "Egipto Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Egipto Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Egipto Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SV": [
+    {
+      "name": "El Salvador Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "El Salvador Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "El Salvador Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "AE": [
+    {
+      "name": "Emiratos Árabes Unidos Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Emiratos Árabes Unidos Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Emiratos Árabes Unidos Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ER": [
+    {
+      "name": "Eritrea Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eritrea Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eritrea Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SK": [
+    {
+      "name": "Eslovaquia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eslovaquia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eslovaquia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SI": [
+    {
+      "name": "Eslovenia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eslovenia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Eslovenia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ES": [
+    {
+      "name": "España Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "España Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "España Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "EE": [
+    {
+      "name": "Estonia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Estonia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Estonia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ET": [
+    {
+      "name": "Etiopía Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Etiopía Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Etiopía Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PH": [
+    {
+      "name": "Filipinas Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Filipinas Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Filipinas Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "FI": [
+    {
+      "name": "Finlandia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Finlandia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Finlandia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "FJ": [
+    {
+      "name": "Fiyi Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fiyi Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fiyi Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "FR": [
+    {
+      "name": "Francia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Francia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Francia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GA": [
+    {
+      "name": "Gabón Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gabón Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gabón Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GM": [
+    {
+      "name": "Gambia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gambia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Gambia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GE": [
+    {
+      "name": "Georgia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Georgia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Georgia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GH": [
+    {
+      "name": "Ghana Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghana Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ghana Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GD": [
+    {
+      "name": "Granada Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Granada Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Granada Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GR": [
+    {
+      "name": "Grecia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grecia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grecia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GT": [
+    {
+      "name": "Guatemala Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guatemala Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guatemala Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GN": [
+    {
+      "name": "Guinea Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guinea Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guinea Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GQ": [
+    {
+      "name": "Guinea Ecuatorial Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guinea Ecuatorial Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guinea Ecuatorial Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GW": [
+    {
+      "name": "Guinea-Bisáu Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guinea-Bisáu Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guinea-Bisáu Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GY": [
+    {
+      "name": "Guyana Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guyana Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Guyana Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "HT": [
+    {
+      "name": "Haití Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Haití Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Haití Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "HN": [
+    {
+      "name": "Honduras Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Honduras Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Honduras Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "HU": [
+    {
+      "name": "Hungría Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hungría Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hungría Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "IN": [
+    {
+      "name": "India Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "India Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "India Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ID": [
+    {
+      "name": "Indonesia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Indonesia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Indonesia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "IQ": [
+    {
+      "name": "Irak Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Irak Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Irak Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "IR": [
+    {
+      "name": "Irán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Irán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Irán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "IE": [
+    {
+      "name": "Irlanda Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Irlanda Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Irlanda Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "IS": [
+    {
+      "name": "Islandia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Islandia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Islandia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MH": [
+    {
+      "name": "Islas Marshall Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Islas Marshall Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Islas Marshall Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SB": [
+    {
+      "name": "Islas Salomón Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Islas Salomón Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Islas Salomón Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "IL": [
+    {
+      "name": "Israel Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Israel Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Israel Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "IT": [
+    {
+      "name": "Italia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Italia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Italia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "JM": [
+    {
+      "name": "Jamaica Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jamaica Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jamaica Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "JP": [
+    {
+      "name": "Japón Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Japón Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Japón Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "JO": [
+    {
+      "name": "Jordania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jordania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jordania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KZ": [
+    {
+      "name": "Kazajistán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kazajistán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kazajistán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KE": [
+    {
+      "name": "Kenia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kenia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kenia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KG": [
+    {
+      "name": "Kirguistán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kirguistán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kirguistán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KI": [
+    {
+      "name": "Kiribati Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kiribati Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kiribati Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KW": [
+    {
+      "name": "Kuwait Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kuwait Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kuwait Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LA": [
+    {
+      "name": "Laos Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laos Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Laos Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LS": [
+    {
+      "name": "Lesoto Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lesoto Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lesoto Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LV": [
+    {
+      "name": "Letonia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Letonia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Letonia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LB": [
+    {
+      "name": "Líbano Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Líbano Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Líbano Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LR": [
+    {
+      "name": "Liberia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Liberia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Liberia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LY": [
+    {
+      "name": "Libia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Libia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Libia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LI": [
+    {
+      "name": "Liechtenstein Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Liechtenstein Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Liechtenstein Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LT": [
+    {
+      "name": "Lituania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lituania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lituania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LU": [
+    {
+      "name": "Luxemburgo Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Luxemburgo Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Luxemburgo Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MK": [
+    {
+      "name": "Macedonia del Norte Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Macedonia del Norte Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Macedonia del Norte Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MG": [
+    {
+      "name": "Madagascar Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Madagascar Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Madagascar Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MY": [
+    {
+      "name": "Malasia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Malasia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Malasia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MW": [
+    {
+      "name": "Malaui Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Malaui Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Malaui Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MV": [
+    {
+      "name": "Maldivas Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Maldivas Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Maldivas Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ML": [
+    {
+      "name": "Mali Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mali Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mali Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MT": [
+    {
+      "name": "Malta Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Malta Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Malta Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MA": [
+    {
+      "name": "Marruecos Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Marruecos Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Marruecos Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MU": [
+    {
+      "name": "Mauricio Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mauricio Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mauricio Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MR": [
+    {
+      "name": "Mauritania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mauritania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mauritania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "FM": [
+    {
+      "name": "Micronesia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Micronesia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Micronesia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MD": [
+    {
+      "name": "Moldavia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Moldavia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Moldavia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MC": [
+    {
+      "name": "Mónaco Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mónaco Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mónaco Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MN": [
+    {
+      "name": "Mongolia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mongolia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mongolia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ME": [
+    {
+      "name": "Montenegro Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Montenegro Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Montenegro Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "MZ": [
+    {
+      "name": "Mozambique Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mozambique Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mozambique Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NA": [
+    {
+      "name": "Namibia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Namibia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Namibia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NR": [
+    {
+      "name": "Nauru Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nauru Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nauru Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NP": [
+    {
+      "name": "Nepal Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nepal Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nepal Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NI": [
+    {
+      "name": "Nicaragua Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nicaragua Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nicaragua Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NE": [
+    {
+      "name": "Níger Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Níger Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Níger Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NG": [
+    {
+      "name": "Nigeria Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nigeria Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nigeria Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NO": [
+    {
+      "name": "Noruega Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noruega Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Noruega Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NZ": [
+    {
+      "name": "Nueva Zelanda Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nueva Zelanda Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nueva Zelanda Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "OM": [
+    {
+      "name": "Omán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Omán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Omán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "NL": [
+    {
+      "name": "Países Bajos Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Países Bajos Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Países Bajos Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PK": [
+    {
+      "name": "Pakistán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pakistán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pakistán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PW": [
+    {
+      "name": "Palaos Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Palaos Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Palaos Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PA": [
+    {
+      "name": "Panamá Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Panamá Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Panamá Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PG": [
+    {
+      "name": "Papúa Nueva Guinea Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Papúa Nueva Guinea Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Papúa Nueva Guinea Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PY": [
+    {
+      "name": "Paraguay Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Paraguay Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Paraguay Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PL": [
+    {
+      "name": "Polonia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Polonia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Polonia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "PT": [
+    {
+      "name": "Portugal Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Portugal Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Portugal Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "GB": [
+    {
+      "name": "Reino Unido Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reino Unido Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reino Unido Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CF": [
+    {
+      "name": "República Centroafricana Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Centroafricana Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Centroafricana Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CZ": [
+    {
+      "name": "República Checa Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Checa Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Checa Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CG": [
+    {
+      "name": "República del Congo Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República del Congo Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República del Congo Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CD": [
+    {
+      "name": "República Democrática del Congo Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Democrática del Congo Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Democrática del Congo Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "DO": [
+    {
+      "name": "República Dominicana Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Dominicana Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "República Dominicana Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "RW": [
+    {
+      "name": "Ruanda Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ruanda Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ruanda Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "RO": [
+    {
+      "name": "Rumania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rumania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rumania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "RU": [
+    {
+      "name": "Rusia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rusia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rusia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "WS": [
+    {
+      "name": "Samoa Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Samoa Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Samoa Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "KN": [
+    {
+      "name": "San Cristóbal y Nieves Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "San Cristóbal y Nieves Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "San Cristóbal y Nieves Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SM": [
+    {
+      "name": "San Marino Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "San Marino Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "San Marino Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "VC": [
+    {
+      "name": "San Vicente y las Granadinas Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "San Vicente y las Granadinas Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "San Vicente y las Granadinas Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LC": [
+    {
+      "name": "Santa Lucía Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Santa Lucía Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Santa Lucía Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ST": [
+    {
+      "name": "Santo Tomé y Príncipe Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Santo Tomé y Príncipe Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Santo Tomé y Príncipe Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SN": [
+    {
+      "name": "Senegal Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Senegal Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Senegal Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "RS": [
+    {
+      "name": "Serbia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Serbia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Serbia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SC": [
+    {
+      "name": "Seychelles Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seychelles Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seychelles Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SL": [
+    {
+      "name": "Sierra Leona Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sierra Leona Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sierra Leona Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SG": [
+    {
+      "name": "Singapur Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Singapur Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Singapur Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SY": [
+    {
+      "name": "Siria Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Siria Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Siria Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SO": [
+    {
+      "name": "Somalia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Somalia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Somalia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "LK": [
+    {
+      "name": "Sri Lanka Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sri Lanka Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sri Lanka Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SZ": [
+    {
+      "name": "Suazilandia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suazilandia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suazilandia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ZA": [
+    {
+      "name": "Sudáfrica Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sudáfrica Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sudáfrica Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SD": [
+    {
+      "name": "Sudán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sudán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sudán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SS": [
+    {
+      "name": "Sudán del Sur Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sudán del Sur Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sudán del Sur Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SE": [
+    {
+      "name": "Suecia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suecia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suecia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "CH": [
+    {
+      "name": "Suiza Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suiza Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Suiza Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "SR": [
+    {
+      "name": "Surinam Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Surinam Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Surinam Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TH": [
+    {
+      "name": "Tailandia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tailandia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tailandia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TZ": [
+    {
+      "name": "Tanzania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tanzania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tanzania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TJ": [
+    {
+      "name": "Tayikistán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tayikistán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tayikistán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TL": [
+    {
+      "name": "Timor Oriental Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Timor Oriental Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Timor Oriental Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TG": [
+    {
+      "name": "Togo Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Togo Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Togo Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TO": [
+    {
+      "name": "Tonga Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tonga Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tonga Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TT": [
+    {
+      "name": "Trinidad y Tobago Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trinidad y Tobago Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Trinidad y Tobago Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TN": [
+    {
+      "name": "Túnez Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Túnez Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Túnez Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TM": [
+    {
+      "name": "Turkmenistán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Turkmenistán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Turkmenistán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TR": [
+    {
+      "name": "Turquía Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Turquía Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Turquía Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "TV": [
+    {
+      "name": "Tuvalu Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tuvalu Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tuvalu Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "UA": [
+    {
+      "name": "Ucrania Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ucrania Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ucrania Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "UG": [
+    {
+      "name": "Uganda Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uganda Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uganda Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "UY": [
+    {
+      "name": "Uruguay Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uruguay Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uruguay Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "UZ": [
+    {
+      "name": "Uzbekistán Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uzbekistán Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Uzbekistán Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "VU": [
+    {
+      "name": "Vanuatu Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vanuatu Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vanuatu Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "VE": [
+    {
+      "name": "Venezuela Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Venezuela Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Venezuela Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "VN": [
+    {
+      "name": "Vietnam Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vietnam Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vietnam Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "YE": [
+    {
+      "name": "Yemen Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Yemen Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Yemen Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "DJ": [
+    {
+      "name": "Yibuti Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Yibuti Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Yibuti Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ZM": [
+    {
+      "name": "Zambia Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zambia Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zambia Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ],
+  "ZW": [
+    {
+      "name": "Zimbabue Centro",
+      "provinces": [
+        {
+          "name": "Capital",
+          "districts": [
+            "Centro",
+            "Norte",
+            "Sur"
+          ]
+        },
+        {
+          "name": "Zona metropolitana",
+          "districts": [
+            "Este",
+            "Oeste",
+            "Industrial"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zimbabue Norte",
+      "provinces": [
+        {
+          "name": "Provincia norte",
+          "districts": [
+            "Norte 1",
+            "Norte 2",
+            "Norte 3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zimbabue Sur",
+      "provinces": [
+        {
+          "name": "Provincia sur",
+          "districts": [
+            "Sur 1",
+            "Sur 2",
+            "Sur 3"
+          ]
+        }
+      ]
+    }
+  ]
+}

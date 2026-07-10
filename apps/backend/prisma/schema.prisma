@@ -1,0 +1,483 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String     @id @default(uuid())
+  username     String     @unique
+  passwordHash String
+  isActive     Boolean    @default(true)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  roles        UserRole[]
+  audits        AuditLog[]
+  payments      Payment[]
+  cashMovements CashMovement[]
+}
+
+model Role {
+  id          String           @id @default(uuid())
+  name        String           @unique
+  description String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  users       UserRole[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id          String           @id @default(uuid())
+  code        String           @unique
+  description String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  roles       RolePermission[]
+}
+
+model UserRole {
+  userId String
+  roleId String
+  user   User   @relation(fields: [userId], references: [id])
+  role   Role   @relation(fields: [roleId], references: [id])
+
+  @@id([userId, roleId])
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+  role         Role       @relation(fields: [roleId], references: [id])
+  permission   Permission @relation(fields: [permissionId], references: [id])
+
+  @@id([roleId, permissionId])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+}
+
+enum PlanType {
+  INTERNET
+  TV
+}
+
+enum CustomerStatus {
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+enum CustomerServiceStatus {
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+model ServicePlan {
+  id               String            @id @default(uuid())
+  type             PlanType
+  name             String
+  description      String?
+  monthlyPrice     Decimal           @db.Decimal(10, 2)
+  downloadMbps     Int?
+  uploadMbps       Int?
+  maxScreens       Int?
+  isActive         Boolean           @default(true)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  customerServices CustomerService[]
+
+  @@unique([type, name])
+}
+
+model Customer {
+  id             String            @id @default(uuid())
+  documentType   String?           @default("DNI")
+  documentNumber String            @unique
+  fullName       String
+  birthDate      DateTime?
+  signupDate     DateTime?
+  phone          String?
+  email          String?
+  country        String?           @default("PE")
+  department     String?
+  province       String?
+  address        String?
+  district       String?
+  reference      String?
+  latitude       Float?
+  longitude      Float?
+  identityNotes  String?
+  photoUrl       String?
+  leadSource     String?
+  status         CustomerStatus    @default(ACTIVE)
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+  services       CustomerService[]
+}
+
+model CustomerService {
+  id          String                @id @default(uuid())
+  customerId  String
+  planId      String
+  screenCount Int?
+  installedAt DateTime?
+  status      CustomerServiceStatus @default(ACTIVE)
+  notes       String?
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+  customer    Customer              @relation(fields: [customerId], references: [id])
+  plan        ServicePlan           @relation(fields: [planId], references: [id])
+  monthlyFees MonthlyFee[]
+}
+
+enum InventoryMovementType {
+  PURCHASE
+  SALE
+  INSTALLATION
+  REPLACEMENT
+  RETURN
+  ADJUSTMENT_IN
+  ADJUSTMENT_OUT
+}
+
+model Material {
+  id            String                 @id @default(uuid())
+  sku           String?                @unique
+  name          String                 @unique
+  description   String?
+  unit          String                 @default("UND")
+  costPrice     Decimal?               @db.Decimal(10, 2)
+  salePrice     Decimal                @db.Decimal(10, 2)
+  coveragePrice Decimal?               @db.Decimal(10, 2)
+  installPrice  Decimal?               @db.Decimal(10, 2)
+  isInstallationMaterial Boolean       @default(false)
+  imageUrl      String?
+  stock         Int                    @default(0)
+  minStock      Int                    @default(0)
+  isActive      Boolean                @default(true)
+  createdAt     DateTime               @default(now())
+  updatedAt     DateTime               @updatedAt
+  movements     MaterialMovement[]
+  saleItems     MaterialSaleItem[]
+  purchaseItems MaterialPurchaseItem[]
+}
+
+model MaterialMovement {
+  id         String                @id @default(uuid())
+  materialId String
+  type       InventoryMovementType
+  quantity   Int
+  unitCost   Decimal?              @db.Decimal(10, 2)
+  unitPrice  Decimal?              @db.Decimal(10, 2)
+  reason     String?
+  reference  String?
+  createdAt  DateTime              @default(now())
+  material   Material              @relation(fields: [materialId], references: [id])
+
+  @@index([materialId, createdAt])
+}
+
+enum MaterialSaleStatus {
+  VALID
+  VOID
+}
+
+model MaterialSale {
+  id             String             @id @default(uuid())
+  customerName   String?
+  documentNumber String?
+  notes          String?
+  paymentMethod  PaymentMethod      @default(CASH)
+  discountAmount Decimal            @default(0) @db.Decimal(10, 2)
+  totalAmount    Decimal            @db.Decimal(10, 2)
+  receiptCode    String?            @unique
+  status         MaterialSaleStatus @default(VALID)
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  items          MaterialSaleItem[]
+}
+
+model MaterialSaleItem {
+  id         String       @id @default(uuid())
+  saleId     String
+  materialId String
+  quantity   Int
+  unitPrice  Decimal      @db.Decimal(10, 2)
+  subtotal   Decimal      @db.Decimal(10, 2)
+  sale       MaterialSale @relation(fields: [saleId], references: [id])
+  material   Material     @relation(fields: [materialId], references: [id])
+
+  @@index([saleId])
+  @@index([materialId])
+}
+
+enum PurchaseStatus {
+  REGISTERED
+  VOID
+}
+
+model Supplier {
+  id             String             @id @default(uuid())
+  name           String             @unique
+  documentNumber String?
+  contactName    String?
+  phone          String?
+  email          String?
+  country        String?            @default("PE")
+  department     String?
+  province       String?
+  district       String?
+  address        String?
+  reference      String?
+  notes          String?
+  isActive       Boolean            @default(true)
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  purchases      MaterialPurchase[]
+}
+
+model MaterialPurchase {
+  id             String                 @id @default(uuid())
+  supplierId     String?
+  supplierName   String?
+  documentNumber String?
+  receiptNumber  String?
+  paymentMethod  PaymentMethod          @default(CASH)
+  paidFromCash   Boolean                @default(true)
+  notes          String?
+  totalAmount    Decimal                @db.Decimal(10, 2)
+  receiptCode    String?                @unique
+  status         PurchaseStatus         @default(REGISTERED)
+  purchasedAt    DateTime               @default(now())
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime               @updatedAt
+  supplier       Supplier?              @relation(fields: [supplierId], references: [id])
+  items          MaterialPurchaseItem[]
+
+  @@index([supplierId, purchasedAt])
+}
+
+model MaterialPurchaseItem {
+  id           String           @id @default(uuid())
+  purchaseId   String
+  materialId   String?
+  description  String
+  quantity     Int              @default(1)
+  quantityText String?
+  unitCost     Decimal          @db.Decimal(10, 2)
+  subtotal     Decimal          @db.Decimal(10, 2)
+  purchase     MaterialPurchase @relation(fields: [purchaseId], references: [id])
+  material     Material?        @relation(fields: [materialId], references: [id])
+
+  @@index([purchaseId])
+  @@index([materialId])
+}
+
+
+enum ExpenseCategoryType {
+  OPERATING
+  PAYROLL
+  RENT
+  UTILITY
+  TAX
+  COMMISSION
+  TRANSPORT
+  OTHER
+}
+
+enum ExpenseStatus {
+  VALID
+  VOID
+}
+
+model ExpenseCategory {
+  id          String              @id @default(uuid())
+  name        String              @unique
+  type        ExpenseCategoryType @default(OPERATING)
+  description String?
+  isActive    Boolean             @default(true)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  expenses    Expense[]
+}
+
+model Expense {
+  id             String          @id @default(uuid())
+  categoryId     String
+  description    String
+  amount         Decimal         @db.Decimal(10, 2)
+  paymentMethod  PaymentMethod   @default(CASH)
+  paidFromCash   Boolean         @default(true)
+  reference      String?
+  notes          String?
+  receiptCode    String?         @unique
+  status         ExpenseStatus   @default(VALID)
+  expenseDate    DateTime        @default(now())
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  category       ExpenseCategory @relation(fields: [categoryId], references: [id])
+
+  @@index([categoryId, expenseDate])
+  @@index([expenseDate, status])
+}
+
+enum MonthlyFeeStatus {
+  PENDING
+  PARTIAL
+  PAID
+  VOID
+}
+
+enum PaymentMethod {
+  CASH
+  YAPE
+  PLIN
+  TRANSFER
+  CARD
+  OTHER
+}
+
+enum PaymentStatus {
+  VALID
+  VOID
+}
+
+model PaymentMethodSetting {
+  id          String        @id @default(uuid())
+  method      PaymentMethod @unique
+  label       String
+  description String?
+  requiresEvidence Boolean  @default(false)
+  isActive    Boolean       @default(true)
+  sortOrder   Int           @default(0)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+}
+
+model PaymentEvidence {
+  id        String   @id @default(uuid())
+  paymentId String
+  fileName  String
+  url       String
+  mimeType  String?
+  sizeBytes Int?
+  createdAt DateTime @default(now())
+  payment   Payment  @relation(fields: [paymentId], references: [id])
+
+  @@index([paymentId])
+}
+
+model MonthlyFee {
+  id          String           @id @default(uuid())
+  serviceId   String
+  period      String
+  dueDate     DateTime?
+  amount      Decimal          @db.Decimal(10, 2)
+  paidAmount  Decimal          @default(0) @db.Decimal(10, 2)
+  balance     Decimal          @db.Decimal(10, 2)
+  status      MonthlyFeeStatus @default(PENDING)
+  notes       String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  service     CustomerService  @relation(fields: [serviceId], references: [id])
+  payments    Payment[]
+
+  @@unique([serviceId, period])
+  @@index([period, status])
+}
+
+model Payment {
+  id           String        @id @default(uuid())
+  monthlyFeeId String
+  amount       Decimal       @db.Decimal(10, 2)
+  method       PaymentMethod
+  userId       String?
+  status       PaymentStatus @default(VALID)
+  receiptCode  String        @unique
+  notes        String?
+  paidAt       DateTime      @default(now())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  monthlyFee   MonthlyFee    @relation(fields: [monthlyFeeId], references: [id])
+  user         User?         @relation(fields: [userId], references: [id])
+  evidences    PaymentEvidence[]
+
+  @@index([monthlyFeeId, paidAt])
+  @@index([userId, paidAt])
+}
+
+enum CashRegisterStatus {
+  OPEN
+  CLOSED
+}
+
+enum CashMovementType {
+  INCOME
+  EXPENSE
+}
+
+enum CashMovementSource {
+  PAYMENT
+  SALE
+  PURCHASE
+  EXPENSE
+  MANUAL
+}
+
+model CashRegister {
+  id             String             @id @default(uuid())
+  openedAt       DateTime           @default(now())
+  closedAt       DateTime?
+  initialAmount  Decimal            @db.Decimal(10, 2)
+  expectedAmount Decimal            @db.Decimal(10, 2)
+  countedAmount  Decimal?           @db.Decimal(10, 2)
+  difference     Decimal?           @db.Decimal(10, 2)
+  status         CashRegisterStatus @default(OPEN)
+  notes          String?
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  movements      CashMovement[]
+}
+
+model CashMovement {
+  id             String             @id @default(uuid())
+  cashRegisterId String
+  type           CashMovementType
+  source         CashMovementSource
+  referenceId    String?
+  userId         String?
+  amount         Decimal            @db.Decimal(10, 2)
+  description    String
+  receiptCode    String?            @unique
+  createdAt      DateTime           @default(now())
+  cashRegister   CashRegister       @relation(fields: [cashRegisterId], references: [id])
+  user           User?              @relation(fields: [userId], references: [id])
+
+  @@index([cashRegisterId, createdAt])
+  @@index([source, referenceId])
+}
+
+
+
+
+
+model SystemSetting {
+  key       String   @id
+  value     Json
+  isSecret  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
