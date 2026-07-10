@@ -1,7 +1,6 @@
 import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 import { CashMovementSource, CashMovementType, CashRegisterStatus, MonthlyFeeStatus, PaymentMethod, PaymentStatus, Prisma } from "@prisma/client";
 import { PrismaService } from "../../infrastructure/prisma/prisma.service";
-import { GenerateMonthlyFeesDto } from "./dto/generate-monthly-fees.dto";
 import { RegisterPaymentDto } from "./dto/register-payment.dto";
 import { VoidPaymentDto } from "./dto/void-payment.dto";
 import { formatPaymentReceiptCode } from "../../shared/receipt-code";
@@ -56,45 +55,6 @@ export class PaymentsService {
       }
     };
   }
-
-  async generateMonthlyFees(customerId: string, dto: GenerateMonthlyFeesDto) {
-    const services = await this.prisma.customerService.findMany({
-      where: { customerId, status: "ACTIVE" },
-      include: { plan: true }
-    });
-
-    if (services.length === 0) {
-      throw new BadRequestException("El cliente no tiene servicios activos para generar mensualidades");
-    }
-
-    const dueDate = dto.dueDate ? new Date(dto.dueDate) : null;
-    const fees = await this.prisma.$transaction(
-      services.map((service) => {
-        const amount = service.plan.monthlyPrice;
-        return this.prisma.monthlyFee.upsert({
-          where: { serviceId_period: { serviceId: service.id, period: dto.period } },
-          update: {},
-          create: {
-            serviceId: service.id,
-            period: dto.period,
-            dueDate,
-            amount,
-            paidAmount: new Prisma.Decimal(0),
-            balance: amount,
-            notes: dto.notes?.trim() || null
-          },
-          include: { payments: true }
-        });
-      })
-    );
-
-    return {
-      success: true,
-      data: fees.map((fee) => this.toMonthlyFeeResponse(fee)),
-      message: "Mensualidades generadas"
-    };
-  }
-
 
   async generateAutomaticMonthlyFees() {
     const now = new Date();

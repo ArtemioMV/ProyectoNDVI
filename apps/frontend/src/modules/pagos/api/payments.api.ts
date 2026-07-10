@@ -15,11 +15,6 @@ export async function fetchCustomerPaymentHistory(customerId: string) {
   return response.data.data;
 }
 
-export async function generateMonthlyFees(customerId: string, payload: { period: string; dueDate?: string; notes?: string }) {
-  const response = await httpClient.post<ApiResponse<unknown>>(`/clientes/${customerId}/mensualidades/generar`, payload);
-  return response.data.data;
-}
-
 export async function registerPayment(payload: { monthlyFeeId: string; amount: number; method: PaymentMethod; notes?: string; evidences?: PaymentEvidencePayload[] }) {
   const response = await httpClient.post<ApiResponse<PaymentTicket>>("/pagos", payload);
   return response.data.data;
