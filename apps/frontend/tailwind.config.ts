@@ -1,17 +1,18 @@
-import type { Config } from "tailwindcss";
+﻿import type { Config } from "tailwindcss";
 
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        border: "hsl(214 32% 91%)",
+        border: "hsl(215 24% 89%)",
         background: "hsl(0 0% 100%)",
-        foreground: "hsl(222 47% 11%)",
-        primary: "hsl(221 83% 53%)",
-        muted: "hsl(210 40% 96%)"
+        foreground: "hsl(222 38% 14%)",
+        primary: "hsl(221 78% 52%)",
+        muted: "hsl(36 30% 96%)"
       }
     }
   },
   plugins: []
 } satisfies Config;
+

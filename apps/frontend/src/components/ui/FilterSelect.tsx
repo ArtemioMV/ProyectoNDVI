@@ -10,7 +10,7 @@ export function FilterSelect({ className, children, ...props }: FilterSelectProp
   return (
     <div className={cn("relative", className)}>
       <select
-        className="h-10 w-full appearance-none rounded-md border bg-background px-3 py-2 pr-9 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+        className="h-10 w-full appearance-none rounded-lg border bg-background px-3 py-2 pr-9 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
         {...props}
       >
         {children}
@@ -19,3 +19,4 @@ export function FilterSelect({ className, children, ...props }: FilterSelectProp
     </div>
   );
 }
+

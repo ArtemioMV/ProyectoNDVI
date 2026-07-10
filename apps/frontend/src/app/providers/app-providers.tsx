@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect } from "react";
 import type { PropsWithChildren } from "react";
 import { ToastProvider } from "@/components/ui/Toast";
@@ -49,3 +49,5 @@ export function AppProviders({ children }: PropsWithChildren) {
     </QueryClientProvider>
   );
 }
+
+

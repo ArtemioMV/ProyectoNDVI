@@ -239,7 +239,7 @@ export function DataTable<T>({
     : null;
 
   return (
-    <div className={cn("overflow-hidden rounded-lg border bg-background", className)}>
+    <div className={cn("overflow-hidden rounded-xl border bg-background shadow-sm", className)}>
       {title || description || toolbar ? (
         <div className="grid gap-3 border-b p-4 lg:grid-cols-[minmax(14rem,1fr)_auto] lg:items-center">
           <div className="min-w-0">
@@ -295,7 +295,7 @@ export function DataTable<T>({
                 const expanded = renderExpandedRow?.(row);
                 return (
                   <Fragment key={getRowId(row)}>
-                    <tr className="hover:bg-muted/40">
+                    <tr className="transition-colors hover:bg-primary/[0.025]">
                       {visibleColumns.map((column) => {
                         const pinned = preferences.pinnedId === column.id;
                         return (
@@ -355,6 +355,7 @@ export function DataTable<T>({
     </div>
   );
 }
+
 
 
 

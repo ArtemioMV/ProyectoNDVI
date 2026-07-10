@@ -29,12 +29,14 @@ const sizes: Record<DrawerSize, string> = {
  */
 export function Drawer({ open, title, description, children, footer, size = "md", onClose }: DrawerProps) {
   const titleId = useId();
+  const descriptionId = useId();
   const panelRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
 
     function handleKeyDown(event: KeyboardEvent) {
@@ -46,6 +48,7 @@ export function Drawer({ open, title, description, children, footer, size = "md"
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
+      previouslyFocused?.focus();
     };
   }, [onClose, open]);
 
@@ -54,7 +57,7 @@ export function Drawer({ open, title, description, children, footer, size = "md"
   return createPortal(
     <div className="fixed bottom-0 left-0 right-0 top-0 z-[200] flex justify-end" role="presentation">
       <button
-        className="absolute inset-0 bg-transparent motion-safe:animate-[fadeIn_150ms_ease-out]"
+        className="absolute inset-0 bg-slate-950/35 backdrop-blur-[1px] motion-safe:animate-[fadeIn_150ms_ease-out]"
         aria-label="Cerrar panel"
         type="button"
         onClick={onClose}
@@ -64,6 +67,7 @@ export function Drawer({ open, title, description, children, footer, size = "md"
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
         className={cn(
           "relative flex h-[100dvh] w-full flex-col border-l bg-background shadow-2xl outline-none motion-safe:animate-[slideInRight_200ms_ease-out]",
@@ -73,9 +77,9 @@ export function Drawer({ open, title, description, children, footer, size = "md"
         <header className="flex items-start justify-between gap-4 border-b px-5 py-4">
           <div className="min-w-0">
             <h2 id={titleId} className="truncate text-lg font-semibold">{title}</h2>
-            {description ? <p className="mt-1 text-sm text-slate-500">{description}</p> : null}
+            {description ? <p id={descriptionId} className="mt-1 text-sm text-slate-500">{description}</p> : null}
           </div>
-          <button className="shrink-0 rounded-md border p-2 text-slate-500 hover:bg-muted hover:text-slate-800" type="button" aria-label="Cerrar" onClick={onClose}>
+          <button className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-muted hover:text-slate-800" type="button" aria-label="Cerrar" onClick={onClose}>
             <X className="h-4 w-4" />
           </button>
         </header>
@@ -86,4 +90,6 @@ export function Drawer({ open, title, description, children, footer, size = "md"
     document.body
   );
 }
+
+
 

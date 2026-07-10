@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { CreditCard, ExternalLink, RefreshCcw, Search, WalletCards } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
@@ -131,8 +131,8 @@ export function CobranzaPage() {
     <section className="space-y-5">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold">Cobranza</h1>
-          <p className="text-sm text-slate-500">Cola global para cobrar mensualidades, revisar morosos y entrar a la ficha financiera.</p>
+          <h1 className="text-2xl font-semibold">Mensualidades</h1>
+          <p className="text-sm text-slate-500">Control de mensualidades, saldos pendientes, vencimientos y pagos de clientes.</p>
         </div>
         <Button variant="secondary" icon={<RefreshCcw className="h-4 w-4" />} onClick={() => void collectionsQuery.refetch()}>
           Actualizar
@@ -172,7 +172,7 @@ export function CobranzaPage() {
           <div className="grid w-full gap-2 sm:w-auto xl:grid-cols-[18rem_25rem_10rem]">
             <div className="relative">
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-              <input className="w-full rounded-md border py-2 pl-9 pr-3 text-sm" placeholder="Cliente, DNI o telefono" value={search} onChange={(event) => setSearch(event.target.value)} />
+              <input className="h-10 w-full rounded-lg border pl-9 pr-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Cliente, DNI o telefono" value={search} onChange={(event) => setSearch(event.target.value)} />
             </div>
             <DateRangeFilter value={dateRange} onChange={setDateRange} />
             <FilterSelect value={status} onChange={(event) => setStatus(event.target.value as CollectionStatusFilter)}>
@@ -208,6 +208,8 @@ export function CobranzaPage() {
     </section>
   );
 }
+
+
 
 
 

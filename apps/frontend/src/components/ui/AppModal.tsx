@@ -1,4 +1,4 @@
-import { X } from "lucide-react";
+﻿import { X } from "lucide-react";
 import { ReactNode, useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "./cn";
@@ -25,12 +25,14 @@ const sizes: Record<ModalSize, string> = {
 
 export function AppModal({ open, title, description, children, footer, size = "lg", closeOnOverlay = true, onClose }: AppModalProps) {
   const titleId = useId();
+  const descriptionId = useId();
   const panelRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (!open) return;
 
     const previousOverflow = document.body.style.overflow;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     document.body.style.overflow = "hidden";
 
     function handleKeyDown(event: KeyboardEvent) {
@@ -42,6 +44,7 @@ export function AppModal({ open, title, description, children, footer, size = "l
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
+      previouslyFocused?.focus();
     };
   }, [onClose, open]);
 
@@ -60,6 +63,7 @@ export function AppModal({ open, title, description, children, footer, size = "l
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
         className={cn(
           "relative flex max-h-[calc(100dvh-1rem)] w-full flex-col overflow-hidden rounded-xl border bg-background shadow-2xl outline-none sm:max-h-[calc(100dvh-2rem)]",
@@ -69,9 +73,9 @@ export function AppModal({ open, title, description, children, footer, size = "l
         <header className="flex items-start justify-between gap-4 border-b px-5 py-4">
           <div className="min-w-0">
             <h2 id={titleId} className="truncate text-lg font-semibold">{title}</h2>
-            {description ? <p className="mt-1 text-sm text-slate-500">{description}</p> : null}
+            {description ? <p id={descriptionId} className="mt-1 text-sm text-slate-500">{description}</p> : null}
           </div>
-          <button className="shrink-0 rounded-md border p-2 text-slate-500 hover:bg-muted hover:text-slate-800" type="button" aria-label="Cerrar" onClick={onClose}>
+          <button className="grid h-9 w-9 shrink-0 place-items-center rounded-lg text-slate-500 transition hover:bg-muted hover:text-slate-800" type="button" aria-label="Cerrar" onClick={onClose}>
             <X className="h-4 w-4" />
           </button>
         </header>
@@ -82,3 +86,4 @@ export function AppModal({ open, title, description, children, footer, size = "l
     document.body
   );
 }
+

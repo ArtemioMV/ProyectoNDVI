@@ -94,7 +94,7 @@ export function SupplierForm({ isSubmitting, submitLabel = "Crear proveedor", co
             <div>
               <label className="block text-sm font-medium">Documento</label>
               <div className="mt-1 flex gap-2">
-                <input className="w-full rounded-md border px-3 py-2 font-normal focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" value={form.documentNumber} onChange={(event) => update("documentNumber", event.target.value)} />
+                <input className="h-10 w-full rounded-lg border bg-background px-3 font-normal focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" value={form.documentNumber} onChange={(event) => update("documentNumber", event.target.value)} />
                 <Button type="button" variant="secondary" icon={<Search className="h-4 w-4" />} onClick={handleLookup}>Buscar</Button>
               </div>
             </div>
@@ -137,4 +137,5 @@ export function SupplierForm({ isSubmitting, submitLabel = "Crear proveedor", co
     </form>
   );
 }
+
 

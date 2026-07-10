@@ -59,6 +59,7 @@ export function PlansSection({ title, type, plans, editingPlanId, busyPlanId, on
                   icon={<Pencil />}
                   tone="edit"
                   variant="soft"
+                  size="sm"
                   disabled={isBusy}
                   aria-label={`Editar ${plan.name}`}
                   onClick={() => onEdit(plan)}
@@ -68,6 +69,7 @@ export function PlansSection({ title, type, plans, editingPlanId, busyPlanId, on
                   icon={<Power />}
                   tone={plan.isActive ? "danger" : "success"}
                   variant="soft"
+                  size="sm"
                   disabled={isBusy}
                   aria-label={`${actionLabel} ${plan.name}`}
                   onClick={() => onToggleActive(plan)}
@@ -80,6 +82,9 @@ export function PlansSection({ title, type, plans, editingPlanId, busyPlanId, on
     </section>
   );
 }
+
+
+
 
 
 

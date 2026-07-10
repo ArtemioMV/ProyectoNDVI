@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   Ban,
   CalendarDays,
@@ -363,7 +363,7 @@ export function ClienteDetallePage() {
             <div className="mb-3 flex items-center justify-between border-b pb-2">
               <h2 className="font-semibold">Datos del cliente</h2>
               <Tooltip label="Actualizar datos del cliente">
-                <button type="button" className="grid h-7 w-7 cursor-pointer place-items-center rounded-md border bg-background text-slate-600 transition hover:bg-muted" aria-label="Actualizar datos del cliente" onClick={() => navigate(`/clientes/${customer.id}/editar`)}>
+                <button type="button" className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg text-primary transition hover:bg-primary/10" aria-label="Actualizar datos del cliente" onClick={() => navigate(`/clientes/${customer.id}/editar`)}>
                   <Pencil className="h-4 w-4" />
                 </button>
               </Tooltip>
@@ -397,7 +397,7 @@ export function ClienteDetallePage() {
             <div className="mb-3 flex items-center justify-between border-b pb-2">
               <h2 className="font-semibold">Contrato</h2>
               <Tooltip label="Ver contrato">
-                <button type="button" className="grid h-7 w-7 cursor-pointer place-items-center rounded-md border bg-background text-slate-600 transition hover:bg-muted" aria-label="Ver contrato" onClick={() => navigate(`/clientes/${customer.id}/contrato`)}>
+                <button type="button" className="grid h-9 w-9 cursor-pointer place-items-center rounded-lg text-primary transition hover:bg-primary/10" aria-label="Ver contrato" onClick={() => navigate(`/clientes/${customer.id}/contrato`)}>
                   <FileText className="h-4 w-4" />
                 </button>
               </Tooltip>

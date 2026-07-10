@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, ReactNode, SelectHTMLAttributes, TextareaHTMLAttributes } from "react";
+﻿import { InputHTMLAttributes, ReactNode, SelectHTMLAttributes, TextareaHTMLAttributes } from "react";
 import { cn } from "./cn";
 
 type FieldFrameProps = {
@@ -30,7 +30,7 @@ type TextFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 export function TextField({ label, hint, error, className, fieldClassName, ...props }: TextFieldProps) {
   return (
     <FieldFrame label={label} hint={hint} error={error} className={fieldClassName}>
-      <input className={cn("w-full rounded-md border px-3 py-2 font-normal focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20", className)} {...props} />
+      <input className={cn("h-10 w-full rounded-lg border bg-background px-3 font-normal focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20", className)} {...props} />
     </FieldFrame>
   );
 }
@@ -45,7 +45,7 @@ type SelectFieldProps = SelectHTMLAttributes<HTMLSelectElement> & {
 export function SelectField({ label, hint, error, className, fieldClassName, children, ...props }: SelectFieldProps) {
   return (
     <FieldFrame label={label} hint={hint} error={error} className={fieldClassName}>
-      <select className={cn("w-full rounded-md border bg-background px-3 py-2 font-normal focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20", className)} {...props}>
+      <select className={cn("h-10 w-full rounded-lg border bg-background px-3 font-normal focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20", className)} {...props}>
         {children}
       </select>
     </FieldFrame>
@@ -66,3 +66,4 @@ export function TextareaField({ label, hint, error, className, fieldClassName, .
     </FieldFrame>
   );
 }
+

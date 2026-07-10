@@ -435,7 +435,7 @@ const materialsTotal = materialRows.reduce((sum, row) => {
                         </label>
                       </Tooltip>
                       <input
-                        className="w-full min-w-0 rounded-md border px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        className="h-10 w-full min-w-0 rounded-lg border px-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                         placeholder="o pega una URL de imagen"
                         value={form.photoUrl.startsWith("data:") ? "" : form.photoUrl}
                         onChange={(event) => update("photoUrl", event.target.value)}
@@ -657,7 +657,7 @@ const materialsTotal = materialRows.reduce((sum, row) => {
                           <option value="">Selecciona...</option>
                           {installMaterials.map((item) => (
                             <option key={item.id} value={item.id}>
-                              {item.name} Â· {money(materialPrice(item))}/{item.unit.toLowerCase()}
+                              {item.name} · {money(materialPrice(item))}/{item.unit.toLowerCase()}
                             </option>
                           ))}
                         </SelectField>
@@ -724,6 +724,7 @@ const materialsTotal = materialRows.reduce((sum, row) => {
     </section>
   );
 }
+
 
 
 

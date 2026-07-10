@@ -2,6 +2,7 @@
   ShieldCheck,
   BarChart3,
   Bell,
+  CalendarClock,
   ChevronDown,
   Home,
   FileMinus2,
@@ -13,7 +14,6 @@
   ShoppingBag,
   ShoppingCart,
   WalletCards,
-  HandCoins,
   Tv,
   User,
   Users,
@@ -32,7 +32,7 @@ const navItems = [
   { href: "/servicios", label: "Servicios", icon: Wifi },
   { href: "/productos", label: "Productos", icon: Package },
   { href: "/caja", label: "Caja", icon: WalletCards },
-  { href: "/cobranza", label: "Cobranza", icon: HandCoins },
+  { href: "/mensualidades", label: "Mensualidades", icon: CalendarClock },
   { href: "/compras", label: "Compras", icon: ShoppingBag },
   { href: "/gastos", label: "Gastos", icon: FileMinus2 },
   { href: "/ventas", label: "Ventas", icon: ShoppingCart },
@@ -95,7 +95,7 @@ export function AdminLayout() {
 
       <aside
         className={[
-          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r bg-background transition-all duration-200 md:translate-x-0",
+          "fixed inset-y-0 left-0 z-40 flex w-64 flex-col border-r border-slate-200/80 bg-background shadow-xl shadow-slate-900/5 transition-all duration-200 md:translate-x-0 md:shadow-none",
           collapsed ? "md:w-20" : "md:w-64",
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         ].join(" ")}
@@ -107,7 +107,7 @@ export function AdminLayout() {
           ].join(" ")}
         >
           <div className="flex min-w-0 items-center gap-3">
-            <div className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-lg bg-primary text-white">
+            <div className="grid h-9 w-9 shrink-0 place-items-center overflow-hidden rounded-xl bg-gradient-to-br from-primary to-indigo-700 text-white shadow-md shadow-primary/20">
               {company.logoUrl ? (
                 <img src={company.logoUrl} alt={company.companyName} className="h-full w-full object-cover" />
               ) : (
@@ -129,7 +129,7 @@ export function AdminLayout() {
           </button>
         </div>
 
-        <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-3">
+        <nav className="scrollbar-thin flex-1 space-y-1 overflow-y-auto px-3 py-4">
           {navItems.map((item) => (
             <NavLink
               key={item.href}
@@ -138,9 +138,9 @@ export function AdminLayout() {
               title={item.label}
               className={({ isActive }) =>
                 [
-                  "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
+                  "group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors duration-150",
                   collapsed ? "md:justify-center md:px-2" : "",
-                  isActive ? "bg-primary text-white" : "text-slate-600 hover:bg-muted"
+                  isActive ? "bg-primary text-white shadow-sm shadow-primary/20" : "text-slate-600 hover:bg-primary/5 hover:text-primary"
                 ].join(" ")
               }
             >
@@ -157,10 +157,10 @@ export function AdminLayout() {
           collapsed ? "md:pl-20" : "md:pl-64"
         ].join(" ")}
       >
-        <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-2 border-b bg-background px-4">
+        <header className="sticky top-0 z-20 flex h-14 items-center justify-between gap-2 border-b border-slate-200/80 bg-background/90 px-4 shadow-sm backdrop-blur-xl">
           <div className="flex min-w-0 items-center gap-2">
             <button
-              className="shrink-0 rounded-md border p-2 hover:bg-muted"
+              className="shrink-0 rounded-lg border bg-white p-2 text-slate-600 shadow-sm transition hover:border-primary/30 hover:bg-primary/5 hover:text-primary"
               aria-label="Abrir o cerrar menu"
               onClick={toggleSidebar}
             >
@@ -224,13 +224,19 @@ export function AdminLayout() {
           </div>
         </header>
 
-        <main className="p-4 md:p-6">
-          <Outlet />
+        <main className="p-4 md:p-6 lg:p-7">
+          <div className="mx-auto w-full max-w-[1600px]"><Outlet /></div>
         </main>
       </div>
     </div>
   );
 }
+
+
+
+
+
+
 
 
 

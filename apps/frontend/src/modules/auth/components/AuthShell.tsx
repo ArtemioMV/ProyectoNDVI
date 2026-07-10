@@ -1,4 +1,4 @@
-import { ShieldCheck, Tv } from "lucide-react";
+﻿import { ShieldCheck, Tv } from "lucide-react";
 import { ReactNode } from "react";
 import { useCompanySettings } from "@/services/settings/company-settings";
 
@@ -43,8 +43,8 @@ export function AuthShell({ children }: AuthShellProps) {
       </aside>
 
       {/* Columna del formulario: posicion fija en todas las pantallas de auth */}
-      <section className="flex items-center justify-center bg-muted px-4 py-10">
-        <div className="w-full max-w-sm">
+      <section className="relative flex items-center justify-center overflow-hidden bg-muted px-4 py-10 before:absolute before:-right-28 before:-top-28 before:h-72 before:w-72 before:rounded-full before:bg-amber-100/60 before:blur-3xl">
+        <div className="relative w-full max-w-sm">
           {/* Marca visible en movil (no hay panel lateral) */}
           <div className="mb-8 flex items-center gap-3 lg:hidden">
             <div className="grid h-9 w-9 place-items-center overflow-hidden rounded-xl bg-primary text-white">
@@ -67,3 +67,4 @@ export function AuthShell({ children }: AuthShellProps) {
     </main>
   );
 }
+

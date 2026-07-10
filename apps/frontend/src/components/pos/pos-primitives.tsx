@@ -1,4 +1,4 @@
-import { Package, Plus, Search, Trash2, X } from "lucide-react";
+﻿import { Package, Plus, Search, Trash2, X } from "lucide-react";
 import { DragEvent, ReactNode, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/components/ui/cn";
@@ -26,7 +26,7 @@ export function CatalogSearch({ value, onChange, placeholder }: { value: string;
     <div className="relative">
       <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
       <input
-        className="w-full rounded-md border py-2 pl-9 pr-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+        className="h-10 w-full rounded-lg border pl-9 pr-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
         placeholder={placeholder}
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -183,4 +183,5 @@ export function TrashZone({ onDropKey }: { onDropKey: (key: string) => void }) {
     </div>
   );
 }
+
 

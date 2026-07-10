@@ -1,9 +1,10 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { PackagePlus } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { BackButton } from "@/components/ui/BackButton";
 import { Button } from "@/components/ui/Button";
+import { cn } from "@/components/ui/cn";
 import { DataLoader } from "@/components/ui/DataLoader";
 import { SelectField, TextField } from "@/components/ui/FormControls";
 import { useToast } from "@/components/ui/Toast";
@@ -26,6 +27,7 @@ function CompraCard({ material, onAdd }: { material: Material; onAdd: (line: Omi
       name={material.name}
       meta={`${material.sku || "Sin SKU"} · Stock ${material.stock} ${material.unit}`}
       addLabel="Agregar"
+      dragMaterialId={material.id}
       onAdd={() => onAdd({ material, unitCost, quantity })}
     >
       <div className="grid grid-cols-2 gap-2">
@@ -45,6 +47,7 @@ export function CompraNuevaPage() {
   const [supplierId, setSupplierId] = useState("");
   const [receiptNumber, setReceiptNumber] = useState("");
   const [payments, setPayments] = useState<PaymentsState>(emptyPayments);
+  const [dropActive, setDropActive] = useState(false);
 
   const materialsQuery = useQuery({ queryKey: ["materials", "compras"], queryFn: fetchPurchaseMaterials });
   const suppliersQuery = useQuery({ queryKey: ["suppliers"], queryFn: fetchSuppliers });
@@ -94,6 +97,12 @@ export function CompraNuevaPage() {
 
   function removeLine(key: string) {
     setCart((current) => current.filter((line) => line.key !== key));
+  }
+
+  function addByMaterialId(materialId: string) {
+    const material = (materialsQuery.data ?? []).find((item) => item.id === materialId);
+    if (!material) return;
+    addToCart({ material, unitCost: material.costPrice ?? 0, quantity: 1 });
   }
 
   return (
@@ -146,23 +155,40 @@ export function CompraNuevaPage() {
               <TrashZone onDropKey={removeLine} />
             </div>
 
-            {cart.length === 0 ? (
-              <p className="mt-3 text-sm text-slate-500">Agrega productos desde el catalogo.</p>
-            ) : (
-              <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                {cart.map((line) => (
-                  <CartItemCard
-                    key={line.key}
-                    dragKey={line.key}
-                    imageUrl={line.material.imageUrl}
-                    name={line.material.name}
-                    detail={`${line.quantity} × ${money(line.unitCost)}`}
-                    amount={money(line.unitCost * line.quantity)}
-                    onRemove={() => removeLine(line.key)}
-                  />
-                ))}
-              </div>
-            )}
+            <div
+              className={cn("mt-3 min-h-16 rounded-lg border-2 border-dashed transition-colors", dropActive ? "border-primary bg-primary/5 ring-4 ring-primary/10" : "border-transparent")}
+              onDragOver={(event) => {
+                event.preventDefault();
+                event.dataTransfer.dropEffect = "copy";
+                setDropActive(true);
+              }}
+              onDragLeave={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node)) setDropActive(false);
+              }}
+              onDrop={(event) => {
+                event.preventDefault();
+                const id = event.dataTransfer.getData("application/x-add-material");
+                if (id) addByMaterialId(id);
+              }}
+            >
+              {cart.length === 0 ? (
+                <p className="rounded-lg border-2 border-dashed border-slate-200 px-3 py-5 text-center text-sm text-slate-500">Agrega o arrastra productos aqui.</p>
+              ) : (
+                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {cart.map((line) => (
+                    <CartItemCard
+                      key={line.key}
+                      dragKey={line.key}
+                      imageUrl={line.material.imageUrl}
+                      name={line.material.name}
+                      detail={`${line.quantity} Ã— ${money(line.unitCost)}`}
+                      amount={money(line.unitCost * line.quantity)}
+                      onRemove={() => removeLine(line.key)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
 
             <div className="mt-4 flex items-center justify-between border-t pt-3">
               <span className="text-sm text-slate-500">Total</span>
@@ -178,3 +204,6 @@ export function CompraNuevaPage() {
     </section>
   );
 }
+
+
+

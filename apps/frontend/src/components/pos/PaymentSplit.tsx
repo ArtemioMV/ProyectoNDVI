@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+﻿import { useQuery } from "@tanstack/react-query";
 import { Paperclip } from "lucide-react";
 import { activePaymentMethods, type PaymentMethodConfig, type PaymentMethodKey } from "@/constants/payment-methods";
 import { fetchPaymentMethodSettings } from "@/modules/configuracion/api/payment-methods.api";
@@ -105,7 +105,7 @@ export function PaymentSplit({ payments, onChange, total }: { payments: Payments
                   </label>
                   {method.evidence ? (
                     <label
-                      className="inline-flex h-9 w-8 cursor-pointer items-center justify-center rounded-md border text-slate-600 hover:bg-muted hover:text-primary"
+                      className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-muted hover:text-primary"
                       title={pay.evidenceName ? `Cambiar evidencia: ${pay.evidenceName}` : "Adjuntar evidencia"}
                       aria-label={pay.evidenceName ? `Cambiar evidencia de ${method.label}` : `Adjuntar evidencia de ${method.label}`}
                     >
@@ -125,3 +125,4 @@ export function PaymentSplit({ payments, onChange, total }: { payments: Payments
     </div>
   );
 }
+

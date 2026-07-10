@@ -144,14 +144,13 @@ export function ClientesPage() {
     {
       id: "services",
       header: "Servicios",
-      minWidth: 240,
+      minWidth: 190,
       cell: (customer) => visibleServices(customer).length > 0 ? (
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-          {visibleServices(customer).map((service, index) => (
+        <div className="flex flex-col items-start gap-1">
+          {visibleServices(customer).map((service) => (
             <span key={service.id} className="inline-flex items-center gap-1 text-sm text-slate-700">
               {service.plan.type === "INTERNET" ? <Wifi className="h-4 w-4 text-primary" /> : <Tv className="h-4 w-4 text-primary" />}
               <span>{service.plan.name}</span>
-              {index < visibleServices(customer).length - 1 ? <span className="text-slate-300">|</span> : null}
             </span>
           ))}
         </div>
@@ -196,7 +195,7 @@ export function ClientesPage() {
         toolbar={
           <div className="relative w-full sm:w-96">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-            <input className="w-full rounded-md border py-2 pl-9 pr-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Buscar por nombre, DNI o telefono" value={search} onChange={(event) => setSearch(event.target.value)} />
+            <input className="h-10 w-full rounded-lg border pl-9 pr-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Buscar por nombre, DNI o telefono" value={search} onChange={(event) => setSearch(event.target.value)} />
           </div>
         }
       />
@@ -305,6 +304,8 @@ export function ClientesPage() {
     </section>
   );
 }
+
+
 
 
 

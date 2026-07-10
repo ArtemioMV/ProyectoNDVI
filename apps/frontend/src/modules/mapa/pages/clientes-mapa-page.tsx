@@ -251,9 +251,9 @@ export function ClientesMapaPage() {
         </FilterSelect>
         <span className="relative block">
           <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-          <input className="h-10 w-full rounded-md border py-2 pl-9 pr-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Cliente, DNI, telefono..." value={search} onChange={(event) => setSearch(event.target.value)} />
+          <input className="h-10 w-full rounded-lg border pl-9 pr-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Cliente, DNI, telefono..." value={search} onChange={(event) => setSearch(event.target.value)} />
         </span>
-        <IconAction label="Limpiar filtros" icon={<RotateCcw />} tone="primary" variant="soft" size="lg" onClick={clearFilters} />
+        <IconAction label="Limpiar filtros" icon={<RotateCcw />} tone="primary" variant="soft" size="sm" onClick={clearFilters} />
       </div>
 
       <div className={cn("grid gap-3", expanded ? "grid-cols-1" : "xl:grid-cols-[minmax(0,1fr)_20.5rem]") }>
@@ -268,7 +268,7 @@ export function ClientesMapaPage() {
               <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-slate-400" /> Suspendido / cancelado</span>
             </div>
           </div>
-          <IconAction label={expanded ? "Contraer mapa" : "Ampliar mapa"} icon={expanded ? <Minimize2 /> : <Maximize2 />} tone="primary" variant="solid" size="sm" className="absolute bottom-14 right-3 shadow-md" onClick={() => setExpanded((value) => !value)} />
+          <IconAction label={expanded ? "Contraer mapa" : "Ampliar mapa"} icon={expanded ? <Minimize2 /> : <Maximize2 />} tone="primary" variant="solid" size="sm" className="absolute bottom-14 right-3 bg-white shadow-md ring-1 ring-slate-200 hover:bg-slate-50" onClick={() => setExpanded((value) => !value)} />
         </div>
 
         {!expanded && selectedRow ? (
@@ -410,6 +410,10 @@ export function ClientesMapaPage() {
     </section>
   );
 }
+
+
+
+
 
 
 

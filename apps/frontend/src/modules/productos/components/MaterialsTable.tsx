@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Pencil, Power, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { AppModal } from "@/components/ui/AppModal";
@@ -127,7 +127,7 @@ export function MaterialsTable({ materials, search, isLoading, onSearchChange }:
       toolbar={
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-          <input className="w-full rounded-md border py-2 pl-9 pr-3 text-sm" placeholder="Buscar por nombre o SKU" value={search} onChange={(event) => onSearchChange(event.target.value)} />
+          <input className="h-10 w-full rounded-lg border pl-9 pr-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="Buscar por nombre o SKU" value={search} onChange={(event) => onSearchChange(event.target.value)} />
         </div>
       }
     />

@@ -18,7 +18,7 @@ type Position = {
 };
 
 function getPosition(rect: DOMRect, side: TooltipSide): Position {
-  const gap = 10;
+  const gap = 7;
   if (side === "bottom") return { top: rect.bottom + gap, left: rect.left + rect.width / 2, transform: "translateX(-50%)" };
   if (side === "left") return { top: rect.top + rect.height / 2, left: rect.left - gap, transform: "translate(-100%, -50%)" };
   if (side === "right") return { top: rect.top + rect.height / 2, left: rect.right + gap, transform: "translateY(-50%)" };
@@ -61,7 +61,7 @@ export function Tooltip({ label, children, side = "top", className }: TooltipPro
         ? createPortal(
             <span
               role="tooltip"
-              className="pointer-events-none fixed z-[120] max-w-64 rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 shadow-lg shadow-slate-900/10"
+              className="pointer-events-none fixed z-[120] max-w-40 whitespace-normal rounded bg-slate-800 px-2 py-1 text-center text-[11px] font-normal leading-tight text-white shadow-sm"
               style={{ top: position.top, left: position.left, transform: position.transform }}
             >
               {label}
@@ -72,3 +72,4 @@ export function Tooltip({ label, children, side = "top", className }: TooltipPro
     </span>
   );
 }
+

@@ -1,4 +1,4 @@
-﻿import { lazy, Suspense } from "react";
+﻿import { lazy, Suspense, useEffect } from "react";
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router";
 import { DataLoader } from "@/components/ui/DataLoader";
 import { AdminLayout } from "../layouts/admin-layout";
@@ -29,6 +29,26 @@ const ServiciosPage = lazy(() => import("@/modules/servicios/pages/servicios-pag
 const VentaNuevaPage = lazy(() => import("@/modules/ventas/pages/venta-nueva-page").then((module) => ({ default: module.VentaNuevaPage })));
 const VentasPage = lazy(() => import("@/modules/ventas/pages/ventas-page").then((module) => ({ default: module.VentasPage })));
 
+function RoutePreloader() {
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      void Promise.all([
+        import("@/modules/dashboard/pages/dashboard-page"),
+        import("@/modules/clientes/pages/clientes-page"),
+        import("@/modules/servicios/pages/servicios-page"),
+        import("@/modules/productos/pages/productos-page"),
+        import("@/modules/caja/pages/caja-page"),
+        import("@/modules/cobranza/pages/cobranza-page"),
+        import("@/modules/compras/pages/compras-page"),
+        import("@/modules/gastos/pages/gastos-page"),
+        import("@/modules/ventas/pages/ventas-page")
+      ]);
+    }, 1200);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  return null;
+}
 function ProtectedRoutes() {
   return isAuthenticated() ? <Outlet /> : <Navigate to="/login" replace />;
 }
@@ -40,6 +60,7 @@ function RouteFallback() {
 export function AppRouter() {
   return (
     <BrowserRouter>
+      <RoutePreloader />
       <Suspense fallback={<RouteFallback />}>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
@@ -61,7 +82,8 @@ export function AppRouter() {
               <Route path="/productos" element={<ProductosPage />} />
               <Route path="/inventario" element={<Navigate to="/productos" replace />} />
               <Route path="/caja" element={<CajaPage />} />
-              <Route path="/cobranza" element={<CobranzaPage />} />
+              <Route path="/mensualidades" element={<CobranzaPage />} />
+              <Route path="/cobranza" element={<Navigate to="/mensualidades" replace />} />
               <Route path="/compras" element={<ComprasPage />} />
               <Route path="/compras/nueva" element={<CompraNuevaPage />} />
               <Route path="/compras/proveedores" element={<ProveedoresPage />} />
@@ -79,3 +101,7 @@ export function AppRouter() {
     </BrowserRouter>
   );
 }
+
+
+
+
