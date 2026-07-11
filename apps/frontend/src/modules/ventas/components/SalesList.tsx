@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { TicketModal, type TicketData } from "@/components/documents/TicketDocument";
 import { DataTable, type DataTableColumn } from "@/components/ui/DataTable";
 import { IconAction } from "@/components/ui/IconAction";
+import { DateRangeFilter } from "@/components/ui/DateRangeFilter";
+import { FilterSelect } from "@/components/ui/FilterSelect";
+import { TableToolbar } from "@/components/ui/TableToolbar";
 import { DocumentStatusBadge } from "@/components/ui/StatusBadge";
 import { useToast } from "@/components/ui/Toast";
 import { paymentMethodLabels } from "@/constants/payment-methods";
@@ -27,6 +30,17 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
   const toast = useToast();
   const [voidTarget, setVoidTarget] = useState<MaterialSale | null>(null);
   const [ticket, setTicket] = useState<TicketData | null>(null);
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("ALL");
+  const [dateRange, setDateRange] = useState({ from: "", to: "" });
+  const filteredSales = useMemo(() => {
+    const term = search.trim().toLowerCase();
+    return sales.filter((sale) => {
+      const haystack = `${sale.customerName ?? ""} ${sale.documentNumber ?? ""} ${sale.receiptCode ?? ""}`.toLowerCase();
+      const date = sale.createdAt.slice(0, 10);
+      return (!term || haystack.includes(term)) && (status === "ALL" || sale.status === status) && (!dateRange.from || date >= dateRange.from) && (!dateRange.to || date <= dateRange.to);
+    });
+  }, [sales, search, status, dateRange]);
 
   function openTicket(sale: MaterialSale) {
     setTicket({
@@ -116,13 +130,22 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
         storageKey="novalink.sales.table"
         title="Ultimas ventas"
         description="Detalle de ventas registradas, caja y materiales entregados."
-        data={sales}
+        data={filteredSales}
         columns={columns}
         getRowId={(sale) => sale.id}
         isLoading={isLoading}
         emptyMessage="No hay ventas registradas."
         minWidth={900}
-      />
+        toolbar={
+          <TableToolbar search={search} onSearchChange={setSearch} placeholder="Buscar cliente, documento o ticket">
+            <DateRangeFilter value={dateRange} onChange={setDateRange} className="min-w-[21rem]" />
+            <FilterSelect className="w-36" aria-label="Estado" value={status} onChange={(event) => setStatus(event.target.value)}>
+              <option value="ALL">Todos</option>
+              <option value="VALID">Vigentes</option>
+              <option value="VOID">Anulados</option>
+            </FilterSelect>
+          </TableToolbar>
+        }      />
 
       <AppModal
         open={voidTarget !== null}
@@ -148,5 +171,7 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
     </>
   );
 }
+
+
 
 

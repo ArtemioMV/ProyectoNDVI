@@ -131,4 +131,54 @@ export class ReportsService {
 
     return { success: true, data: series };
   }
+
+  /** Inventario valorizado y alertas de stock bajo. */
+  async getInventoryReport() {
+    const materials = await this.prisma.material.findMany({ where: { isActive: true } });
+    let costValue = new Prisma.Decimal(0);
+    let saleValue = new Prisma.Decimal(0);
+    let units = 0;
+    for (const material of materials) {
+      units += material.stock;
+      saleValue = saleValue.add(material.salePrice.mul(material.stock));
+      if (material.costPrice) costValue = costValue.add(material.costPrice.mul(material.stock));
+    }
+    const lowStock = materials
+      .filter((material) => material.stock <= material.minStock)
+      .sort((a, b) => a.stock - b.stock)
+      .slice(0, 8)
+      .map((material) => ({ id: material.id, name: material.name, sku: material.sku, stock: material.stock, minStock: material.minStock, unit: material.unit }));
+
+    return {
+      success: true,
+      data: {
+        products: materials.length,
+        units,
+        costValue: Number(costValue),
+        saleValue: Number(saleValue),
+        lowStock
+      }
+    };
+  }
+
+  /** Ultimos cierres de caja con diferencia contra lo esperado. */
+  async getCashClosures(limit = 8) {
+    const closures = await this.prisma.cashRegister.findMany({
+      where: { status: "CLOSED" },
+      orderBy: { closedAt: "desc" },
+      take: limit
+    });
+    return {
+      success: true,
+      data: closures.map((closure) => ({
+        id: closure.id,
+        openedAt: closure.openedAt,
+        closedAt: closure.closedAt,
+        initialAmount: Number(closure.initialAmount),
+        expectedAmount: Number(closure.expectedAmount),
+        countedAmount: closure.countedAmount === null ? null : Number(closure.countedAmount),
+        difference: closure.difference === null ? null : Number(closure.difference)
+      }))
+    };
+  }
 }

@@ -8,7 +8,7 @@ import { IconAction } from "@/components/ui/IconAction";
 import { MetricCard } from "@/components/ui/Panels";
 import { cn } from "@/components/ui/cn";
 import { paymentMethodLabels, type PaymentMethodKey } from "@/constants/payment-methods";
-import { fetchMonthlySeries, fetchReportSummary } from "../api/reports.api";
+import { fetchCashClosures, fetchInventoryReport, fetchMonthlySeries, fetchReportSummary } from "../api/reports.api";
 import { money } from "@/lib/format";
 
 function firstDayOfMonth() {
@@ -36,6 +36,8 @@ export function ReportesPage() {
     queryFn: () => fetchReportSummary(range)
   });
   const seriesQuery = useQuery({ queryKey: ["report-monthly"], queryFn: fetchMonthlySeries });
+  const inventoryQuery = useQuery({ queryKey: ["report-inventory"], queryFn: fetchInventoryReport });
+  const closuresQuery = useQuery({ queryKey: ["report-cash-closures"], queryFn: fetchCashClosures });
 
   const summary = summaryQuery.data;
   const series = seriesQuery.data ?? [];
@@ -185,6 +187,61 @@ export function ReportesPage() {
                     <strong>{summary.customersByStatus.CANCELLED ?? 0}</strong>
                   </div>
                 </div>
+              </section>
+              {/* Inventario valorizado */}
+              <section className="rounded-xl border bg-background p-4 shadow-sm">
+                <h2 className="mb-3 font-semibold">Inventario</h2>
+                {inventoryQuery.data ? (
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Productos activos</span>
+                      <strong>{inventoryQuery.data.products}</strong>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Unidades en stock</span>
+                      <strong>{inventoryQuery.data.units}</strong>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-slate-500">Valor a costo</span>
+                      <strong>{money(inventoryQuery.data.costValue)}</strong>
+                    </div>
+                    <div className="flex items-center justify-between border-b pb-2">
+                      <span className="text-slate-500">Valor a venta</span>
+                      <strong>{money(inventoryQuery.data.saleValue)}</strong>
+                    </div>
+                    <p className="pt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Stock bajo</p>
+                    {inventoryQuery.data.lowStock.length === 0 ? <p className="text-xs text-slate-500">Sin alertas de stock.</p> : null}
+                    {inventoryQuery.data.lowStock.map((item) => (
+                      <div key={item.id} className="flex items-center justify-between gap-2 rounded-md bg-red-50/60 px-2 py-1 text-xs">
+                        <span className="min-w-0 truncate text-slate-700">{item.name}</span>
+                        <span className="shrink-0 font-semibold text-red-700">{item.stock} / min {item.minStock}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : <DataLoader label="Cargando inventario..." className="min-h-20" />}
+              </section>
+
+              {/* Cierres de caja */}
+              <section className="rounded-xl border bg-background p-4 shadow-sm">
+                <h2 className="mb-3 font-semibold">Ultimos cierres de caja</h2>
+                {closuresQuery.data ? (
+                  <div className="space-y-1.5 text-sm">
+                    {closuresQuery.data.length === 0 ? <p className="text-sm text-slate-500">Aun no hay cierres registrados.</p> : null}
+                    {closuresQuery.data.map((closure) => (
+                      <div key={closure.id} className="flex items-center justify-between gap-2 rounded-md bg-slate-50 px-2.5 py-1.5">
+                        <span className="text-xs text-slate-600">
+                          {closure.closedAt ? new Intl.DateTimeFormat("es-PE", { dateStyle: "short", timeStyle: "short" }).format(new Date(closure.closedAt)) : "-"}
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <strong className="text-xs">{closure.countedAmount === null || closure.countedAmount === undefined ? "-" : money(closure.countedAmount)}</strong>
+                          <span className={cn("rounded-full px-2 py-0.5 text-[11px] font-semibold", !closure.difference ? "bg-emerald-100 text-emerald-700" : closure.difference > 0 ? "bg-blue-100 text-blue-700" : "bg-red-100 text-red-700")}>
+                            {!closure.difference ? "Cuadre exacto" : `${closure.difference > 0 ? "+" : ""}${money(closure.difference)}`}
+                          </span>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ) : <DataLoader label="Cargando cierres..." className="min-h-20" />}
               </section>
             </aside>
           </div>

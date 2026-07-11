@@ -34,3 +34,31 @@ export async function fetchMonthlySeries() {
   const response = await httpClient.get<ApiResponse<MonthlyPoint[]>>("/reportes/mensual");
   return response.data.data;
 }
+
+export type InventoryReport = {
+  products: number;
+  units: number;
+  costValue: number;
+  saleValue: number;
+  lowStock: Array<{ id: string; name: string; sku?: string | null; stock: number; minStock: number; unit: string }>;
+};
+
+export type CashClosure = {
+  id: string;
+  openedAt: string;
+  closedAt?: string | null;
+  initialAmount: number;
+  expectedAmount: number;
+  countedAmount?: number | null;
+  difference?: number | null;
+};
+
+export async function fetchInventoryReport() {
+  const response = await httpClient.get<ApiResponse<InventoryReport>>("/reportes/inventario");
+  return response.data.data;
+}
+
+export async function fetchCashClosures() {
+  const response = await httpClient.get<ApiResponse<CashClosure[]>>("/reportes/caja");
+  return response.data.data;
+}

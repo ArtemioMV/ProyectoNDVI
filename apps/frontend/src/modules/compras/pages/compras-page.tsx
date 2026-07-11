@@ -26,7 +26,7 @@ export function ComprasPage() {
           <Button type="button" icon={<PackagePlus className="h-4 w-4" />} onClick={() => navigate("/compras/nueva")}>
             Nueva compra
           </Button>
-          <Button type="button" variant="secondary" icon={<Truck className="h-4 w-4" />} onClick={() => navigate("/compras/proveedores")}>
+          <Button type="button" variant="secondary" icon={<Truck className="h-4 w-4" />} onClick={() => navigate("/proveedores")}>
             Proveedores
           </Button>
         </div>

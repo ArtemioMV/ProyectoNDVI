@@ -1,4 +1,5 @@
 ﻿import {
+  Truck,
   ShieldCheck,
   BarChart3,
   Bell,
@@ -34,6 +35,7 @@ const navItems = [
   { href: "/caja", label: "Caja", icon: WalletCards },
   { href: "/mensualidades", label: "Mensualidades", icon: CalendarClock },
   { href: "/compras", label: "Compras", icon: ShoppingBag },
+  { href: "/proveedores", label: "Proveedores", icon: Truck },
   { href: "/gastos", label: "Gastos", icon: FileMinus2 },
   { href: "/ventas", label: "Ventas", icon: ShoppingCart },
   { href: "/reportes", label: "Reportes", icon: BarChart3 },

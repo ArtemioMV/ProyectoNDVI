@@ -86,7 +86,8 @@ export function AppRouter() {
               <Route path="/cobranza" element={<Navigate to="/mensualidades" replace />} />
               <Route path="/compras" element={<ComprasPage />} />
               <Route path="/compras/nueva" element={<CompraNuevaPage />} />
-              <Route path="/compras/proveedores" element={<ProveedoresPage />} />
+              <Route path="/proveedores" element={<ProveedoresPage />} />
+              <Route path="/compras/proveedores" element={<Navigate to="/proveedores" replace />} />
               <Route path="/gastos" element={<GastosPage />} />
               <Route path="/ventas" element={<VentasPage />} />
               <Route path="/ventas/nueva" element={<VentaNuevaPage />} />

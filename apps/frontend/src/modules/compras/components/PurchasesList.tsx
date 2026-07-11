@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { TicketModal, type TicketData } from "@/components/documents/TicketDocument";
 import { DataTable, type DataTableColumn } from "@/components/ui/DataTable";
 import { IconAction } from "@/components/ui/IconAction";
+import { DateRangeFilter } from "@/components/ui/DateRangeFilter";
+import { FilterSelect } from "@/components/ui/FilterSelect";
+import { TableToolbar } from "@/components/ui/TableToolbar";
 import { DocumentStatusBadge } from "@/components/ui/StatusBadge";
 import { useToast } from "@/components/ui/Toast";
 import { paymentMethodLabels } from "@/constants/payment-methods";
@@ -22,6 +25,17 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
   const toast = useToast();
   const [voidTarget, setVoidTarget] = useState<MaterialPurchase | null>(null);
   const [ticket, setTicket] = useState<TicketData | null>(null);
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("ALL");
+  const [dateRange, setDateRange] = useState({ from: "", to: "" });
+  const filteredPurchases = useMemo(() => {
+    const term = search.trim().toLowerCase();
+    return purchases.filter((purchase) => {
+      const haystack = `${purchase.supplier?.name ?? purchase.supplierName ?? ""} ${purchase.documentNumber ?? ""} ${purchase.receiptNumber ?? ""} ${purchase.receiptCode ?? ""}`.toLowerCase();
+      const date = purchase.purchasedAt.slice(0, 10);
+      return (!term || haystack.includes(term)) && (status === "ALL" || purchase.status === status) && (!dateRange.from || date >= dateRange.from) && (!dateRange.to || date <= dateRange.to);
+    });
+  }, [purchases, search, status, dateRange]);
 
   function openTicket(purchase: MaterialPurchase) {
     setTicket({
@@ -113,13 +127,22 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
         storageKey="novalink.purchases.table"
         title="Ultimas compras"
         description="Compras de materiales, gastos de stock y comprobantes."
-        data={purchases}
+        data={filteredPurchases}
         columns={columns}
         getRowId={(purchase) => purchase.id}
         isLoading={isLoading}
         emptyMessage="No hay compras registradas."
         minWidth={940}
-      />
+        toolbar={
+          <TableToolbar search={search} onSearchChange={setSearch} placeholder="Buscar proveedor, documento o ticket">
+            <DateRangeFilter value={dateRange} onChange={setDateRange} className="min-w-[21rem]" />
+            <FilterSelect className="w-36" aria-label="Estado" value={status} onChange={(event) => setStatus(event.target.value)}>
+              <option value="ALL">Todos</option>
+              <option value="VALID">Vigentes</option>
+              <option value="VOID">Anulados</option>
+            </FilterSelect>
+          </TableToolbar>
+        }      />
 
       <AppModal
         open={voidTarget !== null}
@@ -145,5 +168,7 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
     </>
   );
 }
+
+
 
 

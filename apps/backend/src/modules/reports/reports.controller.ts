@@ -18,6 +18,20 @@ export class ReportsController {
     return this.reportsService.getSummary(from, to);
   }
 
+  @Get("inventario")
+  @Permissions("reportes.ver")
+  @ApiOperation({ summary: "Inventario valorizado y productos con stock bajo" })
+  getInventory() {
+    return this.reportsService.getInventoryReport();
+  }
+
+  @Get("caja")
+  @Permissions("reportes.ver")
+  @ApiOperation({ summary: "Ultimos cierres de caja con diferencias" })
+  getCashClosures() {
+    return this.reportsService.getCashClosures();
+  }
+
   @Get("mensual")
   @Permissions("reportes.ver")
   @ApiOperation({ summary: "Serie mensual de ingresos vs salidas (ultimos 6 meses)" })
