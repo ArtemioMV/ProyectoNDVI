@@ -8,6 +8,7 @@ export type CashMovement = {
   type: CashMovementType;
   source: CashMovementSource;
   referenceId: string | null;
+  receiptCode?: string | null;
   amount: number;
   description: string;
   createdAt: string;

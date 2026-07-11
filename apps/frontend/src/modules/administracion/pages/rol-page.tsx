@@ -110,7 +110,8 @@ export function RolPage() {
               <div className="flex items-center justify-between gap-3 border-b bg-table-head px-3 py-2">
                 <span className="text-xs font-semibold uppercase tracking-wide text-slate-600">{prefix}</span>
                 <MiniSwitch
-                  label={allActive ? "Todo" : `${activeCount}/${codes.length}`}
+                  label=""
+                  aria-label={`Activar todos los permisos de ${prefix}`}
                   checked={allActive}
                   onChange={() =>
                     setForm((current) => ({

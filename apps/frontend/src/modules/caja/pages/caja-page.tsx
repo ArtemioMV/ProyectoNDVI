@@ -1,15 +1,17 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Banknote, History, LockKeyhole, Plus, WalletCards } from "lucide-react";
+import { LockKeyhole, Plus, WalletCards } from "lucide-react";
 import { useState } from "react";
 import { AppModal } from "@/components/ui/AppModal";
 import { Button } from "@/components/ui/Button";
 import { DataLoader } from "@/components/ui/DataLoader";
-import { DisclosurePanel, MetricCard } from "@/components/ui/Panels";
+import { Alert } from "@/components/ui/Alert";
+import { DisclosurePanel } from "@/components/ui/Panels";
+import { cn } from "@/components/ui/cn";
 import { closeCashRegister, createCashMovement, fetchCashRegisterHistory, fetchCurrentCashRegister, openCashRegister, reopenCashRegister } from "../api/cash-register.api";
 import { CashMovementForm } from "../components/CashMovementForm";
 import { CloseCashRegisterForm } from "../components/CloseCashRegisterForm";
 import { OpenCashRegisterForm } from "../components/OpenCashRegisterForm";
-import { CashHistoryList, CashMovementList, CashRegisterSummary } from "../components/CashRegisterViews";
+import { CashClosuresPanel, CashMovementList, CashStatusHeader } from "../components/CashRegisterViews";
 import type { CashRegister, CloseCashRegisterPayload, CreateCashMovementPayload, OpenCashRegisterPayload } from "../types/cash-register.types";
 import { money } from "@/lib/format";
 
@@ -21,6 +23,7 @@ export function CajaPage() {
   const [closeModalOpen, setCloseModalOpen] = useState(false);
   const [reopenTarget, setReopenTarget] = useState<CashRegister | null>(null);
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [tab, setTab] = useState<"movimientos" | "cierres">("movimientos");
 
   const currentQuery = useQuery({ queryKey: ["cash-register", "current"], queryFn: fetchCurrentCashRegister });
   const historyQuery = useQuery({ queryKey: ["cash-register", "history"], queryFn: fetchCashRegisterHistory });
@@ -88,15 +91,10 @@ export function CajaPage() {
 
       {currentQuery.isLoading ? <DataLoader className="rounded-lg border bg-background" /> : null}
 
-      {!currentQuery.isLoading && currentCash ? (
-        <>
-          <div className="grid gap-4 md:grid-cols-3">
-            <MetricCard label="Inicial" value={money(currentCash.initialAmount)} icon={<WalletCards className="h-4 w-4" />} />
-            <MetricCard label="Esperado" value={money(currentCash.expectedAmount)} icon={<Banknote className="h-4 w-4" />} tone="success" />
-            <MetricCard label="Movimientos" value={currentCash.movements.length} icon={<History className="h-4 w-4" />} />
-          </div>
-          <CashRegisterSummary cashRegister={currentCash} />
-        </>
+      {!currentQuery.isLoading && currentCash ? <CashStatusHeader cashRegister={currentCash} /> : null}
+
+      {currentCash && currentCash.expectedAmount < 0 ? (
+        <Alert tone="error">Los egresos superan el efectivo disponible en {money(Math.abs(currentCash.expectedAmount))}.</Alert>
       ) : null}
 
       {!currentQuery.isLoading && !currentCash ? (
@@ -105,17 +103,38 @@ export function CajaPage() {
         </DisclosurePanel>
       ) : null}
 
-      {currentCash ? (
-        <div className="space-y-4">
-          <DisclosurePanel title="Registrar movimiento" description="Ingreso o egreso manual, independiente de pagos automaticos." open={movementPanel} onToggle={() => setMovementPanel((value) => !value)}>
-            <CashMovementForm isSubmitting={movementMutation.isPending} onSubmit={(payload) => movementMutation.mutate(payload)} />
-          </DisclosurePanel>
-          <CashMovementList movements={currentCash.movements} />
-        </div>
-      ) : null}
+      {/* Tabs Movimientos | Cierres de caja */}
+      <div className="flex gap-1 border-b">
+        {([["movimientos", "Movimientos"], ["cierres", "Cierres de caja"]] as const).map(([key, label]) => (
+          <button
+            key={key}
+            type="button"
+            className={cn(
+              "-mb-px cursor-pointer border-b-2 px-4 py-2 text-sm font-medium transition",
+              tab === key ? "border-primary text-primary" : "border-transparent text-slate-500 hover:text-slate-700"
+            )}
+            onClick={() => setTab(key)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
 
-      {historyQuery.isLoading ? <DataLoader label="Cargando historial..." className="rounded-lg border bg-background" /> : (
-        <CashHistoryList
+      {tab === "movimientos" ? (
+        currentCash ? (
+          <div className="space-y-4">
+            <DisclosurePanel title="Registrar movimiento" description="Ingreso o egreso manual, independiente de pagos automaticos." open={movementPanel} onToggle={() => setMovementPanel((value) => !value)}>
+              <CashMovementForm isSubmitting={movementMutation.isPending} onSubmit={(payload) => movementMutation.mutate(payload)} />
+            </DisclosurePanel>
+            <CashMovementList movements={currentCash.movements} />
+          </div>
+        ) : (
+          <div className="rounded-xl border bg-background p-6 text-sm text-slate-500 shadow-sm">No hay caja abierta: abre caja para ver y registrar movimientos.</div>
+        )
+      ) : historyQuery.isLoading ? (
+        <DataLoader label="Cargando historial..." className="rounded-lg border bg-background" />
+      ) : (
+        <CashClosuresPanel
           cashRegisters={historyQuery.data ?? []}
           onReopen={currentCash ? undefined : (cashRegister) => setReopenTarget(cashRegister)}
           reopeningId={reopenMutation.isPending ? reopenTarget?.id ?? null : null}
