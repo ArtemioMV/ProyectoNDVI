@@ -181,4 +181,64 @@ export class ReportsService {
       }))
     };
   }
+
+  /**
+   * Resumen anual estilo "CONTROL FINANCIERO": ingreso/salida/neto/margen por mes
+   * y reparto de la ganancia neta entre socios activos segun su % de participacion.
+   */
+  async getProfitReport(yearInput?: string) {
+    const year = yearInput ? Number(yearInput) : new Date().getFullYear();
+    if (!Number.isInteger(year) || year < 2000 || year > 2100) {
+      throw new BadRequestException("Anio invalido");
+    }
+    const from = new Date(year, 0, 1);
+    const to = new Date(year + 1, 0, 1);
+
+    const [payments, sales, purchases, expenses, partners] = await Promise.all([
+      this.prisma.payment.findMany({ where: { status: PaymentStatus.VALID, paidAt: { gte: from, lt: to } }, select: { amount: true, paidAt: true } }),
+      this.prisma.materialSale.findMany({ where: { status: "VALID", createdAt: { gte: from, lt: to } }, select: { totalAmount: true, createdAt: true } }),
+      this.prisma.materialPurchase.findMany({ where: { status: "REGISTERED", purchasedAt: { gte: from, lt: to } }, select: { totalAmount: true, purchasedAt: true } }),
+      this.prisma.expense.findMany({ where: { status: "VALID", expenseDate: { gte: from, lt: to } }, select: { amount: true, expenseDate: true } }),
+      this.prisma.partner.findMany({ where: { isActive: true }, orderBy: [{ sortOrder: "asc" }, { name: "asc" }] })
+    ]);
+
+    const months = Array.from({ length: 12 }, (_, index) => ({ month: index + 1, income: 0, outflow: 0 }));
+    for (const payment of payments) months[payment.paidAt.getMonth()].income += Number(payment.amount);
+    for (const sale of sales) months[sale.createdAt.getMonth()].income += Number(sale.totalAmount);
+    for (const purchase of purchases) months[purchase.purchasedAt.getMonth()].outflow += Number(purchase.totalAmount);
+    for (const expense of expenses) months[expense.expenseDate.getMonth()].outflow += Number(expense.amount);
+
+    const partnerList = partners.map((partner) => ({ id: partner.id, name: partner.name, sharePercent: Number(partner.sharePercent) }));
+    const rows = months.map((entry) => {
+      const net = entry.income - entry.outflow;
+      return {
+        month: entry.month,
+        income: entry.income,
+        outflow: entry.outflow,
+        net,
+        margin: entry.income > 0 ? net / entry.income : 0,
+        shares: partnerList.map((partner) => ({ partnerId: partner.id, amount: Math.round(net * partner.sharePercent) / 100 }))
+      };
+    });
+
+    const totalIncome = rows.reduce((sum, row) => sum + row.income, 0);
+    const totalOutflow = rows.reduce((sum, row) => sum + row.outflow, 0);
+    const totalNet = totalIncome - totalOutflow;
+
+    return {
+      success: true,
+      data: {
+        year,
+        partners: partnerList,
+        rows,
+        totals: {
+          income: totalIncome,
+          outflow: totalOutflow,
+          net: totalNet,
+          margin: totalIncome > 0 ? totalNet / totalIncome : 0,
+          shares: partnerList.map((partner) => ({ partnerId: partner.id, amount: Math.round(totalNet * partner.sharePercent) / 100 }))
+        }
+      }
+    };
+  }
 }

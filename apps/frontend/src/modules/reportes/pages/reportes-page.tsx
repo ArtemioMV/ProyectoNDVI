@@ -8,7 +8,7 @@ import { IconAction } from "@/components/ui/IconAction";
 import { MetricCard } from "@/components/ui/Panels";
 import { cn } from "@/components/ui/cn";
 import { paymentMethodLabels, type PaymentMethodKey } from "@/constants/payment-methods";
-import { fetchCashClosures, fetchInventoryReport, fetchMonthlySeries, fetchReportSummary } from "../api/reports.api";
+import { fetchCashClosures, fetchInventoryReport, fetchMonthlySeries, fetchProfitReport, fetchReportSummary } from "../api/reports.api";
 import { money } from "@/lib/format";
 
 function firstDayOfMonth() {
@@ -38,6 +38,7 @@ export function ReportesPage() {
   const seriesQuery = useQuery({ queryKey: ["report-monthly"], queryFn: fetchMonthlySeries });
   const inventoryQuery = useQuery({ queryKey: ["report-inventory"], queryFn: fetchInventoryReport });
   const closuresQuery = useQuery({ queryKey: ["report-cash-closures"], queryFn: fetchCashClosures });
+  const profitQuery = useQuery({ queryKey: ["report-profit"], queryFn: () => fetchProfitReport() });
 
   const summary = summaryQuery.data;
   const series = seriesQuery.data ?? [];
@@ -97,6 +98,65 @@ export function ReportesPage() {
                     </div>
                   ))}
                 </div>
+              </section>
+
+              {/* Ganancias por socio (estilo CONTROL FINANCIERO anual) */}
+              <section className="overflow-hidden rounded-xl border bg-background shadow-sm">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b p-4">
+                  <h2 className="font-semibold">Ganancias por socio · {profitQuery.data?.year ?? new Date().getFullYear()}</h2>
+                  <span className="text-sm text-slate-500">
+                    {profitQuery.data && profitQuery.data.partners.length > 0
+                      ? profitQuery.data.partners.map((partner) => `${partner.name} ${partner.sharePercent.toFixed(0)}%`).join(" · ")
+                      : "Registra socios en Configuracion para ver el reparto"}
+                  </span>
+                </div>
+                {profitQuery.data ? (
+                  <div className="scrollbar-thin overflow-x-auto">
+                    <table className="w-full text-sm" style={{ minWidth: 640 }}>
+                      <thead className="bg-table-head text-left text-xs uppercase tracking-wide text-slate-600">
+                        <tr>
+                          <th className="px-4 py-3 font-semibold">Mes</th>
+                          <th className="px-4 py-3 text-right font-semibold">Ingreso</th>
+                          <th className="px-4 py-3 text-right font-semibold">Salida</th>
+                          <th className="px-4 py-3 text-right font-semibold">Neto</th>
+                          <th className="px-4 py-3 text-right font-semibold">Margen</th>
+                          {profitQuery.data.partners.map((partner) => (
+                            <th key={partner.id} className="px-4 py-3 text-right font-semibold">{partner.name}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y">
+                        {profitQuery.data.rows.filter((row) => row.income > 0 || row.outflow > 0).map((row) => (
+                          <tr key={row.month} className="transition-colors hover:bg-primary/[0.025]">
+                            <td className="px-4 py-2.5 font-medium">{monthNames[row.month - 1]}</td>
+                            <td className="px-4 py-2.5 text-right">{money(row.income)}</td>
+                            <td className="px-4 py-2.5 text-right text-slate-600">{money(row.outflow)}</td>
+                            <td className={cn("px-4 py-2.5 text-right font-semibold", row.net >= 0 ? "text-emerald-700" : "text-red-700")}>{money(row.net)}</td>
+                            <td className="px-4 py-2.5 text-right text-slate-600">{(row.margin * 100).toFixed(1)}%</td>
+                            {row.shares.map((share) => (
+                              <td key={share.partnerId} className="px-4 py-2.5 text-right">{money(share.amount)}</td>
+                            ))}
+                          </tr>
+                        ))}
+                        {profitQuery.data.rows.every((row) => row.income === 0 && row.outflow === 0) ? (
+                          <tr><td colSpan={5 + profitQuery.data.partners.length} className="px-4 py-4 text-sm text-slate-500">Sin movimientos este anio.</td></tr>
+                        ) : null}
+                      </tbody>
+                      <tfoot className="border-t bg-muted/40 font-semibold">
+                        <tr>
+                          <td className="px-4 py-3">TOTAL</td>
+                          <td className="px-4 py-3 text-right">{money(profitQuery.data.totals.income)}</td>
+                          <td className="px-4 py-3 text-right">{money(profitQuery.data.totals.outflow)}</td>
+                          <td className={cn("px-4 py-3 text-right", profitQuery.data.totals.net >= 0 ? "text-emerald-700" : "text-red-700")}>{money(profitQuery.data.totals.net)}</td>
+                          <td className="px-4 py-3 text-right">{(profitQuery.data.totals.margin * 100).toFixed(1)}%</td>
+                          {profitQuery.data.totals.shares.map((share) => (
+                            <td key={share.partnerId} className="px-4 py-3 text-right">{money(share.amount)}</td>
+                          ))}
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                ) : <DataLoader label="Calculando ganancias..." className="min-h-24" />}
               </section>
 
               {/* Top deudores */}

@@ -32,6 +32,14 @@ export class ReportsController {
     return this.reportsService.getCashClosures();
   }
 
+  @Get("ganancias")
+  @Permissions("reportes.ver")
+  @ApiOperation({ summary: "Resumen anual y reparto de ganancia neta entre socios" })
+  @ApiQuery({ name: "year", required: false, example: "2026" })
+  getProfit(@Query("year") year?: string) {
+    return this.reportsService.getProfitReport(year);
+  }
+
   @Get("mensual")
   @Permissions("reportes.ver")
   @ApiOperation({ summary: "Serie mensual de ingresos vs salidas (ultimos 6 meses)" })

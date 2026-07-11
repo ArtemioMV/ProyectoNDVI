@@ -1,57 +1,40 @@
 ﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { KeyRound, Pencil, Power, ShieldCheck, UserPlus } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router";
 import { AppModal } from "@/components/ui/AppModal";
 import { Button } from "@/components/ui/Button";
 import { DataTable, type DataTableColumn } from "@/components/ui/DataTable";
-import { TextField, TextareaField } from "@/components/ui/FormControls";
+import { TextField } from "@/components/ui/FormControls";
 import { IconAction } from "@/components/ui/IconAction";
 import { CustomerStatusBadge } from "@/components/ui/StatusBadge";
+import { MiniSwitch } from "@/components/ui/ToggleControls";
 import { useToast } from "@/components/ui/Toast";
 import {
-  createAdminRole,
   createAdminUser,
-  fetchAdminPermissions,
   fetchAdminRoles,
   fetchAdminUsers,
-  updateAdminRole,
   updateAdminUser,
-  type AdminRole,
   type AdminUser,
-  type SaveRolePayload,
   type SaveUserPayload
 } from "../api/admin.api";
 import { tableDate } from "@/lib/format";
 
-/** Agrupa codigos de permiso por su modulo (prefijo antes del primer punto). */
-function groupPermissions(codes: string[]) {
-  const groups = new Map<string, string[]>();
-  codes.forEach((code) => {
-    const [prefix] = code.split(".");
-    groups.set(prefix, [...(groups.get(prefix) ?? []), code]);
-  });
-  return Array.from(groups.entries()).sort(([a], [b]) => a.localeCompare(b));
-}
-
 const emptyUserForm = { username: "", password: "", roles: [] as string[], isActive: true };
-const emptyRoleForm = { name: "", description: "", permissions: [] as string[] };
 
 export function AdministracionPage() {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   const toast = useToast();
 
   const usersQuery = useQuery({ queryKey: ["admin-users"], queryFn: fetchAdminUsers });
   const rolesQuery = useQuery({ queryKey: ["admin-roles"], queryFn: fetchAdminRoles });
-  const permissionsQuery = useQuery({ queryKey: ["admin-permissions"], queryFn: fetchAdminPermissions });
 
   const [userModal, setUserModal] = useState<{ mode: "create" } | { mode: "edit"; user: AdminUser } | null>(null);
   const [userForm, setUserForm] = useState(emptyUserForm);
   const [toggleUser, setToggleUser] = useState<AdminUser | null>(null);
-  const [roleModal, setRoleModal] = useState<{ mode: "create" } | { mode: "edit"; role: AdminRole } | null>(null);
-  const [roleForm, setRoleForm] = useState(emptyRoleForm);
 
   const roleNames = (rolesQuery.data ?? []).map((role) => role.name);
-  const permissionCodes = (permissionsQuery.data ?? []).map((permission) => permission.code);
 
   function invalidate() {
     void queryClient.invalidateQueries({ queryKey: ["admin-users"] });
@@ -85,24 +68,6 @@ export function AdministracionPage() {
     onError: () => toast({ tone: "error", message: "No se pudo cambiar el estado del usuario." })
   });
 
-  const roleMutation = useMutation({
-    mutationFn: async () => {
-      const payload: SaveRolePayload = {
-        name: roleForm.name.trim(),
-        description: roleForm.description.trim() || undefined,
-        permissions: roleForm.permissions
-      };
-      if (roleModal?.mode === "edit") return updateAdminRole(roleModal.role.id, payload);
-      return createAdminRole({ ...payload, name: roleForm.name.trim() });
-    },
-    onSuccess: () => {
-      toast({ tone: "success", message: roleModal?.mode === "edit" ? "Rol actualizado." : "Rol creado." });
-      setRoleModal(null);
-      invalidate();
-    },
-    onError: () => toast({ tone: "error", message: "No se pudo guardar el rol. Revisa nombre duplicado." })
-  });
-
   function openCreateUser() {
     setUserForm(emptyUserForm);
     setUserModal({ mode: "create" });
@@ -111,16 +76,6 @@ export function AdministracionPage() {
   function openEditUser(user: AdminUser) {
     setUserForm({ username: user.username, password: "", roles: user.roles, isActive: user.isActive });
     setUserModal({ mode: "edit", user });
-  }
-
-  function openCreateRole() {
-    setRoleForm(emptyRoleForm);
-    setRoleModal({ mode: "create" });
-  }
-
-  function openEditRole(role: AdminRole) {
-    setRoleForm({ name: role.name, description: role.description ?? "", permissions: role.permissions });
-    setRoleModal({ mode: "edit", role });
   }
 
   function toggleInList(list: string[], value: string) {
@@ -180,7 +135,7 @@ export function AdministracionPage() {
           <p className="text-sm text-slate-500">Usuarios del panel, roles y permisos por modulo.</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="secondary" icon={<ShieldCheck className="h-4 w-4" />} onClick={openCreateRole}>Nuevo rol</Button>
+          <Button type="button" variant="secondary" icon={<ShieldCheck className="h-4 w-4" />} onClick={() => navigate("/administracion/roles/nuevo")}>Nuevo rol</Button>
           <Button type="button" icon={<UserPlus className="h-4 w-4" />} onClick={openCreateUser}>Nuevo usuario</Button>
         </div>
       </div>
@@ -213,7 +168,7 @@ export function AdministracionPage() {
                   <strong className="block truncate">{role.name}</strong>
                   <p className="text-xs text-slate-500">{role.description || "Sin descripcion"}</p>
                 </div>
-                <IconAction label="Editar rol" icon={<Pencil />} tone="edit" variant="outline" size="sm" onClick={() => openEditRole(role)} />
+                <IconAction label="Editar rol" icon={<Pencil />} tone="edit" variant="outline" size="sm" onClick={() => navigate(`/administracion/roles/${role.id}`)} />
               </div>
               <p className="mt-2 flex items-center gap-1.5 text-xs text-slate-500">
                 <KeyRound className="h-4 w-4 text-slate-400" /> {role.permissions.length} permiso(s)
@@ -259,20 +214,14 @@ export function AdministracionPage() {
           />
           <fieldset className="rounded-md border px-3 pb-3 pt-1">
             <legend className="px-1 text-xs font-medium text-slate-600">Roles</legend>
-            <div className="flex flex-wrap gap-2">
+            <div className="grid gap-1.5 sm:grid-cols-2">
               {roleNames.map((role) => (
-                <button
+                <MiniSwitch
                   key={role}
-                  type="button"
-                  aria-pressed={userForm.roles.includes(role)}
-                  className={[
-                    "rounded-full border px-3 py-1 text-xs font-medium transition",
-                    userForm.roles.includes(role) ? "border-primary bg-primary/10 text-primary" : "border-slate-200 bg-background text-slate-600 hover:bg-muted"
-                  ].join(" ")}
-                  onClick={() => setUserForm((current) => ({ ...current, roles: toggleInList(current.roles, role) }))}
-                >
-                  {role}
-                </button>
+                  label={role}
+                  checked={userForm.roles.includes(role)}
+                  onChange={() => setUserForm((current) => ({ ...current, roles: toggleInList(current.roles, role) }))}
+                />
               ))}
               {roleNames.length === 0 ? <p className="text-xs text-slate-500">Aun no hay roles: crea uno primero.</p> : null}
             </div>
@@ -308,54 +257,6 @@ export function AdministracionPage() {
         </p>
       </AppModal>
 
-      {/* Modal rol (crear/editar) con permisos agrupados */}
-      <AppModal
-        open={roleModal !== null}
-        size="md"
-        title={roleModal?.mode === "edit" ? "Editar rol" : "Nuevo rol"}
-        description={roleModal?.mode === "edit" ? roleModal.role.name : "Agrupa permisos para asignarlos a usuarios"}
-        onClose={() => setRoleModal(null)}
-        footer={
-          <div className="flex justify-end gap-2">
-            <Button type="button" variant="ghost" disabled={roleMutation.isPending} onClick={() => setRoleModal(null)}>Volver</Button>
-            <Button type="button" disabled={roleMutation.isPending || !roleForm.name.trim()} onClick={() => roleMutation.mutate()}>
-              {roleMutation.isPending ? "Guardando..." : roleModal?.mode === "edit" ? "Actualizar rol" : "Crear rol"}
-            </Button>
-          </div>
-        }
-      >
-        <div className="space-y-3">
-          <TextField label="Nombre" hint="Se guarda en mayusculas, ej. COBRADOR" value={roleForm.name} onChange={(event) => setRoleForm((current) => ({ ...current, name: event.target.value }))} />
-          <TextareaField label="Descripcion" className="min-h-16" value={roleForm.description} onChange={(event) => setRoleForm((current) => ({ ...current, description: event.target.value }))} />
-          <fieldset className="rounded-md border px-3 pb-3 pt-1">
-            <legend className="px-1 text-xs font-medium text-slate-600">Permisos ({roleForm.permissions.length} seleccionados)</legend>
-            <div className="max-h-72 space-y-3 overflow-y-auto pr-1 scrollbar-thin">
-              {groupPermissions(permissionCodes).map(([prefix, codes]) => (
-                <div key={prefix}>
-                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-slate-500">{prefix}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {codes.map((code) => (
-                      <button
-                        key={code}
-                        type="button"
-                        aria-pressed={roleForm.permissions.includes(code)}
-                        className={[
-                          "rounded-full border px-2.5 py-0.5 text-xs transition",
-                          roleForm.permissions.includes(code) ? "border-primary bg-primary/10 font-medium text-primary" : "border-slate-200 bg-background text-slate-600 hover:bg-muted"
-                        ].join(" ")}
-                        onClick={() => setRoleForm((current) => ({ ...current, permissions: toggleInList(current.permissions, code) }))}
-                      >
-                        {code}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              ))}
-              {permissionCodes.length === 0 ? <p className="text-xs text-slate-500">Cargando permisos...</p> : null}
-            </div>
-          </fieldset>
-        </div>
-      </AppModal>
     </section>
   );
 }

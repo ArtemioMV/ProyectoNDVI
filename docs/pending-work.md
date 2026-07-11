@@ -88,6 +88,19 @@ Flujo: Cliente -> Servicios -> Mensualidades (auto por fecha de alta) -> Pagos -
       con barras de proporcion y resumen de cartera.
 - [ ] Exportar reportes (CSV/impresion) cuando se pida.
 
+
+## Socios y ganancias + permisos por pagina (2026-07-11)
+
+- [x] Modelo `Partner` (nombre, % participacion, activo; suma activa max 100%) con CRUD
+      `/socios` y panel "Socios" en Configuracion (mini-switch activo, modal alta/edicion).
+- [x] `GET /reportes/ganancias?year=`: tabla anual estilo "CONTROL FINANCIERO MULTIVISION"
+      (ingreso/salida/neto/margen por mes) + reparto de la ganancia neta entre socios activos.
+      Seccion "Ganancias por socio" en Reportes.
+- [x] `MiniSwitch` compartido (interruptor compacto) en ToggleControls.
+- [x] Permisos de rol a **pagina propia** `/administracion/roles/nuevo` y `/administracion/roles/:id`
+      (mini-switches por modulo y accion, master switch por modulo). El modal se elimino.
+- [x] Proveedores como modulo propio en el nav (`/proveedores`).
+
 ## Bloque 1: estados y anulaciones (2026-07-10)
 
 - [x] Suspender/cancelar/reactivar **cliente** (`PATCH /customers/:id/estado`, cascada a servicios)

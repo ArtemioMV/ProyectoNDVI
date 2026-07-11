@@ -19,6 +19,7 @@ const ComprasPage = lazy(() => import("@/modules/compras/pages/compras-page").th
 const ProveedoresPage = lazy(() => import("@/modules/compras/pages/proveedores-page").then((module) => ({ default: module.ProveedoresPage })));
 const ConfiguracionPage = lazy(() => import("@/modules/configuracion/pages/configuracion-page").then((module) => ({ default: module.ConfiguracionPage })));
 const AdministracionPage = lazy(() => import("@/modules/administracion/pages/administracion-page").then((module) => ({ default: module.AdministracionPage })));
+const RolPage = lazy(() => import("@/modules/administracion/pages/rol-page").then((module) => ({ default: module.RolPage })));
 const DashboardPage = lazy(() => import("@/modules/dashboard/pages/dashboard-page").then((module) => ({ default: module.DashboardPage })));
 const GastosPage = lazy(() => import("@/modules/gastos/pages/gastos-page").then((module) => ({ default: module.GastosPage })));
 const NotFoundPage = lazy(() => import("@/modules/errors/pages/not-found-page").then((module) => ({ default: module.NotFoundPage })));
@@ -94,6 +95,8 @@ export function AppRouter() {
               <Route path="/reportes" element={<ReportesPage />} />
               <Route path="/configuracion" element={<ConfiguracionPage />} />
               <Route path="/administracion" element={<AdministracionPage />} />
+              <Route path="/administracion/roles/nuevo" element={<RolPage />} />
+              <Route path="/administracion/roles/:roleId" element={<RolPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Route>

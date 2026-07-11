@@ -35,3 +35,22 @@ export function CheckboxField({ label, description, className, ...props }: Check
     </label>
   );
 }
+
+type MiniSwitchProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type"> & {
+  label: string;
+};
+
+/**
+ * Interruptor compacto (14px) para listas densas: permisos por accion, socios,
+ * columnas, etc. El texto va al costado en tamano xs; para bloques con titulo y
+ * descripcion usar SwitchField.
+ */
+export function MiniSwitch({ label, checked, className, ...props }: MiniSwitchProps) {
+  return (
+    <label className={cn("inline-flex cursor-pointer items-center gap-2", className)}>
+      <input className="peer sr-only" type="checkbox" checked={checked} {...props} />
+      <span className="relative h-3.5 w-6 shrink-0 rounded-full bg-slate-300 transition-colors after:absolute after:left-0.5 after:top-0.5 after:h-2.5 after:w-2.5 after:rounded-full after:bg-white after:shadow-sm after:transition-transform after:content-[''] peer-checked:bg-primary peer-checked:after:translate-x-2.5 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary peer-disabled:opacity-50" />
+      <span className="select-none text-xs text-slate-600 peer-checked:font-medium peer-checked:text-slate-800">{label}</span>
+    </label>
+  );
+}

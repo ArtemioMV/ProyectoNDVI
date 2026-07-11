@@ -1,17 +1,19 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Building2, ImagePlus, Mail, Plus, Printer, Save, ShieldCheck, WalletCards } from "lucide-react";
+import { Building2, ImagePlus, Mail, Pencil, Plus, Printer, Save, ShieldCheck, Users, WalletCards } from "lucide-react";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { ContractDocument, type ContractService } from "@/components/documents/ContractDocument";
 import { Alert } from "@/components/ui/Alert";
 import { Button } from "@/components/ui/Button";
 import { DataLoader } from "@/components/ui/DataLoader";
+import { IconAction } from "@/components/ui/IconAction";
 import { AppModal } from "@/components/ui/AppModal";
 import { SelectField, TextField, TextareaField } from "@/components/ui/FormControls";
-import { SwitchField } from "@/components/ui/ToggleControls";
+import { MiniSwitch, SwitchField } from "@/components/ui/ToggleControls";
 import { useToast } from "@/components/ui/Toast";
 import { CompanySettings, getCompanySettings, setCompanySettings } from "@/services/settings/company-settings";
 import { paymentMethodLabels, type PaymentMethodKey } from "@/constants/payment-methods";
 import { createPaymentMethodSetting, fetchPaymentMethodSettings, savePaymentMethodSetting, type PaymentMethodSetting, type SavePaymentMethodSettingPayload } from "../api/payment-methods.api";
+import { createPartner, fetchPartners, updatePartner, type Partner } from "../api/partners.api";
 import { fetchSystemSettings, saveSystemSettings } from "../api/system-settings.api";
 
 const sampleServices: ContractService[] = [
@@ -20,6 +22,99 @@ const sampleServices: ContractService[] = [
 ];
 
 const emptyNewMethod = { method: "" as "" | PaymentMethodKey, label: "", description: "", sortOrder: 100, requiresEvidence: false, isActive: true };
+
+const emptyPartnerForm = { name: "", sharePercent: 0 };
+
+function PartnersPanel() {
+  const toast = useToast();
+  const queryClient = useQueryClient();
+  const partnersQuery = useQuery({ queryKey: ["partners"], queryFn: fetchPartners });
+  const [partnerModal, setPartnerModal] = useState<{ mode: "create" } | { mode: "edit"; partner: Partner } | null>(null);
+  const [partnerForm, setPartnerForm] = useState(emptyPartnerForm);
+
+  const partners = partnersQuery.data ?? [];
+  const activeShareTotal = partners.filter((partner) => partner.isActive).reduce((sum, partner) => sum + partner.sharePercent, 0);
+
+  const saveMutation = useMutation({
+    mutationFn: async () => {
+      if (partnerModal?.mode === "edit") {
+        return updatePartner(partnerModal.partner.id, { name: partnerForm.name.trim(), sharePercent: Number(partnerForm.sharePercent) });
+      }
+      return createPartner({ name: partnerForm.name.trim(), sharePercent: Number(partnerForm.sharePercent) });
+    },
+    onSuccess: () => {
+      toast({ tone: "success", message: partnerModal?.mode === "edit" ? "Socio actualizado." : "Socio registrado." });
+      setPartnerModal(null);
+      void queryClient.invalidateQueries({ queryKey: ["partners"] });
+    },
+    onError: (error: { response?: { data?: { message?: string } } }) =>
+      toast({ tone: "error", message: error.response?.data?.message ?? "No se pudo guardar el socio." })
+  });
+
+  const toggleMutation = useMutation({
+    mutationFn: (partner: Partner) => updatePartner(partner.id, { isActive: !partner.isActive }),
+    onSuccess: () => void queryClient.invalidateQueries({ queryKey: ["partners"] }),
+    onError: (error: { response?: { data?: { message?: string } } }) =>
+      toast({ tone: "error", message: error.response?.data?.message ?? "No se pudo cambiar el estado del socio." })
+  });
+
+  return (
+    <section className="rounded-lg border bg-background p-4 no-print">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div className="flex items-start gap-2">
+          <Users className="mt-0.5 h-4 w-4 text-primary" />
+          <div>
+            <h2 className="font-semibold">Socios</h2>
+            <p className="text-sm text-slate-500">Reparto de la ganancia neta en Reportes. Participacion activa: {activeShareTotal.toFixed(2)}%.</p>
+          </div>
+        </div>
+        <Button type="button" variant="secondary" size="sm" icon={<Plus className="h-4 w-4" />} onClick={() => { setPartnerForm(emptyPartnerForm); setPartnerModal({ mode: "create" }); }}>
+          Agregar socio
+        </Button>
+      </div>
+
+      {partnersQuery.isLoading ? <DataLoader label="Cargando socios..." className="min-h-20" /> : null}
+      <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+        {partners.map((partner) => (
+          <article key={partner.id} className="flex items-center justify-between gap-3 rounded-md border p-3">
+            <div className="min-w-0">
+              <strong className="block truncate text-sm">{partner.name}</strong>
+              <span className="text-xs text-slate-500">{partner.sharePercent.toFixed(2)}% de la ganancia</span>
+            </div>
+            <div className="flex shrink-0 items-center gap-2">
+              <MiniSwitch label={partner.isActive ? "Activo" : "Inactivo"} checked={partner.isActive} disabled={toggleMutation.isPending} onChange={() => toggleMutation.mutate(partner)} />
+              <IconAction label="Editar socio" icon={<Pencil />} tone="edit" variant="outline" size="sm" onClick={() => { setPartnerForm({ name: partner.name, sharePercent: partner.sharePercent }); setPartnerModal({ mode: "edit", partner }); }} />
+            </div>
+          </article>
+        ))}
+        {!partnersQuery.isLoading && partners.length === 0 ? (
+          <p className="text-sm text-slate-500">Sin socios registrados: la ganancia se muestra sin reparto en Reportes.</p>
+        ) : null}
+      </div>
+
+      <AppModal
+        open={partnerModal !== null}
+        size="sm"
+        title={partnerModal?.mode === "edit" ? "Editar socio" : "Agregar socio"}
+        description={`Participacion activa actual: ${activeShareTotal.toFixed(2)}% (maximo 100%)`}
+        onClose={() => setPartnerModal(null)}
+        footer={
+          <div className="flex justify-end gap-2">
+            <Button type="button" variant="ghost" disabled={saveMutation.isPending} onClick={() => setPartnerModal(null)}>Volver</Button>
+            <Button type="button" disabled={saveMutation.isPending || !partnerForm.name.trim()} onClick={() => saveMutation.mutate()}>
+              {saveMutation.isPending ? "Guardando..." : partnerModal?.mode === "edit" ? "Actualizar socio" : "Agregar socio"}
+            </Button>
+          </div>
+        }
+      >
+        <div className="space-y-3">
+          <TextField label="Nombre" placeholder="Ej. NORIS" value={partnerForm.name} onChange={(event) => setPartnerForm((current) => ({ ...current, name: event.target.value }))} />
+          <TextField label="Participacion (%)" type="number" min={0} max={100} step="0.01" hint="Ej. 33.33 para reparto en tercios" value={partnerForm.sharePercent} onChange={(event) => setPartnerForm((current) => ({ ...current, sharePercent: Number(event.target.value) }))} />
+        </div>
+      </AppModal>
+    </section>
+  );
+}
 
 function PaymentMethodsPanel() {
   const toast = useToast();
@@ -333,6 +428,7 @@ export function ConfiguracionPage() {
         </div>
       </div>
 
+      <PartnersPanel />
       <PaymentMethodsPanel />
     </section>
   );

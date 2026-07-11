@@ -62,3 +62,17 @@ export async function fetchCashClosures() {
   const response = await httpClient.get<ApiResponse<CashClosure[]>>("/reportes/caja");
   return response.data.data;
 }
+
+export type ProfitReport = {
+  year: number;
+  partners: Array<{ id: string; name: string; sharePercent: number }>;
+  rows: Array<{ month: number; income: number; outflow: number; net: number; margin: number; shares: Array<{ partnerId: string; amount: number }> }>;
+  totals: { income: number; outflow: number; net: number; margin: number; shares: Array<{ partnerId: string; amount: number }> };
+};
+
+export async function fetchProfitReport(year?: number) {
+  const response = await httpClient.get<ApiResponse<ProfitReport>>("/reportes/ganancias", {
+    params: year ? { year } : undefined
+  });
+  return response.data.data;
+}
