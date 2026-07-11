@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ChevronDown, Download, FileText, Mail, MessageCircle, Printer, ReceiptText, RotateCcw } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
@@ -76,7 +76,7 @@ function TicketModal({ ticket, onClose }: { ticket: PaymentTicket | null; onClos
   }
 
   return (
-    <AppModal open={Boolean(ticket)} title="Ticket de pago" description={ticket ? ticket.receiptCode : undefined} onClose={onClose} size="md">
+    <AppModal open={Boolean(ticket)} title="Ticket de pago" description={ticket ? ticket.receiptCode : undefined} onClose={onClose} size="sm">
       {ticket ? (
         <div className="space-y-4">
           <div className="rounded-md border bg-background p-4 text-sm">

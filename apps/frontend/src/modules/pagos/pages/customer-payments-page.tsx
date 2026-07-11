@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileText, ReceiptText, RotateCcw, Wallet } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import { useParams } from "react-router";
@@ -11,7 +11,7 @@ import { DataTable, type DataTableColumn } from "@/components/ui/DataTable";
 import { SelectField, TextareaField } from "@/components/ui/FormControls";
 import { fetchCustomerContract, fetchCustomerPaymentHistory, fetchPaymentTicket, registerPayment, voidPayment } from "../api/payments.api";
 import type { CustomerContract, MonthlyFee, Payment, PaymentTicket } from "../types/payments.types";
-import { money } from "@/lib/format";
+import { money, tableDate } from "@/lib/format";
 
 type PayModalState = { fee: MonthlyFee; amount: number } | null;
 type VoidModalState = { payment: Payment; fee: MonthlyFee } | null;
@@ -128,7 +128,7 @@ export function CustomerPaymentsPage() {
         </div>
       )
     },
-    { id: "dueDate", header: "Vence", visibleByDefault: false, cell: (fee) => (fee.dueDate ? dateTime(fee.dueDate) : "Sin vencimiento") },
+    { id: "dueDate", header: "Vence", visibleByDefault: false, cell: (fee) => (fee.dueDate ? tableDate(fee.dueDate) : "Sin vencimiento") },
     { id: "amount", header: "Monto", cell: (fee) => money(fee.amount) },
     { id: "paid", header: "Pagado", cell: (fee) => money(fee.paidAmount) },
     { id: "balance", header: "Saldo", className: "font-semibold", cell: (fee) => money(fee.balance) },
@@ -136,7 +136,7 @@ export function CustomerPaymentsPage() {
     {
       id: "actions",
       header: "Acciones",
-      minWidth: 180,
+      minWidth: 160,
       cell: (fee) => (
         <div className="flex flex-wrap gap-2">
           <Button size="sm" disabled={fee.balance <= 0 || fee.status === "VOID"} onClick={() => { setPayModal({ fee, amount: fee.balance }); setPayments({ ...emptyPayments, CASH: { enabled: true, amount: fee.balance } }); }}>Abonar</Button>
@@ -197,7 +197,7 @@ export function CustomerPaymentsPage() {
         getRowId={(fee) => fee.id}
         isLoading={historyQuery.isLoading}
         emptyMessage="No hay mensualidades generadas para este cliente."
-        minWidth={900}
+        minWidth={820}
         renderExpandedRow={(fee) => (
           <div className="space-y-3">
             <div className="flex items-center gap-2 text-sm font-semibold"><Wallet className="h-4 w-4" /> Pagos y recibos</div>
@@ -258,12 +258,15 @@ export function CustomerPaymentsPage() {
         {contractQuery.data ? <ContractPreview contract={contractQuery.data} /> : null}
       </AppModal>
 
-      <AppModal open={Boolean(ticket)} title="Ticket de pago" description="Recibo generado por el sistema." onClose={() => setTicket(null)}>
+      <AppModal open={Boolean(ticket)} title="Ticket de pago" description="Recibo generado por el sistema." size="sm" onClose={() => setTicket(null)}>
         {ticket ? <TicketPreview ticket={ticket} /> : null}
       </AppModal>
     </section>
   );
 }
+
+
+
 
 
 

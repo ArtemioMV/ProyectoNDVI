@@ -16,7 +16,7 @@ const baseColumns: Array<DataTableColumn<Supplier>> = [
     id: "supplier",
     header: "Proveedor",
     pinnedByDefault: true,
-    minWidth: 240,
+    minWidth: 210,
     cell: (supplier) => (
       <div>
         <strong className="block">{supplier.name}</strong>
@@ -30,11 +30,11 @@ const baseColumns: Array<DataTableColumn<Supplier>> = [
   {
     id: "location",
     header: "Ubicacion",
-    minWidth: 220,
+    minWidth: 190,
     cell: (supplier) => [supplier.department, supplier.province, supplier.district].filter(Boolean).join(" / ") || "Sin ubicacion"
   },
-  { id: "address", header: "Direccion", visibleByDefault: false, minWidth: 220, cell: (supplier) => supplier.address || "-" },
-  { id: "reference", header: "Referencia", visibleByDefault: false, minWidth: 220, cell: (supplier) => supplier.reference || "-" },
+  { id: "address", header: "Direccion", visibleByDefault: false, minWidth: 190, cell: (supplier) => supplier.address || "-" },
+  { id: "reference", header: "Referencia", visibleByDefault: false, minWidth: 190, cell: (supplier) => supplier.reference || "-" },
   {
     id: "status",
     header: "Estado",
@@ -102,7 +102,7 @@ export function SuppliersList({ suppliers, search, onSearchChange }: { suppliers
       columns={columns}
       getRowId={(supplier) => supplier.id}
       emptyMessage="No hay proveedores para mostrar."
-      minWidth={980}
+      minWidth={860}
       toolbar={
         <input
           className="h-10 w-full rounded-lg border px-3 text-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 sm:w-80"
@@ -175,4 +175,5 @@ export function SuppliersList({ suppliers, search, onSearchChange }: { suppliers
     </>
   );
 }
+
 

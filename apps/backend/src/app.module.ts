@@ -12,6 +12,7 @@ import { InventoryModule } from "./modules/inventory/inventory.module";
 import { PaymentsModule } from "./modules/payments/payments.module";
 import { PaymentMethodsModule } from "./modules/payment-methods/payment-methods.module";
 import { PurchasesModule } from "./modules/purchases/purchases.module";
+import { ReportsModule } from "./modules/reports/reports.module";
 import { PermissionsModule } from "./modules/permissions/permissions.module";
 import { RolesModule } from "./modules/roles/roles.module";
 import { SalesModule } from "./modules/sales/sales.module";
@@ -40,6 +41,7 @@ import { HealthModule } from "./health/health.module";
     PaymentsModule,
     PaymentMethodsModule,
     PurchasesModule,
+    ReportsModule,
     SalesModule,
     RolesModule,
     PermissionsModule,

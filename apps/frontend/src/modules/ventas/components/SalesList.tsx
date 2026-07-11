@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Ban, ReceiptText } from "lucide-react";
 import { useMemo, useState } from "react";
 import { AppModal } from "@/components/ui/AppModal";
@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/Toast";
 import { paymentMethodLabels } from "@/constants/payment-methods";
 import { voidMaterialSale } from "../api/sales.api";
 import type { MaterialSale } from "../types/sales.types";
-import { money } from "@/lib/format";
+import { money, tableDate } from "@/lib/format";
 
 type SalesListProps = {
   sales: MaterialSale[];
@@ -66,7 +66,7 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
       id: "customer",
       header: "Cliente",
       pinnedByDefault: true,
-      minWidth: 240,
+      minWidth: 200,
       cell: (sale) => (
         <div>
           <strong className="block">{sale.customerName || "Venta mostrador"}</strong>
@@ -74,11 +74,11 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
         </div>
       )
     },
-    { id: "date", header: "Fecha", cell: (sale) => dateTime(sale.createdAt) },
+    { id: "date", header: "Fecha", cell: (sale) => tableDate(sale.createdAt) },
     {
       id: "items",
       header: "Items",
-      minWidth: 260,
+      minWidth: 220,
       cell: (sale) => (
         <div className="space-y-1">
           {sale.items.slice(0, 2).map((item) => (
@@ -95,7 +95,7 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
     { id: "total", header: "Total", className: "font-semibold", cell: (sale) => money(sale.totalAmount) },
     { id: "status", header: "Estado", cell: (sale) => <DocumentStatusBadge status={sale.status} /> },
     { id: "receipt", header: "Ticket", cell: (sale) => sale.receiptCode || "-" },
-    { id: "notes", header: "Notas", visibleByDefault: false, minWidth: 240, cell: (sale) => sale.notes || "-" },
+    { id: "notes", header: "Notas", visibleByDefault: false, minWidth: 200, cell: (sale) => sale.notes || "-" },
     {
       id: "actions",
       header: "Acciones",
@@ -121,14 +121,14 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
         getRowId={(sale) => sale.id}
         isLoading={isLoading}
         emptyMessage="No hay ventas registradas."
-        minWidth={980}
+        minWidth={900}
       />
 
       <AppModal
         open={voidTarget !== null}
         size="sm"
         title="Anular venta"
-        description={voidTarget ? `${voidTarget.customerName || "Venta mostrador"} · ${money(voidTarget.totalAmount)}` : undefined}
+        description={voidTarget ? `${voidTarget.customerName || "Venta mostrador"} Â· ${money(voidTarget.totalAmount)}` : undefined}
         onClose={() => setVoidTarget(null)}
         footer={
           <div className="flex justify-end gap-2">
@@ -148,3 +148,5 @@ export function SalesList({ sales, isLoading }: SalesListProps) {
     </>
   );
 }
+
+

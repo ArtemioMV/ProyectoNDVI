@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { cn } from "@/components/ui/cn";
 import { DataLoader } from "@/components/ui/DataLoader";
 import { useToast } from "@/components/ui/Toast";
+import { Tooltip } from "@/components/ui/Tooltip";
 import { createServicePlan, fetchServicePlans, updateServicePlan } from "../api/service-plans.api";
 import { PlanForm } from "../components/PlanForm";
 import { PlansSection } from "../components/PlansSection";
@@ -105,7 +106,7 @@ export function ServiciosPage() {
       {plansQuery.isLoading ? <DataLoader className="rounded-lg border bg-background" /> : null}
 
       <div className="grid gap-5 lg:grid-cols-3 lg:items-start">
-        <section className="overflow-hidden rounded-lg border bg-background">
+        <section className="overflow-hidden rounded-lg border bg-background lg:order-3">
           <div className="flex items-center gap-2 border-b p-4">
             <PlusCircle className="h-4 w-4 text-primary" />
             <div>
@@ -123,20 +124,20 @@ export function ServiciosPage() {
                   const Icon = option.icon;
                   const selected = planType === option.value;
                   return (
-                    <button
-                      key={option.value}
-                      type="button"
-                      className={cn(
-                        "inline-flex items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition",
-                        selected ? "bg-primary text-white" : "text-slate-600 hover:bg-muted"
-                      )}
-                      aria-pressed={selected}
-                      aria-label={option.label}
-                      title={option.label}
-                      onClick={() => setPlanType(option.value)}
-                    >
-                      <Icon className="h-4 w-4" />
-                    </button>
+                    <Tooltip key={option.value} label={option.label} className="w-full">
+                      <button
+                        type="button"
+                        className={cn(
+                          "inline-flex w-full items-center justify-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition",
+                          selected ? "bg-primary text-white" : "text-slate-600 hover:bg-muted"
+                        )}
+                        aria-pressed={selected}
+                        aria-label={option.label}
+                        onClick={() => setPlanType(option.value)}
+                      >
+                        <Icon className="h-4 w-4" />
+                      </button>
+                    </Tooltip>
                   );
                 })}
               </div>
@@ -175,3 +176,5 @@ export function ServiciosPage() {
     </section>
   );
 }
+
+

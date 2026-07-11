@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ShoppingCart } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
@@ -8,7 +8,7 @@ import { cn } from "@/components/ui/cn";
 import { DataLoader } from "@/components/ui/DataLoader";
 import { TextField } from "@/components/ui/FormControls";
 import { useToast } from "@/components/ui/Toast";
-import { CartItemCard, CatalogCard, CatalogSearch, PosLayout, TrashZone } from "@/components/pos/pos-primitives";
+import { CartDropZone, CartItemCard, CatalogCard, CatalogSearch, PosLayout, TrashZone } from "@/components/pos/pos-primitives";
 import { emptyPayments, PaymentSplit, type PaymentsState, primaryMethod } from "@/components/pos/PaymentSplit";
 import type { Material } from "@/modules/productos/types/products.types";
 import { createMaterialSale, fetchSaleMaterials } from "../api/sales.api";
@@ -38,7 +38,7 @@ function VentaCard({ material, onAdd }: { material: Material; onAdd: (line: Omit
     <CatalogCard
       imageUrl={material.imageUrl}
       name={material.name}
-      meta={`${material.sku || "Sin SKU"} · Stock ${material.stock} ${material.unit}`}
+      meta={`${material.sku || "Sin SKU"} Â· Stock ${material.stock} ${material.unit}`}
       disabled={outOfStock}
       addLabel={outOfStock ? "Sin stock" : "Agregar"}
       dragMaterialId={outOfStock ? undefined : material.id}
@@ -186,21 +186,11 @@ export function VentaNuevaPage() {
               <TrashZone onDropKey={removeLine} />
             </div>
 
-            <div
-              className="mt-3 max-h-52 overflow-y-auto"
-              onDragOver={(event) => {
-                event.preventDefault();
-                event.dataTransfer.dropEffect = "copy";
-              }}
-              onDrop={(event) => {
-                const id = event.dataTransfer.getData("application/x-add-material");
-                if (id) addByMaterialId(id);
-              }}
-            >
+            <CartDropZone className="mt-3 max-h-52 overflow-y-auto" onDropMaterialId={addByMaterialId}>
               {cart.length === 0 ? (
-                <p className="text-sm text-slate-500">Agrega o arrastra productos aqui.</p>
+                <p className="px-3 py-5 text-center text-sm text-slate-500">Agrega o arrastra productos aqui.</p>
               ) : (
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2">
                   {cart.map((line) => (
                     <CartItemCard
                       key={line.key}
@@ -214,7 +204,7 @@ export function VentaNuevaPage() {
                   ))}
                 </div>
               )}
-            </div>
+            </CartDropZone>
 
             <div className="mt-4 flex items-center justify-between border-t pt-3">
               <span className="text-sm text-slate-500">Total</span>
@@ -230,6 +220,7 @@ export function VentaNuevaPage() {
     </section>
   );
 }
+
 
 
 

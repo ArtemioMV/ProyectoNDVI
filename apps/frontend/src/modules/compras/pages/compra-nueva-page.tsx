@@ -8,7 +8,7 @@ import { cn } from "@/components/ui/cn";
 import { DataLoader } from "@/components/ui/DataLoader";
 import { SelectField, TextField } from "@/components/ui/FormControls";
 import { useToast } from "@/components/ui/Toast";
-import { CartItemCard, CatalogCard, CatalogSearch, PosLayout, TrashZone } from "@/components/pos/pos-primitives";
+import { CartDropZone, CartItemCard, CatalogCard, CatalogSearch, PosLayout, TrashZone } from "@/components/pos/pos-primitives";
 import { emptyPayments, isCashPayment, PaymentSplit, type PaymentsState, primaryMethod } from "@/components/pos/PaymentSplit";
 import type { Material } from "@/modules/productos/types/products.types";
 import { createPurchase, fetchPurchaseMaterials, fetchSuppliers } from "../api/purchases.api";
@@ -155,40 +155,25 @@ export function CompraNuevaPage() {
               <TrashZone onDropKey={removeLine} />
             </div>
 
-            <div
-              className={cn("mt-3 min-h-16 rounded-lg border-2 border-dashed transition-colors", dropActive ? "border-primary bg-primary/5 ring-4 ring-primary/10" : "border-transparent")}
-              onDragOver={(event) => {
-                event.preventDefault();
-                event.dataTransfer.dropEffect = "copy";
-                setDropActive(true);
-              }}
-              onDragLeave={(event) => {
-                if (!event.currentTarget.contains(event.relatedTarget as Node)) setDropActive(false);
-              }}
-              onDrop={(event) => {
-                event.preventDefault();
-                const id = event.dataTransfer.getData("application/x-add-material");
-                if (id) addByMaterialId(id);
-              }}
-            >
+            <CartDropZone className="mt-3" onDropMaterialId={addByMaterialId}>
               {cart.length === 0 ? (
-                <p className="rounded-lg border-2 border-dashed border-slate-200 px-3 py-5 text-center text-sm text-slate-500">Agrega o arrastra productos aqui.</p>
+                <p className="px-3 py-5 text-center text-sm text-slate-500">Agrega o arrastra productos aqui.</p>
               ) : (
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <div className="grid grid-cols-1 gap-2 p-2 sm:grid-cols-2">
                   {cart.map((line) => (
                     <CartItemCard
                       key={line.key}
                       dragKey={line.key}
                       imageUrl={line.material.imageUrl}
                       name={line.material.name}
-                      detail={`${line.quantity} Ã— ${money(line.unitCost)}`}
+                      detail={`${line.quantity} × ${money(line.unitCost)}`}
                       amount={money(line.unitCost * line.quantity)}
                       onRemove={() => removeLine(line.key)}
                     />
                   ))}
                 </div>
               )}
-            </div>
+            </CartDropZone>
 
             <div className="mt-4 flex items-center justify-between border-t pt-3">
               <span className="text-sm text-slate-500">Total</span>
@@ -204,6 +189,7 @@ export function CompraNuevaPage() {
     </section>
   );
 }
+
 
 
 

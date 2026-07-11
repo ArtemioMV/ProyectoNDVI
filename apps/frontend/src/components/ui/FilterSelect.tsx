@@ -1,22 +1,31 @@
-﻿import { SelectHTMLAttributes } from "react";
-import { ChevronDown } from "lucide-react";
-import { cn } from "./cn";
+﻿import { Children, isValidElement, ReactNode } from "react";
+import { AppSelect, type AppSelectOption } from "./AppSelect";
 
-type FilterSelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+type FilterSelectProps = {
+  value?: string | number | readonly string[];
+  onChange?: (event: { target: { value: string } }) => void;
+  children: ReactNode;
   className?: string;
+  disabled?: boolean;
+  "aria-label"?: string;
 };
 
-export function FilterSelect({ className, children, ...props }: FilterSelectProps) {
-  return (
-    <div className={cn("relative", className)}>
-      <select
-        className="h-10 w-full appearance-none rounded-lg border bg-background px-3 py-2 pr-9 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-        {...props}
-      >
-        {children}
-      </select>
-      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
-    </div>
-  );
+function optionsFromChildren(children: ReactNode): AppSelectOption[] {
+  return Children.toArray(children).flatMap((child) => {
+    if (!isValidElement<{ value?: string | number; children?: ReactNode; disabled?: boolean }>(child)) return [];
+    return [{ value: String(child.props.value ?? ""), label: String(child.props.children ?? ""), disabled: child.props.disabled }];
+  });
 }
 
+export function FilterSelect({ className, children, value, onChange, disabled, "aria-label": ariaLabel }: FilterSelectProps) {
+  return (
+    <AppSelect
+      className={className}
+      value={String(Array.isArray(value) ? value[0] ?? "" : value ?? "")}
+      options={optionsFromChildren(children)}
+      disabled={disabled}
+      ariaLabel={ariaLabel}
+      onValueChange={(next) => onChange?.({ target: { value: next } })}
+    />
+  );
+}

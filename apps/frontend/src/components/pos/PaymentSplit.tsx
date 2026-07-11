@@ -5,6 +5,7 @@ import { fetchPaymentMethodSettings } from "@/modules/configuracion/api/payment-
 import { TextField } from "@/components/ui/FormControls";
 import { SwitchField } from "@/components/ui/ToggleControls";
 import { money } from "@/lib/format";
+import { Tooltip } from "@/components/ui/Tooltip";
 
 /**
  * Pago dividido reutilizable (Ventas, Compras y Cobranza): cada metodo con apagador,
@@ -125,4 +126,5 @@ export function PaymentSplit({ payments, onChange, total }: { payments: Payments
     </div>
   );
 }
+
 

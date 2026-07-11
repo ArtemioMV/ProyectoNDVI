@@ -3,7 +3,7 @@ import { RotateCcw } from "lucide-react";
 import { IconAction } from "@/components/ui/IconAction";
 import { DataTable, type DataTableColumn } from "@/components/ui/DataTable";
 import type { CashMovement, CashRegister } from "../types/cash-register.types";
-import { money } from "@/lib/format";
+import { money, tableDate } from "@/lib/format";
 
 
 function dateTime(value: string) {
@@ -20,7 +20,7 @@ const movementColumns: Array<DataTableColumn<CashMovement>> = [
     id: "description",
     header: "Movimiento",
     pinnedByDefault: true,
-    minWidth: 260,
+    minWidth: 220,
     cell: (movement) => (
       <div className="flex gap-3">
         <span className={movement.type === "INCOME" ? "text-green-600" : "text-red-600"}>
@@ -35,7 +35,7 @@ const movementColumns: Array<DataTableColumn<CashMovement>> = [
   },
   { id: "type", header: "Tipo", cell: (movement) => (movement.type === "INCOME" ? "Ingreso" : "Egreso") },
   { id: "source", header: "Origen", visibleByDefault: false, cell: (movement) => sourceLabel(movement.source) },
-  { id: "date", header: "Fecha", cell: (movement) => dateTime(movement.createdAt) },
+  { id: "date", header: "Fecha", cell: (movement) => tableDate(movement.createdAt) },
   {
     id: "amount",
     header: "Monto",
@@ -49,12 +49,12 @@ const historyColumns: Array<DataTableColumn<CashRegister>> = [
     id: "opened",
     header: "Apertura",
     pinnedByDefault: true,
-    minWidth: 220,
+    minWidth: 190,
     cell: (cashRegister) => (
-      <strong className="flex items-center gap-2"><CalendarClock className="h-4 w-4" /> {dateTime(cashRegister.openedAt)}</strong>
+      <strong className="flex items-center gap-2"><CalendarClock className="h-4 w-4" /> {tableDate(cashRegister.openedAt)}</strong>
     )
   },
-  { id: "closed", header: "Cierre", cell: (cashRegister) => (cashRegister.closedAt ? dateTime(cashRegister.closedAt) : "Caja aun abierta") },
+  { id: "closed", header: "Cierre", cell: (cashRegister) => (cashRegister.closedAt ? tableDate(cashRegister.closedAt) : "Caja aun abierta") },
   { id: "initial", header: "Inicial", visibleByDefault: false, cell: (cashRegister) => money(cashRegister.initialAmount) },
   { id: "expected", header: "Esperado", cell: (cashRegister) => money(cashRegister.expectedAmount) },
   { id: "difference", header: "Diferencia", cell: (cashRegister) => money(cashRegister.difference ?? 0) },
@@ -106,7 +106,7 @@ export function CashMovementList({ movements }: { movements: CashMovement[] }) {
       columns={movementColumns}
       getRowId={(movement) => movement.id}
       emptyMessage="Aun no hay movimientos en esta caja."
-      minWidth={860}
+      minWidth={760}
     />
   );
 }
@@ -141,7 +141,9 @@ export function CashHistoryList({ cashRegisters, onReopen, reopeningId }: { cash
       columns={columns}
       getRowId={(cashRegister) => cashRegister.id}
       emptyMessage="No hay cierres ni aperturas registradas."
-      minWidth={920}
+      minWidth={820}
     />
   );
 }
+
+

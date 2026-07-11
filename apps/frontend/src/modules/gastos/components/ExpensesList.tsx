@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Ban, ReceiptText } from "lucide-react";
 import { useMemo, useState } from "react";
 import { AppModal } from "@/components/ui/AppModal";
@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/Toast";
 import { paymentMethodLabels } from "@/constants/payment-methods";
 import { voidExpense } from "../api/expenses.api";
 import type { Expense, ExpenseCategoryType } from "../types/expenses.types";
-import { money } from "@/lib/format";
+import { money, tableDate } from "@/lib/format";
 
 const categoryTypeLabels: Record<ExpenseCategoryType, string> = {
   OPERATING: "Operativo",
@@ -68,7 +68,7 @@ export function ExpensesList({ expenses, isLoading }: { expenses: Expense[]; isL
       id: "description",
       header: "Gasto",
       pinnedByDefault: true,
-      minWidth: 260,
+      minWidth: 220,
       cell: (expense) => (
         <div>
           <strong className="block">{expense.description}</strong>
@@ -78,13 +78,13 @@ export function ExpensesList({ expenses, isLoading }: { expenses: Expense[]; isL
     },
     { id: "category", header: "Categoria", cell: (expense) => expense.category.name },
     { id: "type", header: "Tipo", cell: (expense) => categoryTypeLabels[expense.category.type] },
-    { id: "date", header: "Fecha", cell: (expense) => dateTime(expense.expenseDate) },
+    { id: "date", header: "Fecha", cell: (expense) => tableDate(expense.expenseDate) },
     { id: "method", header: "Metodo", cell: (expense) => paymentMethodLabels[expense.paymentMethod] },
     { id: "cash", header: "Caja", cell: (expense) => (expense.paidFromCash ? "Egreso de caja" : "Fuera de caja") },
     { id: "amount", header: "Monto", className: "font-semibold text-red-700", cell: (expense) => `-${money(expense.amount)}` },
     { id: "status", header: "Estado", cell: (expense) => <DocumentStatusBadge status={expense.status} /> },
     { id: "receipt", header: "Ticket", cell: (expense) => expense.receiptCode || "-" },
-    { id: "notes", header: "Notas", visibleByDefault: false, minWidth: 240, cell: (expense) => expense.notes || "-" },
+    { id: "notes", header: "Notas", visibleByDefault: false, minWidth: 200, cell: (expense) => expense.notes || "-" },
     {
       id: "actions",
       header: "Acciones",
@@ -110,14 +110,14 @@ export function ExpensesList({ expenses, isLoading }: { expenses: Expense[]; isL
         getRowId={(expense) => expense.id}
         isLoading={isLoading}
         emptyMessage="No hay gastos registrados."
-        minWidth={1040}
+        minWidth={900}
       />
 
       <AppModal
         open={voidTarget !== null}
         size="sm"
         title="Anular gasto"
-        description={voidTarget ? `${voidTarget.description} · ${money(voidTarget.amount)}` : undefined}
+        description={voidTarget ? `${voidTarget.description} Â· ${money(voidTarget.amount)}` : undefined}
         onClose={() => setVoidTarget(null)}
         footer={
           <div className="flex justify-end gap-2">
@@ -137,3 +137,5 @@ export function ExpensesList({ expenses, isLoading }: { expenses: Expense[]; isL
     </>
   );
 }
+
+

@@ -77,6 +77,17 @@ Flujo: Cliente -> Servicios -> Mensualidades (auto por fecha de alta) -> Pagos -
 - [ ] Los registros antiguos no tienen `receiptCode` (columna nullable); solo los nuevos lo llevan.
 
 
+
+## Modulo Reportes (2026-07-10)
+
+- [x] Backend `ReportsModule`: `GET /reportes/resumen?from&to` (cobrado + desglose por metodo,
+      ventas, compras, gastos, resultado neto, deuda total, morosos, top 8 deudores, clientes por
+      estado) y `GET /reportes/mensual` (serie 6 meses ingresos vs salidas). Permiso `reportes.ver`.
+- [x] Frontend `/reportes`: rango de fechas (`DateRangeFilter`), 5 KPI (`MetricCard`), grafico de
+      barras CSS sin dependencias, top deudores con acciones Cobrar/Ver ficha, cobrado por metodo
+      con barras de proporcion y resumen de cartera.
+- [ ] Exportar reportes (CSV/impresion) cuando se pida.
+
 ## Bloque 1: estados y anulaciones (2026-07-10)
 
 - [x] Suspender/cancelar/reactivar **cliente** (`PATCH /customers/:id/estado`, cascada a servicios)

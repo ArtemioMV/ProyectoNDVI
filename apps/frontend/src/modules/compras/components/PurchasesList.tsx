@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Ban, ReceiptText } from "lucide-react";
 import { useMemo, useState } from "react";
 import { AppModal } from "@/components/ui/AppModal";
@@ -11,7 +11,7 @@ import { useToast } from "@/components/ui/Toast";
 import { paymentMethodLabels } from "@/constants/payment-methods";
 import { voidMaterialPurchase } from "../api/purchases.api";
 import type { MaterialPurchase } from "../types/purchases.types";
-import { money } from "@/lib/format";
+import { money, tableDate } from "@/lib/format";
 
 function dateTime(value: string) {
   return new Intl.DateTimeFormat("es-PE", { dateStyle: "short", timeStyle: "short" }).format(new Date(value));
@@ -62,7 +62,7 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
       id: "supplier",
       header: "Proveedor",
       pinnedByDefault: true,
-      minWidth: 240,
+      minWidth: 200,
       cell: (purchase) => (
         <div>
           <strong className="block">{purchase.supplier?.name || purchase.supplierName || "Compra sin proveedor"}</strong>
@@ -70,12 +70,12 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
         </div>
       )
     },
-    { id: "date", header: "Fecha", cell: (purchase) => dateTime(purchase.purchasedAt) },
+    { id: "date", header: "Fecha", cell: (purchase) => tableDate(purchase.purchasedAt) },
     { id: "receipt", header: "Comprobante", cell: (purchase) => purchase.receiptNumber || "-" },
     {
       id: "items",
       header: "Items",
-      minWidth: 260,
+      minWidth: 220,
       cell: (purchase) => (
         <div className="space-y-1">
           {purchase.items.slice(0, 2).map((item) => (
@@ -92,7 +92,7 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
     { id: "total", header: "Total", className: "font-semibold", cell: (purchase) => money(purchase.totalAmount) },
     { id: "status", header: "Estado", cell: (purchase) => <DocumentStatusBadge status={purchase.status} /> },
     { id: "receipt-code", header: "Ticket", cell: (purchase) => purchase.receiptCode || "-" },
-    { id: "notes", header: "Notas", visibleByDefault: false, minWidth: 240, cell: (purchase) => purchase.notes || "-" },
+    { id: "notes", header: "Notas", visibleByDefault: false, minWidth: 200, cell: (purchase) => purchase.notes || "-" },
     {
       id: "actions",
       header: "Acciones",
@@ -118,14 +118,14 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
         getRowId={(purchase) => purchase.id}
         isLoading={isLoading}
         emptyMessage="No hay compras registradas."
-        minWidth={1100}
+        minWidth={940}
       />
 
       <AppModal
         open={voidTarget !== null}
         size="sm"
         title="Anular compra"
-        description={voidTarget ? `${voidTarget.supplier?.name || voidTarget.supplierName || "Sin proveedor"} · ${money(voidTarget.totalAmount)}` : undefined}
+        description={voidTarget ? `${voidTarget.supplier?.name || voidTarget.supplierName || "Sin proveedor"} Â· ${money(voidTarget.totalAmount)}` : undefined}
         onClose={() => setVoidTarget(null)}
         footer={
           <div className="flex justify-end gap-2">
@@ -145,3 +145,5 @@ export function PurchasesList({ purchases, isLoading }: { purchases: MaterialPur
     </>
   );
 }
+
+

@@ -129,7 +129,7 @@ export function ClientesPage() {
       id: "customer",
       header: "Cliente",
       pinnedByDefault: true,
-      minWidth: 260,
+      minWidth: 210,
       cell: (customer) => (
         <div>
           <strong className="block">{customer.fullName}</strong>
@@ -140,7 +140,16 @@ export function ClientesPage() {
     { id: "phone", header: "Telefono", cell: (customer) => customer.phone || "Sin telefono" },
     { id: "email", header: "Correo", visibleByDefault: false, cell: (customer) => customer.email || "-" },
     { id: "district", header: "Distrito", cell: (customer) => customer.district || "-" },
-    { id: "address", header: "Direccion", minWidth: 240, cell: (customer) => customer.address || "Sin direccion" },
+    {
+      id: "address",
+      header: "Direccion",
+      minWidth: 150,
+      cell: (customer) => (
+        <span className="block max-w-40 whitespace-normal break-words leading-5">
+          {customer.address || "Sin direccion"}
+        </span>
+      )
+    },
     {
       id: "services",
       header: "Servicios",
@@ -191,7 +200,7 @@ export function ClientesPage() {
         getRowId={(customer) => customer.id}
         isLoading={customersQuery.isLoading}
         emptyMessage="No hay clientes registrados."
-        minWidth={1180}
+        minWidth={860}
         toolbar={
           <div className="relative w-full sm:w-96">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
@@ -304,6 +313,8 @@ export function ClientesPage() {
     </section>
   );
 }
+
+
 
 
 

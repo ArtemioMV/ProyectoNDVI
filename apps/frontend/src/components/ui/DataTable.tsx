@@ -1,4 +1,5 @@
 ﻿import { Fragment, ReactNode, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { AppSelect } from "./AppSelect";
 import { createPortal } from "react-dom";
 import { ArrowDown, ArrowUp, ChevronLeft, ChevronRight, Columns3, Pin, PinOff, RotateCcw, SlidersHorizontal } from "lucide-react";
 import { Button } from "./Button";
@@ -36,7 +37,7 @@ type DataTableProps<T> = {
   emptyMessage?: string;
   minWidth?: number;
   className?: string;
-  /** Filas por pagina. Usa 0 para desactivar la paginacion y mostrar todo. */
+  /** Cantidad inicial de filas por pagina. */
   pageSize?: number;
   renderExpandedRow?: (row: T) => ReactNode;
 };
@@ -87,7 +88,6 @@ export function DataTable<T>({
   columns,
   data,
   getRowId,
-  title,
   description,
   toolbar,
   isLoading = false,
@@ -103,18 +103,23 @@ export function DataTable<T>({
   const [settingsPosition, setSettingsPosition] = useState<PopoverPosition | null>(null);
   const [preferences, setPreferences] = useState<TablePreferences>(() => mergePreferences(columns, readPreferences(storageKey)));
   const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(() => {
+    const stored = Number(window.localStorage.getItem(`${storageKey}.pageSize`));
+    return [10, 25, 50, 100].includes(stored) || stored === 0 ? stored : pageSize > 0 ? pageSize : 10;
+  });
 
-  const paginationEnabled = pageSize > 0;
-  const totalPages = paginationEnabled ? Math.max(1, Math.ceil(data.length / pageSize)) : 1;
+  const paginationEnabled = rowsPerPage > 0;
+  const effectivePageSize = paginationEnabled ? rowsPerPage : Math.max(data.length, 1);
+  const totalPages = paginationEnabled ? Math.max(1, Math.ceil(data.length / effectivePageSize)) : 1;
   const currentPage = Math.min(page, totalPages - 1);
 
   useEffect(() => {
     if (page !== currentPage) setPage(currentPage);
   }, [page, currentPage]);
 
-  const pageData = paginationEnabled ? data.slice(currentPage * pageSize, currentPage * pageSize + pageSize) : data;
-  const rangeStart = data.length === 0 ? 0 : currentPage * pageSize + 1;
-  const rangeEnd = paginationEnabled ? Math.min(data.length, (currentPage + 1) * pageSize) : data.length;
+  const pageData = paginationEnabled ? data.slice(currentPage * effectivePageSize, currentPage * effectivePageSize + effectivePageSize) : data;
+  const rangeStart = data.length === 0 ? 0 : currentPage * effectivePageSize + 1;
+  const rangeEnd = paginationEnabled ? Math.min(data.length, (currentPage + 1) * effectivePageSize) : data.length;
 
   useEffect(() => {
     setPreferences((current) => mergePreferences(columns, current));
@@ -123,6 +128,10 @@ export function DataTable<T>({
   useEffect(() => {
     writePreferences(storageKey, preferences);
   }, [preferences, storageKey]);
+
+  useEffect(() => {
+    window.localStorage.setItem(`${storageKey}.pageSize`, String(rowsPerPage));
+  }, [rowsPerPage, storageKey]);
 
   useLayoutEffect(() => {
     if (!settingsOpen) return;
@@ -240,35 +249,18 @@ export function DataTable<T>({
 
   return (
     <div className={cn("overflow-hidden rounded-xl border bg-background shadow-sm", className)}>
-      {title || description || toolbar ? (
-        <div className="grid gap-3 border-b p-4 lg:grid-cols-[minmax(14rem,1fr)_auto] lg:items-center">
-          <div className="min-w-0">
-            {title ? <h2 className="font-semibold">{title}</h2> : null}
-            {description ? <p className="text-sm text-slate-500">{description}</p> : null}
-          </div>
-          <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-center sm:justify-end">
-            {toolbar}
-            <div className="flex shrink-0 items-center gap-2">
-              <Tooltip label="Configurar columnas">
-                <Button ref={settingsButtonRef} type="button" variant="secondary" size="sm" icon={<SlidersHorizontal className="h-4 w-4" />} onClick={() => setSettingsOpen((open) => !open)}>
-                  Columnas
-                </Button>
-              </Tooltip>
-              <IconAction
-                label="Restablecer vista por defecto"
-                icon={<RotateCcw />}
-                tone="primary"
-                variant="soft"
-                size="sm"
-                aria-label="Restablecer columnas"
-                onClick={resetPreferences}
-              />
-              {settingsPanel}
-            </div>
-          </div>
+      <div className="flex min-w-0 flex-col gap-2 border-b p-3 sm:flex-row sm:items-center sm:justify-end">
+        <div className="min-w-0 flex-1">{toolbar}</div>
+        <div className="flex shrink-0 items-center justify-end gap-2">
+          <Tooltip label="Configurar columnas">
+            <Button ref={settingsButtonRef} type="button" variant="secondary" size="sm" icon={<SlidersHorizontal className="h-4 w-4" />} onClick={() => setSettingsOpen((open) => !open)}>
+              Columnas
+            </Button>
+          </Tooltip>
+          <IconAction label="Restablecer vista por defecto" icon={<RotateCcw />} tone="primary" variant="soft" size="sm" aria-label="Restablecer columnas" onClick={resetPreferences} />
+          {settingsPanel}
         </div>
-      ) : null}
-
+      </div>
       {isLoading ? <DataLoader /> : null}
       {!isLoading && data.length === 0 ? <div className="p-6 text-sm text-slate-500">{emptyMessage}</div> : null}
       {!isLoading && data.length > 0 ? (
@@ -281,7 +273,7 @@ export function DataTable<T>({
                   return (
                     <th
                       key={column.id}
-                      className={cn("px-4 py-3 font-semibold", pinned && "sticky left-0 z-20 bg-table-head shadow-[8px_0_12px_-12px_rgba(15,23,42,0.45)]", column.headerClassName)}
+                      className={cn("px-4 py-3 font-semibold", column.id === "actions" && "text-right", pinned && "sticky left-0 z-20 bg-table-head shadow-[8px_0_12px_-12px_rgba(15,23,42,0.45)]", column.headerClassName)}
                       style={column.minWidth ? { minWidth: column.minWidth } : undefined}
                     >
                       {column.header}
@@ -299,7 +291,7 @@ export function DataTable<T>({
                       {visibleColumns.map((column) => {
                         const pinned = preferences.pinnedId === column.id;
                         return (
-                          <td key={column.id} className={cn("px-4 py-3 align-top", pinned && "sticky left-0 z-10 bg-background shadow-[8px_0_12px_-12px_rgba(15,23,42,0.45)]", column.className)}>
+                          <td key={column.id} className={cn("px-4 py-3 align-top", column.id === "actions" && "text-right [&>div]:justify-end", pinned && "sticky left-0 z-10 bg-background shadow-[8px_0_12px_-12px_rgba(15,23,42,0.45)]", column.className)}>
                             {column.cell(row)}
                           </td>
                         );
@@ -320,12 +312,26 @@ export function DataTable<T>({
         </div>
       ) : null}
 
-      {!isLoading && paginationEnabled && data.length > 0 ? (
+      {!isLoading && data.length > 0 ? (
         <div className="flex flex-col gap-2 border-t px-4 py-3 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <span>
-            Mostrando <strong className="text-slate-700">{rangeStart}</strong>-<strong className="text-slate-700">{rangeEnd}</strong> de <strong className="text-slate-700">{data.length}</strong>
-          </span>
-          <div className="flex items-center gap-2">
+          <span>Mostrando <strong className="text-slate-700">{rangeStart}</strong>-<strong className="text-slate-700">{rangeEnd}</strong> de <strong className="text-slate-700">{data.length}</strong></span>
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <div className="flex items-center gap-1.5 text-xs text-slate-500">
+              <span>Mostrar</span>
+              <AppSelect
+                className="h-9 w-24"
+                ariaLabel="Filas por pagina"
+                value={String(rowsPerPage)}
+                options={[
+                  { value: "10", label: "10" },
+                  { value: "25", label: "25" },
+                  { value: "50", label: "50" },
+                  { value: "100", label: "100" },
+                  { value: "0", label: "Todos" }
+                ]}
+                onValueChange={(next) => { setRowsPerPage(Number(next)); setPage(0); }}
+              />
+            </div>
             <Button
               type="button"
               variant="secondary"
@@ -355,6 +361,12 @@ export function DataTable<T>({
     </div>
   );
 }
+
+
+
+
+
+
 
 
 

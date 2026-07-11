@@ -24,7 +24,7 @@ const baseColumns: Array<DataTableColumn<Material>> = [
     id: "material",
     header: "Material",
     pinnedByDefault: true,
-    minWidth: 240,
+    minWidth: 210,
     cell: (material) => (
       <div>
         <strong className="block">{material.name}</strong>
@@ -123,7 +123,7 @@ export function MaterialsTable({ materials, search, isLoading, onSearchChange }:
       getRowId={(material) => material.id}
       isLoading={isLoading}
       emptyMessage="No hay materiales registrados."
-      minWidth={960}
+      minWidth={860}
       toolbar={
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
@@ -191,3 +191,4 @@ export function MaterialsTable({ materials, search, isLoading, onSearchChange }:
     </>
   );
 }
+

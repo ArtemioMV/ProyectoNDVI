@@ -86,7 +86,7 @@ export function CobranzaPage() {
       id: "customer",
       header: "Cliente",
       pinnedByDefault: true,
-      minWidth: 260,
+      minWidth: 220,
       cell: (item) => (
         <div>
           <strong className="block">{item.customer.fullName}</strong>
@@ -95,7 +95,7 @@ export function CobranzaPage() {
       )
     },
     { id: "period", header: "Periodo", cell: (item) => item.period },
-    { id: "service", header: "Servicio", minWidth: 220, cell: (item) => item.service.plan.name },
+    { id: "service", header: "Servicio", minWidth: 190, cell: (item) => item.service.plan.name },
     { id: "due", header: "Vence", cell: (item) => dateText(item.dueDate) },
     { id: "amount", header: "Monto", cell: (item) => money(item.amount) },
     { id: "paid", header: "Pagado", visibleByDefault: false, cell: (item) => money(item.paidAmount) },
@@ -105,7 +105,7 @@ export function CobranzaPage() {
     {
       id: "actions",
       header: "Acciones",
-      minWidth: 220,
+      minWidth: 190,
       cell: (item) => (
         <div className="flex flex-wrap gap-2">
           <Button size="sm" disabled={item.balance <= 0 || item.status === "VOID"} onClick={() => { setPayItem(item); setPayments({ ...emptyPayments, CASH: { enabled: true, amount: item.balance } }); }}>
@@ -167,7 +167,7 @@ export function CobranzaPage() {
         getRowId={(item) => item.id}
         isLoading={collectionsQuery.isLoading}
         emptyMessage="No hay mensualidades para mostrar."
-        minWidth={1120}
+        minWidth={980}
         toolbar={
           <div className="grid w-full gap-2 sm:w-auto xl:grid-cols-[18rem_25rem_10rem]">
             <div className="relative">
@@ -202,12 +202,14 @@ export function CobranzaPage() {
         ) : null}
       </AppModal>
 
-      <AppModal open={Boolean(ticket)} title="Cobro registrado" description="Ticket generado por el sistema." onClose={() => setTicket(null)}>
+      <AppModal open={Boolean(ticket)} title="Cobro registrado" description="Ticket generado por el sistema." size="sm" onClose={() => setTicket(null)}>
         {ticket ? <TicketBox ticket={ticket} /> : null}
       </AppModal>
     </section>
   );
 }
+
+
 
 
 

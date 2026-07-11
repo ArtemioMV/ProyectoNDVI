@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { KeyRound, Pencil, Power, ShieldCheck, UserPlus } from "lucide-react";
 import { useMemo, useState } from "react";
 import { AppModal } from "@/components/ui/AppModal";
@@ -21,7 +21,7 @@ import {
   type SaveRolePayload,
   type SaveUserPayload
 } from "../api/admin.api";
-import { shortDate } from "@/lib/format";
+import { tableDate } from "@/lib/format";
 
 /** Agrupa codigos de permiso por su modulo (prefijo antes del primer punto). */
 function groupPermissions(codes: string[]) {
@@ -152,7 +152,7 @@ export function AdministracionPage() {
       header: "Estado",
       cell: (user) => <CustomerStatusBadge status={user.isActive ? "ACTIVE" : "CANCELLED"} />
     },
-    { id: "created", header: "Creado", cell: (user) => shortDate(user.createdAt) },
+    { id: "created", header: "Creado", cell: (user) => tableDate(user.createdAt) },
     {
       id: "actions",
       header: "Acciones",
@@ -202,7 +202,7 @@ export function AdministracionPage() {
           <ShieldCheck className="h-4 w-4 text-primary" />
           <div>
             <h2 className="font-semibold">Roles</h2>
-            <p className="text-xs text-slate-500">{rolesQuery.data?.length ?? 0} rol(es) · cada rol agrupa permisos por modulo</p>
+            <p className="text-xs text-slate-500">{rolesQuery.data?.length ?? 0} rol(es) Â· cada rol agrupa permisos por modulo</p>
           </div>
         </div>
         <div className="grid gap-3 p-4 md:grid-cols-2 xl:grid-cols-3">
@@ -359,3 +359,4 @@ export function AdministracionPage() {
     </section>
   );
 }
+

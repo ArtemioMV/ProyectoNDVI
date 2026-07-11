@@ -1,5 +1,6 @@
-﻿import { InputHTMLAttributes, ReactNode, SelectHTMLAttributes, TextareaHTMLAttributes } from "react";
+﻿import { Children, InputHTMLAttributes, isValidElement, ReactNode, TextareaHTMLAttributes } from "react";
 import { cn } from "./cn";
+import { AppSelect, type AppSelectOption } from "./AppSelect";
 
 type FieldFrameProps = {
   label: string;
@@ -35,19 +36,42 @@ export function TextField({ label, hint, error, className, fieldClassName, ...pr
   );
 }
 
-type SelectFieldProps = SelectHTMLAttributes<HTMLSelectElement> & {
+type SelectFieldProps = {
   label: string;
   hint?: string;
   error?: string;
   fieldClassName?: string;
+  className?: string;
+  children: ReactNode;
+  value?: string | number | readonly string[];
+  defaultValue?: string | number | readonly string[];
+  name?: string;
+  disabled?: boolean;
+  required?: boolean;
+  onChange?: (event: { target: { value: string } }) => void;
 };
 
-export function SelectField({ label, hint, error, className, fieldClassName, children, ...props }: SelectFieldProps) {
+function selectOptions(children: ReactNode): AppSelectOption[] {
+  return Children.toArray(children).flatMap((child) => {
+    if (!isValidElement<{ value?: string | number; children?: ReactNode; disabled?: boolean }>(child)) return [];
+    return [{ value: String(child.props.value ?? ""), label: String(child.props.children ?? ""), disabled: child.props.disabled }];
+  });
+}
+
+export function SelectField({ label, hint, error, className, fieldClassName, children, value, defaultValue, name, disabled, onChange }: SelectFieldProps) {
+  const options = selectOptions(children);
+  const selectedValue = String(Array.isArray(value) ? value[0] ?? "" : value ?? (Array.isArray(defaultValue) ? defaultValue[0] ?? "" : defaultValue ?? options[0]?.value ?? ""));
   return (
     <FieldFrame label={label} hint={hint} error={error} className={fieldClassName}>
-      <select className={cn("h-10 w-full rounded-lg border bg-background px-3 font-normal focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20", className)} {...props}>
-        {children}
-      </select>
+      <AppSelect
+        className={className}
+        value={selectedValue}
+        options={options}
+        name={name}
+        disabled={disabled}
+        ariaLabel={label}
+        onValueChange={(next) => onChange?.({ target: { value: next } })}
+      />
     </FieldFrame>
   );
 }
@@ -66,4 +90,6 @@ export function TextareaField({ label, hint, error, className, fieldClassName, .
     </FieldFrame>
   );
 }
+
+
 

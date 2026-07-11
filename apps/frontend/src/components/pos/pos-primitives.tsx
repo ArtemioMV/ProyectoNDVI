@@ -157,6 +157,45 @@ export function CartItemCard({
   );
 }
 
+export function CartDropZone({
+  children,
+  onDropMaterialId,
+  className
+}: {
+  children: ReactNode;
+  onDropMaterialId: (materialId: string) => void;
+  className?: string;
+}) {
+  const [active, setActive] = useState(false);
+
+  return (
+    <div
+      className={cn(
+        "min-h-16 rounded-lg border-2 border-dashed transition-colors",
+        active ? "border-primary bg-primary/5 ring-4 ring-primary/10" : "border-slate-200",
+        className
+      )}
+      onDragOver={(event) => {
+        if (!event.dataTransfer.types.includes("application/x-add-material")) return;
+        event.preventDefault();
+        event.dataTransfer.dropEffect = "copy";
+        setActive(true);
+      }}
+      onDragLeave={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node)) setActive(false);
+      }}
+      onDrop={(event) => {
+        event.preventDefault();
+        const materialId = event.dataTransfer.getData("application/x-add-material");
+        if (materialId) onDropMaterialId(materialId);
+        setActive(false);
+        setGlobalDragCursor(false);
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 export function TrashZone({ onDropKey }: { onDropKey: (key: string) => void }) {
   const [active, setActive] = useState(false);
   return (
@@ -183,5 +222,6 @@ export function TrashZone({ onDropKey }: { onDropKey: (key: string) => void }) {
     </div>
   );
 }
+
 
 
