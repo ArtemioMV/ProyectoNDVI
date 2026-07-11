@@ -11,13 +11,15 @@ type AppSelectProps = {
   onValueChange: (value: string) => void;
   ariaLabel?: string;
   disabled?: boolean;
+  /** Version fina para pies de tabla y toolbars densos. */
+  compact?: boolean;
   name?: string;
   className?: string;
 };
 
 type Position = { top: number; left: number; width: number };
 
-export function AppSelect({ value, options, onValueChange, ariaLabel, disabled, name, className }: AppSelectProps) {
+export function AppSelect({ value, options, onValueChange, ariaLabel, disabled, compact = false, name, className }: AppSelectProps) {
   const id = useId();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -95,12 +97,12 @@ export function AppSelect({ value, options, onValueChange, ariaLabel, disabled, 
         aria-expanded={open}
         aria-controls={`${id}-listbox`}
         disabled={disabled}
-        className={cn("flex h-10 w-full items-center justify-between gap-3 rounded-lg border bg-background px-3 text-left text-sm font-normal text-slate-700 outline-none transition hover:border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:cursor-not-allowed disabled:bg-muted disabled:text-slate-400", className)}
+        className={cn("flex w-full items-center justify-between rounded-lg border bg-background text-left font-normal text-slate-700 outline-none transition hover:border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 disabled:cursor-not-allowed disabled:bg-muted disabled:text-slate-400", compact ? "h-8 gap-1.5 px-2.5 text-xs" : "h-10 gap-3 px-3 text-sm", className)}
         onClick={() => setOpen((current) => !current)}
         onKeyDown={onKeyDown}
       >
         <span className="min-w-0 truncate">{selected?.label ?? "Selecciona..."}</span>
-        <ChevronDown className={cn("h-4 w-4 shrink-0 text-slate-500 transition-transform", open && "rotate-180")} />
+        <ChevronDown className={cn("shrink-0 text-slate-500 transition-transform", compact ? "h-3.5 w-3.5" : "h-4 w-4", open && "rotate-180")} />
       </button>
       {open && position ? createPortal(
         <div

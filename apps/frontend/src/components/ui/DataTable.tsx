@@ -319,7 +319,8 @@ export function DataTable<T>({
             <div className="flex items-center gap-1.5 text-xs text-slate-500">
               <span>Mostrar</span>
               <AppSelect
-                className="h-9 w-24"
+                compact
+                className="w-[4.75rem]"
                 ariaLabel="Filas por pagina"
                 value={String(rowsPerPage)}
                 options={[

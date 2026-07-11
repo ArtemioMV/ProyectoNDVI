@@ -1,11 +1,12 @@
 ﻿import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { CreditCard, ExternalLink, RefreshCcw, Search, WalletCards } from "lucide-react";
+import { CreditCard, Eye, RefreshCcw, Search, WalletCards } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import { AppModal } from "@/components/ui/AppModal";
 import { Button } from "@/components/ui/Button";
 import { emptyPayments, paidTotal, paymentEvidences, PaymentSplit, type PaymentsState, primaryMethod } from "@/components/pos/PaymentSplit";
 import { DataTable, type DataTableColumn } from "@/components/ui/DataTable";
+import { IconAction } from "@/components/ui/IconAction";
 import { DateRangeFilter } from "@/components/ui/DateRangeFilter";
 import { FilterSelect } from "@/components/ui/FilterSelect";
 import { TextareaField } from "@/components/ui/FormControls";
@@ -105,15 +106,18 @@ export function CobranzaPage() {
     {
       id: "actions",
       header: "Acciones",
-      minWidth: 190,
       cell: (item) => (
-        <div className="flex flex-wrap gap-2">
-          <Button size="sm" disabled={item.balance <= 0 || item.status === "VOID"} onClick={() => { setPayItem(item); setPayments({ ...emptyPayments, CASH: { enabled: true, amount: item.balance } }); }}>
-            Cobrar
-          </Button>
-          <Button size="sm" variant="secondary" icon={<ExternalLink className="h-4 w-4" />} onClick={() => navigate(`/clientes/${item.customer.id}/pagos`)}>
-            Ver ficha
-          </Button>
+        <div className="flex gap-1.5">
+          <IconAction
+            label="Cobrar mensualidad"
+            icon={<CreditCard />}
+            tone="primary"
+            variant="outline"
+            size="sm"
+            disabled={item.balance <= 0 || item.status === "VOID"}
+            onClick={() => { setPayItem(item); setPayments({ ...emptyPayments, CASH: { enabled: true, amount: item.balance } }); }}
+          />
+          <IconAction label="Ver ficha de pagos" icon={<Eye />} tone="success" variant="outline" size="sm" onClick={() => navigate(`/clientes/${item.customer.id}/pagos`)} />
         </div>
       )
     }
