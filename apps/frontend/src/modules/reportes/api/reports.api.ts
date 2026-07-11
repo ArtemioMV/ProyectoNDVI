@@ -21,7 +21,7 @@ export type ReportSummary = {
   customersByStatus: Record<string, number>;
 };
 
-export type MonthlyPoint = { month: string; income: number; outflow: number };
+export type MonthlyPoint = { month: string; collected: number; sales: number; purchases: number; expenses: number; income: number; outflow: number };
 
 export async function fetchReportSummary(params: { from?: string; to?: string }) {
   const response = await httpClient.get<ApiResponse<ReportSummary>>("/reportes/resumen", {

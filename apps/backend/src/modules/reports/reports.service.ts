@@ -117,17 +117,33 @@ export class ReportsService {
     ]);
 
     const keyOf = (date: Date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
-    const series: Array<{ month: string; income: number; outflow: number }> = [];
+    const series: Array<{ month: string; collected: number; sales: number; purchases: number; expenses: number; income: number; outflow: number }> = [];
     for (let index = 0; index < months; index++) {
       const month = new Date(now.getFullYear(), now.getMonth() - (months - 1 - index), 1);
-      series.push({ month: keyOf(month), income: 0, outflow: 0 });
+      series.push({ month: keyOf(month), collected: 0, sales: 0, purchases: 0, expenses: 0, income: 0, outflow: 0 });
     }
     const byMonth = new Map(series.map((item) => [item.month, item]));
 
-    for (const payment of payments) byMonth.get(keyOf(payment.paidAt)) && (byMonth.get(keyOf(payment.paidAt))!.income += Number(payment.amount));
-    for (const sale of sales) byMonth.get(keyOf(sale.createdAt)) && (byMonth.get(keyOf(sale.createdAt))!.income += Number(sale.totalAmount));
-    for (const expense of expenses) byMonth.get(keyOf(expense.expenseDate)) && (byMonth.get(keyOf(expense.expenseDate))!.outflow += Number(expense.amount));
-    for (const purchase of purchases) byMonth.get(keyOf(purchase.purchasedAt)) && (byMonth.get(keyOf(purchase.purchasedAt))!.outflow += Number(purchase.totalAmount));
+    for (const payment of payments) {
+      const bucket = byMonth.get(keyOf(payment.paidAt));
+      if (bucket) bucket.collected += Number(payment.amount);
+    }
+    for (const sale of sales) {
+      const bucket = byMonth.get(keyOf(sale.createdAt));
+      if (bucket) bucket.sales += Number(sale.totalAmount);
+    }
+    for (const expense of expenses) {
+      const bucket = byMonth.get(keyOf(expense.expenseDate));
+      if (bucket) bucket.expenses += Number(expense.amount);
+    }
+    for (const purchase of purchases) {
+      const bucket = byMonth.get(keyOf(purchase.purchasedAt));
+      if (bucket) bucket.purchases += Number(purchase.totalAmount);
+    }
+    for (const bucket of series) {
+      bucket.income = bucket.collected + bucket.sales;
+      bucket.outflow = bucket.purchases + bucket.expenses;
+    }
 
     return { success: true, data: series };
   }
